@@ -1,3 +1,49 @@
 from django.db import models
 
-# Create your models here.
+
+class Work(models.Model):
+    ol_id = models.CharField(max_lenght=100, unique=True, db_index=True)
+    title = models.CharField(max_length=500, db_index=True)
+    description = models.TextField(blank=True, null=True)
+    authors = models.ManyToManyField('Author', related_name='works')
+    subjects = models.ManyToManyField('Subject', related_name='works')
+    cover_url = models.URLField(blank=True, null=True)
+    first_published = models.DateField(blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Book(models.Model):
+    ol_id = models.CharField(max_lenght=100, unique=True, db_index=True)
+    work = models.ForeignKey(Work, on_delete=models.CASCADE, related_name='editions')
+    title = models.CharField(max_lenght=500, db_index=True)  # Longer titles?
+    subtitle = models.CharField(max_lenght=500, db_index=True)
+    authors = models.ManyToManyField('Author', related_name='editions')
+    publishers = models.ManyToManyField('Publisher', related_name='books')
+    publish_date = models.DateField(blank=True, null=True)
+    isbn_10 = models.CharField(max_length=10, blank=True, null=True, unique=True)
+    isbn_13 = models.CharField(max_length=13, blank=True, null=True, unique=True)
+    page_count = models.IntegerField(blank=True, null=True)
+    language = models.CharField(max_length=50, blank=True, null=True)
+    cover_url = models.URLField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.title} ({self.publish_date})"
+
+
+class Publisher(models.Model):
+    name = models.CharField(max_length=255, unique=True, db_index=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Subject(models.Model):
+    name = models.CharField(max_length=255, unique=True, db_index=True)
+
+    def __str__(self):
+        return self.name
