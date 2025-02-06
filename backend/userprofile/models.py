@@ -6,3 +6,4 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     created = models.DateField(auto_now_add=True)
     biography = models.TextField(blank=True)
+    # book list next
