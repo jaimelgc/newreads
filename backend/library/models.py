@@ -1,27 +1,30 @@
+# from datetime import timedelta
+
 from django.db import models
+from django.utils.timezone import now
 
 
 class Work(models.Model):
-    ol_id = models.CharField(max_lenght=100, unique=True, db_index=True)
+    ol_id = models.CharField(primary_key=True, max_length=100, unique=True, db_index=True)
     title = models.CharField(max_length=500, db_index=True)
     description = models.TextField(blank=True, null=True)
     authors = models.ManyToManyField('Author', related_name='works')
     subjects = models.ManyToManyField('Subject', related_name='works')
     cover_url = models.URLField(blank=True, null=True)
-    first_published = models.DateField(blank=True, null=True)
+    first_published = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.title
 
 
 class Book(models.Model):
-    ol_id = models.CharField(max_lenght=100, unique=True, db_index=True)
+    ol_id = models.CharField(primary_key=True, max_length=100, unique=True, db_index=True)
     work = models.ForeignKey(Work, on_delete=models.CASCADE, related_name='editions')
-    title = models.CharField(max_lenght=500, db_index=True)  # Longer titles?
-    subtitle = models.CharField(max_lenght=500, db_index=True)
+    title = models.CharField(max_length=500, db_index=True)  # Longer titles?
+    subtitle = models.CharField(max_length=500, db_index=True)
     authors = models.ManyToManyField('Author', related_name='editions')
     publishers = models.ManyToManyField('Publisher', related_name='books')
-    publish_date = models.DateField(blank=True, null=True)
+    publish_date = models.CharField(max_length=50, blank=True, null=True)
     isbn_10 = models.CharField(max_length=10, blank=True, null=True, unique=True)
     isbn_13 = models.CharField(max_length=13, blank=True, null=True, unique=True)
     page_count = models.IntegerField(blank=True, null=True)
@@ -30,9 +33,14 @@ class Book(models.Model):
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    last_checked = models.DateTimeField(default=now)
 
     def __str__(self):
         return f"{self.title} ({self.publish_date})"
+
+    def update_last_checked(self):
+        self.last_checked = now()
+        self.save()
 
 
 class Publisher(models.Model):
