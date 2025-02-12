@@ -43,15 +43,26 @@ class Book(models.Model):
         self.save()
 
 
+class Author(models.Model):
+    ol_id = models.CharField(max_length=100, unique=True, db_index=True)
+    name = models.CharField(max_length=255, db_index=True)
+    birth_date = models.CharField(max_length=100, blank=True, null=True)
+    death_date = models.CharField(max_length=100, blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Publisher(models.Model):
-    name = models.CharField(max_length=255, unique=True, db_index=True)
+    name = models.CharField(max_length=100, unique=True, db_index=True)
 
     def __str__(self):
         return self.name
 
 
 class Subject(models.Model):
-    name = models.CharField(max_length=255, unique=True, db_index=True)
+    name = models.CharField(max_length=250, unique=True, db_index=True)
 
     def __str__(self):
         return self.name
