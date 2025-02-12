@@ -1,3 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .caching import get_recent_books
+
+
+def start(request):
+    recent_books = get_recent_books()
+
+    return render(request, "start.html", {"recent_books": recent_books})
