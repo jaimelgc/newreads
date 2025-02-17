@@ -7,7 +7,22 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     created = models.DateField(auto_now_add=True)
     biography = models.TextField(blank=True)
+    # profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
     # book list next
+
+
+class BookList(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="book_lists")
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+class ListedBook(models.Model):
+    book_list = models.ForeignKey(BookList, on_delete=models.CASCADE, related_name="items")
+    ol_id = models.CharField(max_length=100)
+    title = models.CharField(max_length=500)
+    added_at = models.DateTimeField(auto_now_add=True)
 
 
 class SearchHistory(models.Model):
