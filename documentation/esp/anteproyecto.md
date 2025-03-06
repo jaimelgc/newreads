@@ -34,3 +34,36 @@ El objetivo de NewReads es ofrecer un portal donde los usuarios tengan acceso a 
 ### 4. PRE-ANÁLISIS DEL SISTEMA <a name="id4"></a>
 
 El proyecto constará de las siguientes partes:  
+
+- Motor de búsqueda de libros: Capaz de integrar resultados de bases de datos externas como Open Library y almacenar información relevante en la base de datos local para mejorar la velocidad de búsqueda.
+
+- Gestión de listas: Permite a los usuarios guardar libros en listas personalizadas que podrán ser públicas o privadas.
+
+- Sistema de discusión: Proporciona a los usuarios herramientas para crear discusiones sobre libros a modo de foro, con soporte para hilos de comentarios.
+
+- Sistema de usuarios: Gestiona el registro, inicio de sesión, perfiles personalizados y roles de usuarios con permisos específicos.
+
+Una vez cumplidos estos requisitos se plantea ampliar el proyecto con las siguientes funcionalidades
+
+- Un sistema de publicaciones más complejas al estilo de artículos para usuarios con permisos
+
+- Más herramientas de distribución como guardado de listas y artículos ajenos y publicaciones de estos en la página de inicio
+
+<!-- Tecnologías a utilizar:
+
+- Backend:
+    - Django.
+    - Django REST Framework (DRF) para la API.
+    - PostgreSQL como base de datos relacional.
+    - Redis para el almacenamiento en caché.
+    - djangorestframework-simplejwt para autenticación basada en tokens JWT.
+
+- Frontend:
+    - Vue.js.
+    - Vue Router para navegación.
+    - Vuex (o Pinia) para la gestión del estado.
+
+- Infraestructura:
+    - VPS con Nginx como proxy inverso.
+    - Gunicorn para servir el backend en producción.
+ -->
