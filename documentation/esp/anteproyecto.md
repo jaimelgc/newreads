@@ -49,21 +49,21 @@ Una vez cumplidos estos requisitos se plantea ampliar el proyecto con las siguie
 
 - Más herramientas de distribución como guardado de listas y artículos ajenos y publicaciones de estos en la página de inicio
 
-<!-- Tecnologías a utilizar:
+Tecnologías a utilizar:
 
-- Backend:
-    - Django.
-    - Django REST Framework (DRF) para la API.
-    - PostgreSQL como base de datos relacional.
-    - Redis para el almacenamiento en caché.
-    - djangorestframework-simplejwt para autenticación basada en tokens JWT.
+- Django como framework para el backend
 
-- Frontend:
-    - Vue.js.
-    - Vue Router para navegación.
-    - Vuex (o Pinia) para la gestión del estado.
+- Django REST Framework para la API.
 
-- Infraestructura:
-    - VPS con Nginx como proxy inverso.
-    - Gunicorn para servir el backend en producción.
- -->
+- PostgreSQL como base de datos relacional.
+
+- Redis para el almacenamiento en caché.
+
+- Djangorestframework-simplejwt para autenticación basada en tokens JWT.
+
+- Vue.js como framework para el frontend
+
+- VPS con Nginx como proxy inverso.
+
+- Gunicorn para servir el backend en producción.
+
