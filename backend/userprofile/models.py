@@ -7,8 +7,7 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     created = models.DateField(auto_now_add=True)
     biography = models.TextField(blank=True)
-    # profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
-    # book list next
+    profile_picture = models.ImageField(default='default_pfp', upload_to='profile_pics')
 
 
 class BookList(models.Model):

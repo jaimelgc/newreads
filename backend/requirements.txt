@@ -3,3 +3,4 @@ asgiref==3.8.1
 django-redis==5.4.0 
 redis==5.2.1 
 sqlparse==0.5.3
+pillow==11.1.0
