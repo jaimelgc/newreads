@@ -65,5 +65,5 @@ Tecnologías a utilizar:
 
 - VPS con Nginx como proxy inverso.
 
-- Gunicorn para servir el backend en producción.
+
 
