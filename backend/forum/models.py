@@ -13,6 +13,7 @@ class Post(models.Model):
     book = models.ForeignKey(
         Work, on_delete=models.SET_NULL, null=True, blank=True, related_name="book_posts"
     )
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class Comment(models.Model):
@@ -23,5 +24,5 @@ class Comment(models.Model):
         "self", on_delete=models.CASCADE, null=True, blank=True, related_name="quoted"
     )
     quote = models.TextField(blank=True, null=True)
-
+    created_at = models.DateTimeField(auto_now_add=True)
     # [quote=Kage Goomba;591764935569058073]This thread is full of win. [/quote]
