@@ -1,7 +1,6 @@
 from django.db import models
-
-from ..library.models import Work
-from ..userprofile.models import User
+from library.models import Work
+from userprofile.models import User
 
 
 class Post(models.Model):
