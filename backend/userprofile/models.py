@@ -17,7 +17,7 @@ class BookList(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
-class ListedBook(models.Model):
+class BookListItem(models.Model):
     book_list = models.ForeignKey(BookList, on_delete=models.CASCADE, related_name="items")
     ol_id = models.CharField(max_length=100)
     title = models.CharField(max_length=500)
