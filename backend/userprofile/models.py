@@ -3,6 +3,14 @@ from django.db import models
 from django.utils.timezone import now
 
 
+class UserManager(models.Manager):
+    def get_premium_users(self):
+        return self.filter(is_premium=True)
+
+    def get_moderators(self):
+        return self.filter(is_moderator=True)
+
+
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     created = models.DateField(auto_now_add=True)
@@ -10,8 +18,7 @@ class User(AbstractUser):
     profile_picture = models.ImageField(default='default_pfp', upload_to='profile_pics')
     is_moderator = models.BooleanField(default=False)
     is_writer = models.BooleanField(default=False)
-
-    # note // something more sophisticated
+    objects = UserManager()
 
 
 class BookList(models.Model):
