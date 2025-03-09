@@ -8,6 +8,10 @@ class User(AbstractUser):
     created = models.DateField(auto_now_add=True)
     biography = models.TextField(blank=True)
     profile_picture = models.ImageField(default='default_pfp', upload_to='profile_pics')
+    is_moderator = models.BooleanField(default=False)
+    is_writer = models.BooleanField(default=False)
+
+    # note // something more sophisticated
 
 
 class BookList(models.Model):
