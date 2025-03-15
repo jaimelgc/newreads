@@ -13,9 +13,6 @@ class Work(models.Model):
     cover_url = models.URLField(blank=True, null=True)
     first_published = models.CharField(max_length=50, blank=True, null=True)
 
-    def __str__(self):
-        return self.title
-
 
 class Book(models.Model):
     ol_id = models.CharField(primary_key=True, max_length=100, unique=True, db_index=True)
@@ -35,9 +32,6 @@ class Book(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     last_checked = models.DateTimeField(default=now)
 
-    def __str__(self):
-        return f"{self.title} ({self.publish_date})"
-
     def update_last_checked(self):
         self.last_checked = now()
         self.save()
@@ -50,19 +44,10 @@ class Author(models.Model):
     death_date = models.CharField(max_length=100, blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
 
-    def __str__(self):
-        return self.name
-
 
 class Publisher(models.Model):
     name = models.CharField(max_length=100, unique=True, db_index=True)
 
-    def __str__(self):
-        return self.name
-
 
 class Subject(models.Model):
     name = models.CharField(max_length=250, unique=True, db_index=True)
-
-    def __str__(self):
-        return self.name
