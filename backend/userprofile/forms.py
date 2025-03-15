@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import CustomUser
+from .models import User
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -10,5 +10,5 @@ class CustomUserCreationForm(UserCreationForm):
     profile_picture = forms.ImageField(required=False)
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['username', 'email', 'password1', 'password2', 'bio', 'profile_picture']
