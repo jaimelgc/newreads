@@ -1,73 +1,72 @@
-from django.contrib.auth import login
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect, render
-from library.models import Work
+from django.contrib.auth import get_user_model
+from django.db.models import Q
+from rest_framework import generics, permissions
 
-from .forms import CustomUserCreationForm
-from .models import BookList
+from .models import BookList  # SearchHistory
+from .serializers import (  # BooklistItemSerializer,; SearchHistorySerializer,
+    BooklistSerializer,
+    RegisterSerializer,
+    UserPrivateSerializer,
+    UserPublicSerializer,
+)
 
-
-def register(request):
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST, request.FILES)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password1'])
-            user.save()
-            login(request, user)
-            return redirect('home')
-    else:
-        form = CustomUserCreationForm()
-    return render(request, 'register.html', {'form': form})
+User = get_user_model()
 
 
-@login_required
-def user_book_lists(request):
-    lists = BookList.objects.filter(user=request.user)
-    return render(request, "user_book_lists.html", {"lists": lists})
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = RegisterSerializer
+    permission_classes = [permissions.AllowAny]
 
 
-@login_required
-def view_book_list(request, list_id):
-    book_list = get_object_or_404(BookList, id=list_id, user=request.user)
-    books = book_list.items.all()  # Fetch books in the list
-    return render(request, "view_book_list.html", {"book_list": book_list, "books": books})
+class ProfileView(generics.RetrieveUpdateAPIView):
+    serializer_class = UserPrivateSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
 
 
-@login_required
-def create_book_list(request):
-    if request.method == "POST":
-        name = request.POST.get("name").strip()
-        description = request.POST.get("description", "").strip()
-
-        if name:
-            BookList.objects.create(user=request.user, name=name, description=description)
-            return redirect("user_book_lists")
-
-    return render(request, "create_book_list.html")
+class UserPublicView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserPublicSerializer
+    permission_classes = [permissions.AllowAny]
+    lookup_field = 'username'
 
 
-@login_required
-def add_book_to_list(request, list_id):
-    book_list = get_object_or_404(BookList, id=list_id, user=request.user)
-
-    if request.method == "POST":
-        book_id = request.POST.get("book_id")
-        book = get_object_or_404(Work, id=book_id)
-
-        if book not in book_list.items.all():
-            book_list.items.add(book)
-
-        return redirect("view_book_list", list_id=list_id)  # Refresh view
-
-    return redirect("view_book_list", list_id=list_id)
+class BookListCreateView(generics.CreateAPIView):
+    serializer_class = BooklistSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
-@login_required
-def edit_profile(request):
-    pass
+class MyBookListsView(generics.ListAPIView):
+    serializer_class = BooklistSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return BookList.objects.filter(user=self.request.user)
 
 
-@login_required
-def dashboard(request):
-    pass
+class PublicBookListsView(generics.ListAPIView):
+    serializer_class = BooklistSerializer
+    lookup_field = 'username'
+
+    def get_queryset(self):
+        username = self.kwargs.get('username')
+        return BookList.objects.filter(user__username=username, is_public=True)
+
+
+class BookListDetailView(generics.RetrieveAPIView):
+    serializer_class = BooklistSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return BookList.objects.filter(Q(is_public=True) | Q(user=user))
+
+
+# class SearchHistoryView(generics.ListAPIView):
+#     serializer_class = SearchHistorySerializer
+#     permission_classes = [permissions.IsAuthenticated]
+
+#     def get_queryset(self):
+#         return SearchHistory.objects.filter(user=self.request.user)
