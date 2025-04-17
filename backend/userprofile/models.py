@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.timezone import now
+from library.models import Book
 
 
 class UserManager(models.Manager):
@@ -15,7 +16,9 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     created = models.DateField(auto_now_add=True)
     bio = models.TextField(blank=True)
-    profile_picture = models.ImageField(default='default_pfp', upload_to='profile_pics')
+    profile_picture = models.ImageField(
+        upload_to='profile_pics/', default='profile_pics/default.jpg'
+    )
     is_moderator = models.BooleanField(default=False)
     is_writer = models.BooleanField(default=False)
     objects = UserManager()
@@ -26,13 +29,17 @@ class BookList(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_public = models.BooleanField(default=False)
 
 
 class BookListItem(models.Model):
     book_list = models.ForeignKey(BookList, on_delete=models.CASCADE, related_name="items")
-    ol_id = models.CharField(max_length=100)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
     title = models.CharField(max_length=500)
     added_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('book_list', 'book')
 
 
 class SearchHistory(models.Model):
