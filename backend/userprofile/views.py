@@ -34,6 +34,15 @@ class UserPublicView(generics.RetrieveAPIView):
     lookup_field = 'username'
 
 
+class UserSearchView(generics.ListAPIView):
+    serializer_class = UserPublicSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        search_query = self.request.query_params.get('search', '')
+        return User.objects.filter(Q(username__icontains=search_query))
+
+
 class BookListCreateView(generics.CreateAPIView):
     serializer_class = BooklistSerializer
     permission_classes = [permissions.IsAuthenticated]
@@ -47,7 +56,7 @@ class MyBookListsView(generics.ListAPIView):
         return BookList.objects.filter(user=self.request.user)
 
 
-class PublicBookListsView(generics.ListAPIView):
+class UserBookListsView(generics.ListAPIView):
     serializer_class = BooklistSerializer
     lookup_field = 'username'
 
