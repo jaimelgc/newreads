@@ -40,7 +40,7 @@ class UserSearchView(generics.ListAPIView):
 
     def get_queryset(self):
         search_query = self.request.query_params.get('search', '')
-        return User.objects.filter(Q(username__icontains=search_query))
+        return User.objects.filter(username__icontains=search_query)
 
 
 class BookListCreateView(generics.CreateAPIView):

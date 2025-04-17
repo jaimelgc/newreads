@@ -1,52 +1,56 @@
-# from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.db.models import Q
+from rest_framework import generics, permissions
 
-# from .caching import get_recent_books
-from .ol import fetch_author_by_id, fetch_book_by_isbn, fetch_work_by_id
-
-# from django.shortcuts import get_object_or_404, redirect, render
-
-
-# from userprofile.models import BookList, BookListItem
-
-
-def test_fetch_work(request, ol_id):
-    data = fetch_work_by_id(ol_id)
-    if data:
-        return JsonResponse(data)
-    else:
-        return JsonResponse({"error": "Work not found"}, status=404)
+from .models import Author, Book, Publisher, Subject, Work
+from .serializers import (
+    AuthorSerializer,
+    BookSerializer,
+    PublisherSerializer,
+    SubjectSerializer,
+    WorkSerializer,
+)
 
 
-def test_fetch_book(request, isbn):
-    data = fetch_book_by_isbn(isbn)
-    if data:
-        return JsonResponse(data)
-    else:
-        return JsonResponse({"error": "Book not found"}, status=404)
+class WorkSearchView(generics.ListAPIView):
+    serializer_class = WorkSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        search_query = self.request.query_params.get('search', '')
+        return Work.objects.filter(title__icontains=search_query)
 
 
-def test_fetch_author(request, ol_id):
-    data = fetch_author_by_id(ol_id)
-    if data:
-        return JsonResponse(data)
-    else:
-        return JsonResponse({"error": "Author not found"}, status=404)
+class BookSearchView(generics.ListAPIView):
+    serializer_class = BookSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        search_query = self.request.query_params.get('search', '')
+        return Book.objects.filter(title__icontains=search_query)
 
 
-# def start(request):
-#     recent_books = get_recent_books()
+class AuthorSearchView(generics.ListAPIView):
+    serializer_class = AuthorSerializer
+    permission_classes = [permissions.AllowAny]
 
-#     return render(request, "start.html", {"recent_books": recent_books})
+    def get_queryset(self):
+        search_query = self.request.query_params.get('search', '')
+        return Author.objects.filter(name__icontains=search_query)
 
 
-# @login_required
-# def add_book_to_list(request, list_id, book_ol_id, book_title):
-#     book_list = get_object_or_404(BookList, id=list_id, user=request.user)
+class PublisherSearchView(generics.ListAPIView):
+    serializer_class = Publisher
+    permission_classes = [permissions.AllowAny]
 
-#     if not BookListItem.objects.filter(book_list=book_list, book_ol_id=book_ol_id).exists():
-#         BookListItem.objects.create(
-#             book_list=book_list, book_ol_id=book_ol_id, book_title=book_title
-#         )
+    def get_queryset(self):
+        search_query = self.request.query_params.get('search', '')
+        return Publisher.objects.filter(name__icontains=search_query)
 
-#     return redirect("view_book_list", list_id=list_id)
+
+class SubjectSearchView(generics.ListAPIView):
+    serializer_class = Subject
+    permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        search_query = self.request.query_params.get('search', '')
+        return Subject.objects.filter(name__icontains=search_query)
