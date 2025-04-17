@@ -1,4 +1,4 @@
-from django.db.models import Q
+# from django.db.models import Q
 from rest_framework import generics, permissions
 
 from .models import Author, Book, Publisher, Subject, Work
@@ -39,7 +39,7 @@ class AuthorSearchView(generics.ListAPIView):
 
 
 class PublisherSearchView(generics.ListAPIView):
-    serializer_class = Publisher
+    serializer_class = PublisherSerializer
     permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
@@ -48,7 +48,7 @@ class PublisherSearchView(generics.ListAPIView):
 
 
 class SubjectSearchView(generics.ListAPIView):
-    serializer_class = Subject
+    serializer_class = SubjectSerializer
     permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
