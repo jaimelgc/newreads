@@ -1,7 +1,9 @@
 # from django.db.models import Q
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, status
+from rest_framework.response import Response
 
 from .models import Author, Book, Publisher, Subject, Work
+from .open_library import get_catch_data
 from .serializers import (
     AuthorSerializer,
     BookSerializer,
@@ -9,6 +11,25 @@ from .serializers import (
     SubjectSerializer,
     WorkSerializer,
 )
+
+# Open library views
+# ---------------------------------------------------------
+
+
+class OpenLibrarySearchView(generics.APIView):
+    def get(self, request):
+        url = request.query_params.get("url", "")
+        key = request.query_params.get("key", "")
+        page = int(request.query_params.get("page", 1))
+
+        data = get_catch_data(key, url, page)
+        if data:
+            return Response(data, status=status.HTTP_200_OK)
+        return Response({"error": "Not found"}, status=status.HTTP_404_NOT_FOUND)
+
+
+# Local database views
+# ---------------------------------------------------------
 
 
 class WorkSearchView(generics.ListAPIView):
