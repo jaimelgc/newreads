@@ -4,14 +4,6 @@ from django.utils.timezone import now
 from library.models import Book
 
 
-class UserManager(models.Manager):
-    def get_premium_users(self):
-        return self.filter(is_premium=True)
-
-    def get_moderators(self):
-        return self.filter(is_moderator=True)
-
-
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     created = models.DateField(auto_now_add=True)
@@ -21,7 +13,6 @@ class User(AbstractUser):
     )
     is_moderator = models.BooleanField(default=False)
     is_writer = models.BooleanField(default=False)
-    objects = UserManager()
 
 
 class BookList(models.Model):
