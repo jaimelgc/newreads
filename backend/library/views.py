@@ -1,6 +1,7 @@
 # from django.db.models import Q
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Author, Book, Publisher, Subject, Work
 from .open_library import get_catch_data
@@ -16,7 +17,7 @@ from .serializers import (
 # ---------------------------------------------------------
 
 
-class OpenLibrarySearchView(generics.APIView):
+class OpenLibrarySearchView(APIView):
     def get(self, request):
         url = request.query_params.get("url", "")
         key = request.query_params.get("key", "")

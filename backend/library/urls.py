@@ -1,7 +1,7 @@
 from django.urls import path
 
-from . import views
+from .views import OpenLibrarySearchView
 
 urlpatterns = [
-    path('search', views.OpenLibrarySearchView, name='search_and_catch'),
+    path('search', OpenLibrarySearchView.as_view(), name='search_and_catch'),
 ]
