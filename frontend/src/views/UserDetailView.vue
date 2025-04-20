@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import Building from '@/components/Building.vue';
+
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <Building />
   </main>
 </template>
