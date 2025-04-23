@@ -1,9 +1,21 @@
 <script setup lang="ts">
     import { defineProps, ref, computed } from 'vue';
 
-    const props = defineProps({
-        book: Object
-    })
+
+    interface Book {
+        title: string
+        author?: string
+        description: string
+        // add more fields as needed
+    }
+
+    const props = defineProps<{ book: Book }>()
+
+    // og JS
+    
+    // const props = defineProps({
+    //     book: Object
+    // })
 
     const showFullDescription = ref(false)
 
