@@ -1,5 +1,5 @@
 import requests
-from django.core.cache import cache
+# from django.core.cache import cache
 
 ol_url = "https://openlibrary.org"
 
@@ -23,7 +23,8 @@ ol_url = "https://openlibrary.org"
 
 
 def get_catch_data(key, url, timeout=60 * 60 * 24):
-    cached_data = cache.get(key)
+    # cached_data = cache.get(key)
+    cached_data = False
 
     if cached_data:
         print("✔️ Loaded from cache")
@@ -33,7 +34,7 @@ def get_catch_data(key, url, timeout=60 * 60 * 24):
 
     if response.status_code == 200:
         data = response.json()
-        cache.set(key, data, timeout)
+        # cache.set(key, data, timeout)
         print("📡 Fetched from Open Library and cached")
         return data
 
