@@ -1,0 +1,81 @@
+{
+    "publishers": [
+        "HarperCollins Publishers"
+    ],
+    "subtitle": "or There and Back Again",
+    "description": {
+        "type": "/type/text",
+        "value": "Bilbo Baggins is a hobbit who enjoys a comfortable, unambitious life, rarely travelling further than the pantry of his hobbit-hole in Bag End. But his contentment is disturbed when the wizard, Gandalf, and a company of thirteen dwarves arrive on his doorstep one day to whisk him away on an unexpected journey \u2018there and back again\u2019. They have a plot to raid the treasure hoard of Smaug the Magnificent, a large and very dangerous dragon\u2026\r\n\r\nThe prelude to The Lord of the Rings, The Hobbit has sold many millions of copies since its publication in 1937, establishing itself as one of the most beloved and influential books of the twentieth century.\r\n--back cover"
+    },
+    "weight": "7.8 ounces",
+    "isbn_10": [
+        "0261103342"
+    ],
+    "covers": [
+        10522108
+    ],
+    "physical_format": "Paperback",
+    "key": "/books/OL10236414M",
+    "authors": [
+        {
+            "key": "/authors/OL26320A"
+        }
+    ],
+    "ocaid": "hobbitortherebac0000tolk_s7i1",
+    "publish_places": [
+        "London"
+    ],
+    "languages": [
+        {
+            "key": "/languages/eng"
+        }
+    ],
+    "pagination": "xiv, 305p.",
+    "classifications": {},
+    "source_records": [
+        "amazon:0261103342",
+        "ia:hobbitortherebac0000tolk_s7i1"
+    ],
+    "title": "The Hobbit",
+    "notes": "UK",
+    "identifiers": {
+        "goodreads": [
+            "56085874"
+        ],
+        "librarything": [
+            "3206242"
+        ]
+    },
+    "isbn_13": [
+        "9780261103344"
+    ],
+    "edition_name": "75th Anniversary Edition (29)",
+    "subjects": [
+        "Fantasy"
+    ],
+    "publish_date": "2011",
+    "copyright_date": "2007",
+    "by_statement": "J.R.R. Tolkien",
+    "oclc_numbers": [
+        "989099215"
+    ],
+    "works": [
+        {
+            "key": "/works/OL27482W"
+        }
+    ],
+    "type": {
+        "key": "/type/edition"
+    },
+    "physical_dimensions": "7.6 x 5 x 0.7 inches",
+    "latest_revision": 17,
+    "revision": 17,
+    "created": {
+        "type": "/type/datetime",
+        "value": "2008-04-30T09:38:13.731961"
+    },
+    "last_modified": {
+        "type": "/type/datetime",
+        "value": "2024-05-20T13:37:47.801415"
+    }
+}

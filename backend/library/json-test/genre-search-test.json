@@ -1,0 +1,1890 @@
+{
+    "numFound": 486,
+    "start": 100,
+    "numFoundExact": true,
+    "num_found": 486,
+    "documentation_url": "https://openlibrary.org/dev/docs/api/search",
+    "q": "",
+    "offset": null,
+    "docs": [
+        {
+            "author_key": [
+                "OL38677A"
+            ],
+            "author_name": [
+                "Tracy Tolkien"
+            ],
+            "cover_edition_key": "OL12060610M",
+            "cover_i": 3016299,
+            "edition_count": 1,
+            "first_publish_year": 2000,
+            "has_fulltext": true,
+            "ia": [
+                "vintageartofdres0000tolk"
+            ],
+            "ia_collection_s": "inlibrary;internetarchivebooks;printdisabled",
+            "key": "/works/OL544310W",
+            "lending_edition_s": "OL12060610M",
+            "lending_identifier_s": "vintageartofdres0000tolk",
+            "public_scan_b": false,
+            "title": "Vintage Style"
+        },
+        {
+            "author_key": [
+                "OL1477672A"
+            ],
+            "author_name": [
+                "Simon Tolkien"
+            ],
+            "cover_edition_key": "OL3559289M",
+            "cover_i": 228147,
+            "edition_count": 8,
+            "first_publish_year": 2002,
+            "has_fulltext": true,
+            "ia": [
+                "finalwitnessnove00tolk"
+            ],
+            "ia_collection_s": "hamiltonpubliclibrary-ol;internetarchivebooks;printdisabled;riceuniversity-ol;rochester-ol",
+            "key": "/works/OL5956700W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Final Witness"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 1985,
+            "has_fulltext": false,
+            "key": "/works/OL34960835W",
+            "language": [
+                "dut"
+            ],
+            "public_scan_b": false,
+            "subtitle": "De Reisgenoten",
+            "title": "In de Ban van de Ring"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 3,
+            "first_publish_year": 1978,
+            "has_fulltext": false,
+            "key": "/works/OL27450W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Of the darkening of Valinor and of the flight of the Noldor from The silmarillion"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL20963632M",
+            "cover_i": 10124809,
+            "edition_count": 1,
+            "first_publish_year": 1979,
+            "has_fulltext": false,
+            "key": "/works/OL20822057W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Sir Gawain and the Green Knight"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL7916082M",
+            "cover_i": 14627595,
+            "edition_count": 2,
+            "first_publish_year": 2002,
+            "has_fulltext": true,
+            "ia": [
+                "tolkienmiscellan0000jrrt"
+            ],
+            "ia_collection_s": "internetarchivebooks;printdisabled",
+            "key": "/works/OL14926100W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "A Tolkien Miscellany"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL7261135M",
+            "cover_i": 8130,
+            "edition_count": 2,
+            "first_publish_year": 2001,
+            "has_fulltext": false,
+            "key": "/works/OL14926120W",
+            "public_scan_b": false,
+            "title": "The Complete History of Middle-earth, Vol. 2 (The History of Middle-earth, Vols. 6-9)"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2004,
+            "has_fulltext": false,
+            "key": "/works/OL14933367W",
+            "language": [
+                "rus"
+            ],
+            "public_scan_b": false,
+            "title": "The Hobbit / Lord of the Rings / Silmarillion"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 1987,
+            "has_fulltext": false,
+            "key": "/works/OL14933399W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "subtitle": "the Hobbit : drawings, watercolors, and manuscripts, June 11-September 30, 1987 Patrick & Beatrice Haggerty Museum of Art, Marquette University, Milwaukee, Wisconsin.",
+            "title": "J.R.R. Tolkien"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 3,
+            "first_publish_year": 1981,
+            "has_fulltext": false,
+            "key": "/works/OL14933400W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "J.R.R. Tolkien-4 Vol. (Boxed)"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 2,
+            "first_publish_year": 2001,
+            "has_fulltext": false,
+            "key": "/works/OL14933487W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "The Ring Goes East"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL46110844M",
+            "cover_i": 13969540,
+            "edition_count": 2,
+            "first_publish_year": 2023,
+            "has_fulltext": false,
+            "key": "/works/OL34051627W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "History of the Hobbit"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL9076608M",
+            "cover_i": 10701801,
+            "edition_count": 1,
+            "first_publish_year": 2002,
+            "has_fulltext": false,
+            "key": "/works/OL24230512W",
+            "language": [
+                "ger"
+            ],
+            "public_scan_b": false,
+            "title": "Die Sagen von Mittelerde"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL7264146M",
+            "cover_i": 1060177,
+            "edition_count": 3,
+            "first_publish_year": 2005,
+            "has_fulltext": false,
+            "key": "/works/OL262739W",
+            "public_scan_b": false,
+            "title": "The Tolkien Treasury"
+        },
+        {
+            "author_key": [
+                "OL116383A",
+                "OL26320A"
+            ],
+            "author_name": [
+                "Kenneth Sisam",
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL7639598M",
+            "cover_i": 314384,
+            "edition_count": 4,
+            "first_publish_year": 2005,
+            "has_fulltext": false,
+            "key": "/works/OL14933453W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "A Middle English Reader and Vocabulary"
+        },
+        {
+            "author_key": [
+                "OL3371415A",
+                "OL26320A"
+            ],
+            "author_name": [
+                "Humphrey Carpenter",
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 3,
+            "first_publish_year": 2011,
+            "has_fulltext": false,
+            "key": "/works/OL25368964W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "J. R. R. Tolkien"
+        },
+        {
+            "author_key": [
+                "OL26320A",
+                "OL2623360A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien",
+                "Christopher Tolkien"
+            ],
+            "edition_count": 2,
+            "first_publish_year": 2014,
+            "has_fulltext": false,
+            "key": "/works/OL27368245W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Beowulf"
+        },
+        {
+            "author_key": [
+                "OL26320A",
+                "OL2623360A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien",
+                "Christopher Tolkien"
+            ],
+            "edition_count": 2,
+            "first_publish_year": 2021,
+            "has_fulltext": false,
+            "key": "/works/OL25483632W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Sir Gawain and the Green Knight, Pearl, and Sir Orfeo"
+        },
+        {
+            "author_key": [
+                "OL2623360A",
+                "OL26320A"
+            ],
+            "author_name": [
+                "Christopher Tolkien",
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 2,
+            "first_publish_year": 2010,
+            "has_fulltext": false,
+            "key": "/works/OL25446679W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Lost Road"
+        },
+        {
+            "author_key": [
+                "OL14431239A"
+            ],
+            "author_name": [
+                "F. Tolkien"
+            ],
+            "edition_count": 9,
+            "first_publish_year": 2018,
+            "has_fulltext": false,
+            "key": "/works/OL40214386W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Unicorn"
+        },
+        {
+            "author_key": [
+                "OL14431239A"
+            ],
+            "author_name": [
+                "F. Tolkien"
+            ],
+            "edition_count": 9,
+            "first_publish_year": 2018,
+            "has_fulltext": false,
+            "key": "/works/OL40768003W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "To Be Continued"
+        },
+        {
+            "author_key": [
+                "OL2623360A"
+            ],
+            "author_name": [
+                "Christopher Tolkien"
+            ],
+            "cover_edition_key": "OL9131913M",
+            "cover_i": 1047650,
+            "edition_count": 1,
+            "first_publish_year": 2000,
+            "has_fulltext": false,
+            "key": "/works/OL14933410W",
+            "language": [
+                "spa"
+            ],
+            "public_scan_b": false,
+            "title": "La Caida de Numenor"
+        },
+        {
+            "author_key": [
+                "OL2623360A"
+            ],
+            "author_name": [
+                "Christopher Tolkien"
+            ],
+            "cover_edition_key": "OL32900397M",
+            "cover_i": 11529684,
+            "edition_count": 1,
+            "first_publish_year": 2021,
+            "has_fulltext": false,
+            "key": "/works/OL24774960W",
+            "public_scan_b": false,
+            "title": "Sir Gawain and the Green Knight"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL39203520M",
+            "cover_i": 13944540,
+            "edition_count": 1,
+            "first_publish_year": 2002,
+            "has_fulltext": false,
+            "key": "/works/OL28592609W",
+            "language": [
+                "gre"
+            ],
+            "public_scan_b": false,
+            "subtitle": "Oi Dyo Pyrgoi - The Lord of the Rings Book 2",
+            "title": "O Archontas Ton Dachtylidion 2"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2021,
+            "has_fulltext": false,
+            "key": "/works/OL27741781W",
+            "public_scan_b": false,
+            "title": "The Hobbit & The Lord of the Rings 4 Books Boxed Set By J. R. R. Tolkien"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2014,
+            "has_fulltext": false,
+            "key": "/works/OL27787723W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Sir Gawain and the Green Knight"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL37068875M",
+            "cover_i": 12639899,
+            "edition_count": 1,
+            "first_publish_year": 1992,
+            "has_fulltext": true,
+            "ia": [
+                "shinpanyubiwamon2003tolk"
+            ],
+            "ia_collection_s": "inlibrary;internetarchivebooks;printdisabled",
+            "key": "/works/OL27305953W",
+            "language": [
+                "jpn"
+            ],
+            "lending_edition_s": "OL37068875M",
+            "lending_identifier_s": "shinpanyubiwamon2003tolk",
+            "public_scan_b": false,
+            "title": "The Lord of the Rings [1/9]"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL7273836M",
+            "cover_i": 13467539,
+            "edition_count": 2,
+            "first_publish_year": 1977,
+            "has_fulltext": false,
+            "key": "/works/OL27456W",
+            "public_scan_b": false,
+            "title": "THE SILMARILLION CALENDAR 1978"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL9242296M",
+            "cover_i": 44895,
+            "edition_count": 2,
+            "first_publish_year": 2000,
+            "has_fulltext": false,
+            "key": "/works/OL27458W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "The Tolkien 2001 Desk Diary"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL37755198M",
+            "cover_i": 14626675,
+            "edition_count": 2,
+            "first_publish_year": 1989,
+            "has_fulltext": true,
+            "ia": [
+                "twotowersbeingse0003jrrt",
+                "shinpanyubiwamon0005tolk"
+            ],
+            "ia_collection_s": "inlibrary;internetarchivebooks;printdisabled",
+            "key": "/works/OL27685572W",
+            "language": [
+                "jpn"
+            ],
+            "lending_edition_s": "OL37755198M",
+            "lending_identifier_s": "twotowersbeingse0003jrrt",
+            "public_scan_b": false,
+            "title": "The Two Towers [1/3]"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL50514239M",
+            "cover_i": 14569131,
+            "edition_count": 1,
+            "first_publish_year": 2008,
+            "has_fulltext": false,
+            "key": "/works/OL37492399W",
+            "language": [
+                "nor"
+            ],
+            "public_scan_b": false,
+            "title": "Hobbiten eller ditut og attende"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL51709225M",
+            "cover_i": 14627196,
+            "edition_count": 1,
+            "first_publish_year": 1991,
+            "has_fulltext": true,
+            "ia": [
+                "tolkiendiary199200tolk"
+            ],
+            "ia_collection_s": "americana;bostonpubliclibrary;bplhoughton;inlibrary;printdisabled",
+            "key": "/works/OL38068382W",
+            "language": [
+                "eng"
+            ],
+            "lending_edition_s": "OL51709225M",
+            "lending_identifier_s": "tolkiendiary199200tolk",
+            "public_scan_b": false,
+            "title": "The Tolkien Diary 1992"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL39810596M",
+            "cover_i": 12928339,
+            "edition_count": 1,
+            "first_publish_year": 2002,
+            "has_fulltext": true,
+            "ia": [
+                "panjiuichewang0000tolk"
+            ],
+            "ia_collection_s": "inlibrary;internetarchivebooks;printdisabled",
+            "key": "/works/OL38058352W",
+            "language": [
+                "kor"
+            ],
+            "lending_edition_s": "OL39810596M",
+            "lending_identifier_s": "panjiuichewang0000tolk",
+            "public_scan_b": false,
+            "title": "\ubc18\uc9c0\uc758\uc81c\uc655 1"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL51743765M",
+            "cover_i": 14635144,
+            "edition_count": 1,
+            "first_publish_year": 1966,
+            "has_fulltext": false,
+            "key": "/works/OL38083633W",
+            "public_scan_b": false,
+            "title": "Taru Sormusten Herrasta"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL47303671M",
+            "cover_i": 13768153,
+            "edition_count": 1,
+            "first_publish_year": 2022,
+            "has_fulltext": false,
+            "key": "/works/OL34943948W",
+            "language": [
+                "pol"
+            ],
+            "public_scan_b": false,
+            "title": "Wladca Pierscieni. Druzyna Pierscienia"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 1963,
+            "has_fulltext": false,
+            "key": "/works/OL35279024W",
+            "public_scan_b": false,
+            "title": "Angles and Britons. O'Donnell Lectures"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 2,
+            "first_publish_year": 2004,
+            "has_fulltext": false,
+            "key": "/works/OL32365019W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Tolkien Diary"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL47130517M",
+            "cover_i": 13523021,
+            "edition_count": 1,
+            "first_publish_year": 2002,
+            "has_fulltext": false,
+            "key": "/works/OL34779667W",
+            "public_scan_b": false,
+            "title": "The Lord of the Rings, Part 1"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL30496864M",
+            "cover_i": 10456415,
+            "edition_count": 1,
+            "first_publish_year": 2003,
+            "has_fulltext": false,
+            "key": "/works/OL22408910W",
+            "public_scan_b": false,
+            "title": "Tolkien Diary 2004"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL30585445M",
+            "cover_i": 10474792,
+            "edition_count": 1,
+            "first_publish_year": 2009,
+            "has_fulltext": false,
+            "key": "/works/OL22534252W",
+            "language": [
+                "ara"
+            ],
+            "public_scan_b": false,
+            "title": "\u0633\u064a\u062f \u0627\u0644\u062e\u0648\u0627\u062a\u0645"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL32100986M",
+            "cover_i": 10757490,
+            "edition_count": 1,
+            "first_publish_year": 1992,
+            "has_fulltext": true,
+            "ia": [
+                "futatsunoto0000unse"
+            ],
+            "ia_collection_s": "inlibrary;internetarchivebooks;printdisabled",
+            "key": "/works/OL24266415W",
+            "language": [
+                "jpn"
+            ],
+            "lending_edition_s": "OL32100986M",
+            "lending_identifier_s": "futatsunoto0000unse",
+            "public_scan_b": false,
+            "title": "The Two Towers [1/2]"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL32201013M",
+            "cover_i": 10850186,
+            "edition_count": 1,
+            "first_publish_year": 2019,
+            "has_fulltext": false,
+            "key": "/works/OL24329418W",
+            "language": [
+                "tur"
+            ],
+            "public_scan_b": false,
+            "title": "Tom Bombadil'in Maceralari"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL32201269M",
+            "cover_i": 10850444,
+            "edition_count": 1,
+            "first_publish_year": 2020,
+            "has_fulltext": false,
+            "key": "/works/OL24329643W",
+            "language": [
+                "tur"
+            ],
+            "public_scan_b": false,
+            "title": "Bitmemis \u00d6yk\u00fcler"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 2,
+            "first_publish_year": 1990,
+            "has_fulltext": false,
+            "key": "/works/OL14925967W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "The 1991 J.R.R. Tolkein Calendar"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL9792501M",
+            "cover_i": 211264,
+            "edition_count": 1,
+            "first_publish_year": 2003,
+            "has_fulltext": false,
+            "key": "/works/OL14926003W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "The Histories of Middle Earth, Volumes 1-5"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL7603610M",
+            "cover_i": 393177,
+            "edition_count": 1,
+            "first_publish_year": 2000,
+            "has_fulltext": false,
+            "key": "/works/OL14926004W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "The History of the Lord of the Rings"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL9209095M",
+            "cover_i": 22,
+            "edition_count": 1,
+            "first_publish_year": 1992,
+            "has_fulltext": false,
+            "key": "/works/OL14926020W",
+            "public_scan_b": false,
+            "title": "J.R.R.Tolkien Collection"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 1984,
+            "has_fulltext": false,
+            "key": "/works/OL14933388W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "The Hobbit. 2/?"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "has_fulltext": false,
+            "key": "/works/OL14933407W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "J.R.R. Tolkien reads and sings from his Lord"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL8603642M",
+            "cover_i": 782107,
+            "edition_count": 1,
+            "first_publish_year": 1834,
+            "has_fulltext": false,
+            "key": "/works/OL14933495W",
+            "public_scan_b": false,
+            "title": "The Shire (MERP/Middle Earth Role Playing)"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL3570671M",
+            "cover_i": 657804,
+            "edition_count": 2,
+            "first_publish_year": 2002,
+            "has_fulltext": false,
+            "key": "/works/OL14933313W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Beowulf and the critics"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL44095297M",
+            "cover_i": 13315101,
+            "edition_count": 2,
+            "first_publish_year": 1993,
+            "has_fulltext": false,
+            "key": "/works/OL14933470W",
+            "language": [
+                "spa",
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Poems"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL51716089M",
+            "cover_i": 14628274,
+            "edition_count": 2,
+            "first_publish_year": 1994,
+            "has_fulltext": true,
+            "ia": [
+                "isbn_9788382020786"
+            ],
+            "ia_collection_s": "internetarchivebooks;printdisabled",
+            "key": "/works/OL14933517W",
+            "language": [
+                "pol"
+            ],
+            "public_scan_b": false,
+            "title": "Works (Adventures of Tom Bombadil / Farmer Giles of Ham / Smith of Wootton Major)"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL7262368M",
+            "cover_i": 10671,
+            "edition_count": 2,
+            "first_publish_year": 2002,
+            "has_fulltext": false,
+            "key": "/works/OL20651960W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "The Tolkien Audio Collection"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL44295037M",
+            "cover_i": 13223383,
+            "edition_count": 1,
+            "first_publish_year": 2022,
+            "has_fulltext": false,
+            "key": "/works/OL32501118W",
+            "language": [
+                "spa"
+            ],
+            "public_scan_b": false,
+            "title": "Estuche Tolkien (el Hobbit + el Se\u00f1or de Los Anillos)"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2006,
+            "has_fulltext": false,
+            "key": "/works/OL33255037W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Early Elvish poetry and pre-F\u00ebanorian alphabets"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2004,
+            "has_fulltext": false,
+            "key": "/works/OL33255046W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "S\u00ed Qente Feanor and other Elvish writings"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_i": 13766462,
+            "edition_count": 1,
+            "first_publish_year": 1983,
+            "has_fulltext": true,
+            "ia": [
+                "nachrichtenausmi0000jrrt"
+            ],
+            "ia_collection_s": "internetarchivebooks;printdisabled",
+            "key": "/works/OL34942458W",
+            "language": [
+                "ger"
+            ],
+            "public_scan_b": false,
+            "title": "Nachrichten aus Mittelerde"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL47104559M",
+            "cover_i": 13479942,
+            "edition_count": 2,
+            "first_publish_year": 2021,
+            "has_fulltext": false,
+            "key": "/works/OL34755051W",
+            "language": [
+                "spa"
+            ],
+            "public_scan_b": false,
+            "title": "Estuche Tolkien"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL33869743M",
+            "cover_i": 11983277,
+            "edition_count": 1,
+            "first_publish_year": 2002,
+            "has_fulltext": false,
+            "key": "/works/OL25291356W",
+            "public_scan_b": false,
+            "title": "The \" Lord of the Rings \" Jigsaw Book"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 2,
+            "first_publish_year": 2001,
+            "has_fulltext": false,
+            "key": "/works/OL16575828W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "The alphabet of R\u00famil"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL26258605M",
+            "cover_i": 9158654,
+            "edition_count": 1,
+            "first_publish_year": 2002,
+            "has_fulltext": true,
+            "ia": [
+                "isbn_9785040040537"
+            ],
+            "ia_collection_s": "internetarchivebooks;printdisabled",
+            "key": "/works/OL17653532W",
+            "language": [
+                "rus"
+            ],
+            "public_scan_b": false,
+            "title": "Works (Farmer Giles of Ham / Hobbit / Leaf by Niggle / Smith of Wootton Major)"
+        },
+        {
+            "author_key": [
+                "OL26320A",
+                "OL7958794A",
+                "OL2623360A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien",
+                "Alan Lee",
+                "Christopher Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2019,
+            "has_fulltext": false,
+            "key": "/works/OL25059907W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Great Tales of Middle-Earth Boxed Set"
+        },
+        {
+            "author_key": [
+                "OL2623360A",
+                "OL26320A"
+            ],
+            "author_name": [
+                "Christopher Tolkien",
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2024,
+            "has_fulltext": false,
+            "key": "/works/OL37621088W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "History of Middle-Earth Box Set #3"
+        },
+        {
+            "author_key": [
+                "OL2623360A",
+                "OL26320A"
+            ],
+            "author_name": [
+                "Christopher Tolkien",
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2024,
+            "has_fulltext": false,
+            "key": "/works/OL37625390W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "History of Middle-Earth Box Set #1"
+        },
+        {
+            "author_key": [
+                "OL2623360A",
+                "OL26320A"
+            ],
+            "author_name": [
+                "Christopher Tolkien",
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL51106767M",
+            "cover_i": 14668550,
+            "edition_count": 1,
+            "first_publish_year": 2024,
+            "has_fulltext": false,
+            "key": "/works/OL37863730W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "History of Middle-Earth Box Set #4"
+        },
+        {
+            "author_key": [
+                "OL2623360A",
+                "OL26320A"
+            ],
+            "author_name": [
+                "Christopher Tolkien",
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2024,
+            "has_fulltext": false,
+            "key": "/works/OL37625582W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "History of Middle-Earth Box Set #2"
+        },
+        {
+            "author_key": [
+                "OL26320A",
+                "OL2623360A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien",
+                "Christopher Tolkien"
+            ],
+            "cover_edition_key": "OL47327016M",
+            "cover_i": 13901733,
+            "edition_count": 1,
+            "first_publish_year": 2001,
+            "has_fulltext": false,
+            "key": "/works/OL34965186W",
+            "language": [
+                "ita"
+            ],
+            "public_scan_b": false,
+            "title": "La realt\u00e0 in trasparenza. Lettere"
+        },
+        {
+            "author_key": [
+                "OL26320A",
+                "OL2623360A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien",
+                "Christopher Tolkien"
+            ],
+            "cover_edition_key": "OL7759911M",
+            "cover_i": 445137,
+            "edition_count": 1,
+            "first_publish_year": 2001,
+            "has_fulltext": false,
+            "key": "/works/OL31189790W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "The J.R.R. Tolkien Audio Collection"
+        },
+        {
+            "author_key": [
+                "OL2623360A",
+                "OL26320A"
+            ],
+            "author_name": [
+                "Christopher Tolkien",
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2017,
+            "has_fulltext": false,
+            "key": "/works/OL21609058W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Complete History of Middle-Earth"
+        },
+        {
+            "author_key": [
+                "OL2623360A",
+                "OL26320A"
+            ],
+            "author_name": [
+                "Christopher Tolkien",
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2020,
+            "has_fulltext": false,
+            "key": "/works/OL21887219W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "History of Middle-Earth Part Three"
+        },
+        {
+            "author_key": [
+                "OL2623360A",
+                "OL26320A"
+            ],
+            "author_name": [
+                "Christopher Tolkien",
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL29848944M",
+            "cover_i": 13848096,
+            "edition_count": 1,
+            "first_publish_year": 2020,
+            "has_fulltext": false,
+            "key": "/works/OL21887226W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "History of Middle-Earth Part Two"
+        },
+        {
+            "author_key": [
+                "OL2623360A",
+                "OL26320A"
+            ],
+            "author_name": [
+                "Christopher Tolkien",
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2020,
+            "has_fulltext": false,
+            "key": "/works/OL21887244W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "History of Middle-Earth Part One"
+        },
+        {
+            "author_key": [
+                "OL2623360A",
+                "OL26320A"
+            ],
+            "author_name": [
+                "Christopher Tolkien",
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL32144194M",
+            "cover_i": 10809610,
+            "edition_count": 1,
+            "first_publish_year": 2020,
+            "has_fulltext": false,
+            "key": "/works/OL24300301W",
+            "public_scan_b": false,
+            "title": "The History of Middle-earth Boxed Set"
+        },
+        {
+            "author_key": [
+                "OL26320A",
+                "OL2623360A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien",
+                "Christopher Tolkien"
+            ],
+            "cover_edition_key": "OL9921931M",
+            "cover_i": 14425862,
+            "edition_count": 1,
+            "first_publish_year": 2002,
+            "has_fulltext": false,
+            "key": "/works/OL26291285W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "The Complete History of Middle-Earth"
+        },
+        {
+            "author_key": [
+                "OL2447931A"
+            ],
+            "author_name": [
+                "James Kenneth Tolkien"
+            ],
+            "cover_edition_key": "OL13509759M",
+            "cover_i": 5775970,
+            "edition_count": 3,
+            "first_publish_year": 1903,
+            "has_fulltext": true,
+            "ia": [
+                "innofgahnobwaypo00tolkrich"
+            ],
+            "ia_collection_s": "americana;cdl",
+            "key": "/works/OL218598W",
+            "language": [
+                "eng"
+            ],
+            "lending_edition_s": "OL13509759M",
+            "lending_identifier_s": "innofgahnobwaypo00tolkrich",
+            "public_scan_b": true,
+            "subtitle": "[poems]",
+            "title": "The inn of Gahnobway"
+        },
+        {
+            "author_key": [
+                "OL2623360A"
+            ],
+            "author_name": [
+                "Christopher Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 1960,
+            "has_fulltext": false,
+            "key": "/works/OL37993008W",
+            "public_scan_b": false,
+            "title": "The Saga of King Heidrek the Wise / Saga Heidreks Konungs ins Vitra"
+        },
+        {
+            "author_key": [
+                "OL2623360A"
+            ],
+            "author_name": [
+                "Christopher Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2002,
+            "has_fulltext": false,
+            "key": "/works/OL36010239W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "History of the Lord of the Rings"
+        },
+        {
+            "author_key": [
+                "OL2623360A"
+            ],
+            "author_name": [
+                "Christopher Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2023,
+            "has_fulltext": false,
+            "key": "/works/OL35788491W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Morgoth's Ring : The Later Silmarillion, Part One"
+        },
+        {
+            "author_key": [
+                "OL2623360A"
+            ],
+            "author_name": [
+                "Christopher Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 1960,
+            "has_fulltext": false,
+            "key": "/works/OL22463383W",
+            "language": [
+                "eng",
+                "ice"
+            ],
+            "public_scan_b": false,
+            "title": "The saga of King Heidrek the Wise"
+        },
+        {
+            "author_key": [
+                "OL2623360A"
+            ],
+            "author_name": [
+                "Christopher Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2010,
+            "has_fulltext": false,
+            "key": "/works/OL32417967W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Saga of King Heidrek the Wise"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL12665686M",
+            "cover_i": 3168562,
+            "edition_count": 1,
+            "first_publish_year": 2002,
+            "has_fulltext": false,
+            "key": "/works/OL8997767W",
+            "language": [
+                "ger"
+            ],
+            "public_scan_b": false,
+            "title": "Der Herr der Ringe. Auswahl mit Materialien. Ab Klasse 8"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_i": 13543230,
+            "edition_count": 1,
+            "first_publish_year": 1996,
+            "has_fulltext": true,
+            "ia": [
+                "fabelhaftegeschi0000jrrt"
+            ],
+            "ia_collection_s": "internetarchivebooks;printdisabled",
+            "key": "/works/OL8997777W",
+            "language": [
+                "ger"
+            ],
+            "public_scan_b": false,
+            "title": "Fabelhafte Geschichten"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL12823759M",
+            "cover_i": 3240679,
+            "edition_count": 1,
+            "first_publish_year": 2002,
+            "has_fulltext": false,
+            "key": "/works/OL8997780W",
+            "language": [
+                "ger"
+            ],
+            "public_scan_b": false,
+            "title": "Gute Drachen sind rar. Drei Aufs\u00e4tze"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2003,
+            "has_fulltext": false,
+            "key": "/works/OL9975204W",
+            "language": [
+                "rus"
+            ],
+            "public_scan_b": false,
+            "title": "Works (Adventures of Tom Bombadil / Farmer Giles of Ham / Hobbit / Leaf by Niggle / Silmarillion / Smith of Wootton Major)"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL37028510M",
+            "cover_i": 12607385,
+            "edition_count": 1,
+            "first_publish_year": 1989,
+            "has_fulltext": true,
+            "ia": [
+                "futatsunotosetat0000tolk"
+            ],
+            "ia_collection_s": "inlibrary;internetarchivebooks;printdisabled",
+            "key": "/works/OL27282199W",
+            "language": [
+                "jpn"
+            ],
+            "lending_edition_s": "OL37028510M",
+            "lending_identifier_s": "futatsunotosetat0000tolk",
+            "public_scan_b": false,
+            "title": "The Two Towers [2/3]"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 1992,
+            "has_fulltext": false,
+            "key": "/works/OL27424686W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Tolkien Diary"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2012,
+            "has_fulltext": false,
+            "key": "/works/OL27438540W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Tolkien Calendar 2013"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL37865795M",
+            "cover_i": 14569582,
+            "edition_count": 1,
+            "first_publish_year": 2019,
+            "has_fulltext": false,
+            "key": "/works/OL27737315W",
+            "language": [
+                "fin"
+            ],
+            "public_scan_b": false,
+            "title": "Wladca Pierscieni"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL37865796M",
+            "cover_i": 14569584,
+            "edition_count": 1,
+            "first_publish_year": 2013,
+            "has_fulltext": false,
+            "key": "/works/OL27737316W",
+            "language": [
+                "fin"
+            ],
+            "public_scan_b": false,
+            "title": "W\u0139adca Pier\u0139cieni  - J.R.R. Tolkien [KSI\u00c4\u0139\u0165KA]"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2005,
+            "has_fulltext": false,
+            "key": "/works/OL29347967W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Sir Gawain and the Green Knight, Pearl, Sir Orfeo"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "has_fulltext": false,
+            "key": "/works/OL29275057W",
+            "public_scan_b": false,
+            "title": "Fellowship of the Ring Book 2"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2002,
+            "has_fulltext": false,
+            "key": "/works/OL29342294W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Last Song"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2017,
+            "has_fulltext": false,
+            "key": "/works/OL26328786W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Hobbit and the Lord of the Rings Gift Set"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2020,
+            "has_fulltext": false,
+            "key": "/works/OL26335202W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Sir Gawain and the Green Knight"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL39643866M",
+            "cover_i": 14569578,
+            "edition_count": 1,
+            "first_publish_year": 2021,
+            "has_fulltext": false,
+            "key": "/works/OL28840772W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Parma Eldalamberon 17"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2021,
+            "has_fulltext": false,
+            "key": "/works/OL28849322W",
+            "language": [
+                "eng"
+            ],
+            "public_scan_b": false,
+            "title": "Quenya Phonology"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 1988,
+            "has_fulltext": false,
+            "key": "/works/OL27966186W",
+            "language": [
+                "rus"
+            ],
+            "public_scan_b": false,
+            "subtitle": "Povest / \u0425\u0440\u0430\u043d\u0438\u0442\u0435\u043b\u0438",
+            "title": "The Fellowship of the Ring / Hraniteli"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "edition_count": 1,
+            "first_publish_year": 2022,
+            "has_fulltext": false,
+            "key": "/works/OL28013363W",
+            "public_scan_b": false,
+            "title": "Tolkien Calendar 2023"
+        },
+        {
+            "author_key": [
+                "OL26320A"
+            ],
+            "author_name": [
+                "J.R.R. Tolkien"
+            ],
+            "cover_edition_key": "OL37068803M",
+            "cover_i": 12639898,
+            "edition_count": 1,
+            "first_publish_year": 2002,
+            "has_fulltext": true,
+            "ia": [
+                "shinpanyubiwamon0000tolk"
+            ],
+            "ia_collection_s": "inlibrary;internetarchivebooks;printdisabled",
+            "key": "/works/OL27305892W",
+            "language": [
+                "jpn"
+            ],
+            "lending_edition_s": "OL37068803M",
+            "lending_identifier_s": "shinpanyubiwamon0000tolk",
+            "public_scan_b": false,
+            "title": "The Lord of the Rings [2/9]"
+        }
+    ]
+}
