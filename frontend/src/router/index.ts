@@ -4,6 +4,7 @@ import LibraryView from '@/views/LibraryView.vue'
 import ForumView from '@/views/ForumView.vue'
 import UserDetailView from '@/views/UserDetailView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
+import BookSearch from '@/views/BookSearch.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,6 +13,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+    },
+    {
+      path: '/library/search',
+      name: 'book-search',
+      component: BookSearch,
     },
     {
       path: '/library',

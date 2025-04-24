@@ -1,5 +1,6 @@
 # from django.db.models import Q
 from rest_framework import generics, permissions, status
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -18,6 +19,8 @@ from .serializers import (
 
 
 class OpenLibrarySearchView(APIView):
+    permission_classes = [AllowAny]
+
     def get(self, request):
         url = request.query_params.get("url", "")
         key = request.query_params.get("key", "")

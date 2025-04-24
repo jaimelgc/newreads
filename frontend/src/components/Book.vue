@@ -1,8 +1,10 @@
 <script setup lang="ts">
     import { defineProps, ref, computed } from 'vue';
+    import axios from 'axios'
 
 
     interface Book {
+        id: string,
         title: string
         author?: string
         description: string
@@ -17,6 +19,7 @@
     //     book: Object
     // })
 
+   
     const showFullDescription = ref(false)
 
     const toggleFullDescription = () => {
@@ -45,9 +48,9 @@
                     {{ showFullDescription ? 'See Less' : 'See More' }}
                 </button>
             </div>
-            <!-- <RouterLink :to="'/jobs/' + job.id" class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm">
+            <RouterLink :to="'library/books/' + book.id" class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm">
                 Read More
-            </RouterLink> -->
+            </RouterLink>
         </div>
     </div>
 </template>

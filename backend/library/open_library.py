@@ -1,4 +1,5 @@
 import requests
+
 # from django.core.cache import cache
 
 ol_url = "https://openlibrary.org"
@@ -40,5 +41,6 @@ def get_catch_data(key, url, timeout=60 * 60 * 24):
 
     print("❌ Not found or error")
     return None
+
 
 get_catch_data('test_key', 'https://openlibrary.org/isbn/9780261103344.json')
