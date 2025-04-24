@@ -30,6 +30,16 @@ const router = createRouter({
       component: ForumView,
     },
     {
+      path: '/user/register',
+      name: 'user',
+      component: UserDetailView,
+    },
+    {
+      path: '/user/login',
+      name: 'user',
+      component: UserDetailView,
+    },
+    {
       path: '/user',
       name: 'user',
       component: UserDetailView,
