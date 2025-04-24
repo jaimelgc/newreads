@@ -15,6 +15,16 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/register',
+      name: 'user',
+      component: UserDetailView,
+    },
+    {
+      path: '/login',
+      name: 'user',
+      component: UserDetailView,
+    },
+    {
       path: '/library/search',
       name: 'book-search',
       component: BookSearch,
@@ -28,16 +38,6 @@ const router = createRouter({
       path: '/forum',
       name: 'forum',
       component: ForumView,
-    },
-    {
-      path: '/user/register',
-      name: 'user',
-      component: UserDetailView,
-    },
-    {
-      path: '/user/login',
-      name: 'user',
-      component: UserDetailView,
     },
     {
       path: '/user',

@@ -1,6 +1,7 @@
 <script setup lang="ts">
         import { ref } from 'vue';
         import axios from 'axios'
+        import api from '@/api';
 
 
     function useBookSearch() {
@@ -13,7 +14,7 @@
             error.value = null
 
             try {
-                const response = await axios.get('/api/library/search/', {
+                const response = await api.get('/library/search/', {
                     params: { key, url, page },
                 })
                     results.value = response.data
