@@ -26,7 +26,7 @@
 
         const newUser = {
             username: form.username,
-            email: form.email,
+            email: props.method === 'register' ? form.email : '', // check innecesario
             password: form.password
         };
 
@@ -73,6 +73,18 @@
                 class="border rounded w-full py-2 px-3 mb-2"
                 required/>
             <p></p>
+            <label class="block text-gray-700 font-bold mb-2">
+                Password
+            </label>
+            <div :v-if="method==='register'">
+                <input v-model="form.email"
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="border rounded w-full py-2 px-3 mb-2"
+                    required/>
+                <p></p>
+            </div>
             <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline" type="submit">
                 {{ title }}
             </button>
