@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import LibraryView from '@/views/LibraryView.vue'
-import ForumView from '@/views/ForumView.vue'
-import UserDetailView from '@/views/UserDetailView.vue'
+import LibraryView from '@/views/library/LibraryView.vue'
+import ForumView from '@/views/forum/ForumView.vue'
+import UserDetailView from '@/views/user/UserDetailView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
-import BookSearch from '@/views/BookSearch.vue'
-import RegisterView from '@/views/RegisterView.vue'
-import LoginView from '@/views/LoginView.vue'
-import LogoutView from '@/views/LogoutView.vue'
+import BookSearch from '@/views/library/BookSearch.vue'
+import RegisterView from '@/views/auth/RegisterView.vue'
+import LoginView from '@/views/auth/LoginView.vue'
+import LogoutView from '@/views/auth/LogoutView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
