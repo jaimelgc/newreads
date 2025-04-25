@@ -5,6 +5,9 @@ import ForumView from '@/views/ForumView.vue'
 import UserDetailView from '@/views/UserDetailView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import BookSearch from '@/views/BookSearch.vue'
+import RegisterView from '@/views/RegisterView.vue'
+import LoginView from '@/views/LoginView.vue'
+import LogoutView from '@/views/LogoutView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,13 +19,18 @@ const router = createRouter({
     },
     {
       path: '/register',
-      name: 'user',
-      component: UserDetailView,
+      name: 'register',
+      component: RegisterView,
     },
     {
       path: '/login',
-      name: 'user',
-      component: UserDetailView,
+      name: 'login',
+      component: LoginView,
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      component: LogoutView,
     },
     {
       path: '/library/search',
