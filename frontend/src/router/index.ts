@@ -4,11 +4,13 @@ import LibraryView from '@/views/library/LibraryView.vue'
 import ForumView from '@/views/forum/ForumView.vue'
 import UserDetailView from '@/views/user/UserDetailView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
-import BookSearch from '@/views/library/BookSearch.vue'
 import RegisterView from '@/views/auth/RegisterView.vue'
 import LoginView from '@/views/auth/LoginView.vue'
 import LogoutView from '@/views/auth/LogoutView.vue'
 import UserEditView from '@/views/user/UserEditView.vue'
+import BookSearchView from '@/views/library/BookSearchView.vue'
+import BookDetailView from '@/views/library/BookDetailView.vue'
+import BookResultsView from '@/views/library/BookResultsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,22 +38,22 @@ const router = createRouter({
     {
       path: '/library/search',
       name: 'book-search',
-      component: BookSearch,
+      component: BookSearchView,
     },
     {
-      path: '/library/:search',
+      path: '/library/:name',
       name: 'library',
-      component: LibraryView,
+      component: BookResultsView,
     },
     {
-      path: '/library/:id',
+      path: '/library/book/:id',
       name: 'library',
-      component: LibraryView,
+      component: BookDetailView,
     },
     {
       path: '/library',
       name: 'library',
-      component: LibraryView,
+      component: LibraryView, // BookSearchView
     },
     {
       path: '/forum',
