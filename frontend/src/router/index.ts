@@ -39,6 +39,16 @@ const router = createRouter({
       component: BookSearch,
     },
     {
+      path: '/library/:search',
+      name: 'library',
+      component: LibraryView,
+    },
+    {
+      path: '/library/:id',
+      name: 'library',
+      component: LibraryView,
+    },
+    {
       path: '/library',
       name: 'library',
       component: LibraryView,
