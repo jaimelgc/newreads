@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import logo from '@/assets/img/logo.png'
+    // import logo from '@/assets/img/logo.png'
     import { RouterLink, useRoute  } from 'vue-router';
 
     const isActiveLink = (routePath:string) => {
@@ -18,7 +18,7 @@
           >
             <!-- Logo -->
             <RouterLink class="flex flex-shrink-0 items-center mr-4" to="/">
-              <img class="h-10 w-auto" :src="logo" alt="Vue Jobs" />
+              <img class="h-10 w-auto"  alt="Vue Jobs" /> <!-- :src="logo" -->
               <span class="hidden md:block text-white text-2xl font-bold ml-2">
                 NewReads
               </span>

@@ -8,6 +8,7 @@ import BookSearch from '@/views/library/BookSearch.vue'
 import RegisterView from '@/views/auth/RegisterView.vue'
 import LoginView from '@/views/auth/LoginView.vue'
 import LogoutView from '@/views/auth/LogoutView.vue'
+import UserEditView from '@/views/user/UserEditView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,7 +49,12 @@ const router = createRouter({
       component: ForumView,
     },
     {
-      path: '/user',
+      path: '/user/:id/edit',
+      name: 'user',
+      component: UserEditView,
+    },
+    {
+      path: '/user/:id',
       name: 'user',
       component: UserDetailView,
     },
