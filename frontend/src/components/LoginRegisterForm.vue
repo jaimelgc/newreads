@@ -4,6 +4,7 @@
     import router from '@/router';
     import { ACCESS_TOKEN, REFRESH_TOKEN } from '@/constants';
     import api from '@/api';
+    import { useUserStore } from '@/stores/user';
 
     const route = useRoute();
 
@@ -40,8 +41,12 @@
             if (props.method === 'login') {
                 localStorage.setItem(ACCESS_TOKEN, response.data.access);
                 localStorage.setItem(REFRESH_TOKEN, response.data.refresh);
+                console.log('Data:', response);
                 router.push('/');
             } else {
+                const dataUser = await api.get(`/user/${newUser.username}/`, newUser);
+                const userStore = useUserStore();
+                userStore.setUser(dataUser.data);
                 router.push('/login');
             }
         } catch (error) {

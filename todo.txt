@@ -3,6 +3,9 @@
 ------ CHECK Make Logo
 ------ Make full navbar
 - Fetch moderator status
+  ------ Add user store
+  ------ Set user in login form
+  - Get mod status in views
 - Make breadcrumbs
 - Make user detail view
 - Make user edit view
