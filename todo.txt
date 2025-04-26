@@ -1,0 +1,20 @@
+------ Add Tailwind
+------ CHECK Make Logo
+- Make full navbar
+- Make breadcrumbs
+- Make user detail view
+- Make user edit view
+- Make book search listing
+  - Individual book preview
+  - List of books
+  - Search by author
+  - Filter search
+- Make book detail view
+- Make user search listing
+  - Individual user preview
+  - List of users
+- Make list search listing
+  - Individual list preview
+  - List of lists
+- Make detail list view
+- Make user list view

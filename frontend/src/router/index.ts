@@ -17,62 +17,62 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: HomeView,
     },
     {
       path: '/register',
-      name: 'register',
+      name: 'Register',
       component: RegisterView,
     },
     {
       path: '/login',
-      name: 'login',
+      name: 'Login',
       component: LoginView,
     },
     {
       path: '/logout',
-      name: 'logout',
+      name: 'Logout',
       component: LogoutView,
     },
     {
       path: '/library/search',
-      name: 'book-search',
+      name: 'BookSearch',
       component: BookSearchView,
     },
     {
       path: '/library/:name',
-      name: 'library',
+      name: 'BookResults',
       component: BookResultsView,
     },
     {
       path: '/library/book/:id',
-      name: 'library',
+      name: 'BookDetail',
       component: BookDetailView,
     },
     {
       path: '/library',
-      name: 'library',
+      name: 'Library',
       component: LibraryView, // BookSearchView
     },
     {
       path: '/forum',
-      name: 'forum',
+      name: 'Forum',
       component: ForumView,
     },
     {
       path: '/user/:id/edit',
-      name: 'user',
+      name: 'UserEdit',
       component: UserEditView,
     },
     {
       path: '/user/:id',
-      name: 'user',
+      name: 'UserDetail',
       component: UserDetailView,
     },
     {
       path: '/:catchAll(.*)',
-      name: 'not-found',
+      name: 'NotFound',
       component: NotFoundView,
     },
   ],

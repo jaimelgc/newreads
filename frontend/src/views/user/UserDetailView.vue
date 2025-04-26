@@ -16,7 +16,7 @@
 
   onMounted(async () => {
     try {
-        const response = await api.get(`/user/${userName}`);
+        const response = await api.get(`/user/${userName}/`);
         state.user = response.data;
     } catch (error) {
         console.error('Error fetching user');
