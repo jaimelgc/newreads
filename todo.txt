@@ -1,6 +1,8 @@
+------ Fix axios wrapper
 ------ Add Tailwind
 ------ CHECK Make Logo
-- Make full navbar
+------ Make full navbar
+- Fetch moderator status
 - Make breadcrumbs
 - Make user detail view
 - Make user edit view
