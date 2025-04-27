@@ -7,7 +7,7 @@
 
   const route = useRoute();
 
-  const userName = route.params.id;
+  const userName = route.params.name;
 
   const state = reactive({
     user: {},

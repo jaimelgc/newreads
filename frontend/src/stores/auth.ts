@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     token: localStorage.getItem('token') || null,
-    user: null as null | { id: number, name: string },
+    user: null as null | { id: number, username: string, name: string },
   }),
   getters: {
     isLoggedIn: (state) => !!state.token,
@@ -20,14 +20,16 @@ export const useAuthStore = defineStore('auth', {
       localStorage.removeItem('token')
     },
     async fetchUser() {
-      if (!this.token) return
+      if (!this.token || !this.user?.username) return;
 
       try {
-        const res = await fetch('/api/user/', {
+        const backendUrl = import.meta.env.VITE_BACKEND_URL;
+        const res = await fetch(`${backendUrl}/api/user/${this.user.username}/`, {
           headers: {
             Authorization: `Bearer ${this.token}`,
           },
-        })
+        });
+
         if (res.ok) {
           this.user = await res.json()
         } else {

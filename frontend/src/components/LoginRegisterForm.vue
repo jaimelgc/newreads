@@ -5,6 +5,7 @@
     import { ACCESS_TOKEN, REFRESH_TOKEN } from '@/constants';
     import api from '@/api';
     import { useUserStore } from '@/stores/user';
+    import { useAuthStore } from '@/stores/auth';
 
     const route = useRoute();
 
@@ -12,7 +13,7 @@
         method: 'login' | 'register';
     }>();
 
-    const title = props.method === 'login' ? 'Login' : 'Register';
+    const title = props.method === 'login' ? 'Login' : 'Sign Up';
     const endpoint = props.method === 'login' ? '/api/token/' : '/user/register/';
 
     const form = reactive({
@@ -21,6 +22,8 @@
         password: '',
         isLoading: false
     });
+
+    
 
     const handleSubmit = async () => {
         form.isLoading = true;
@@ -35,10 +38,12 @@
         }
 
         try {
+            const auth = useAuthStore()
             // IF LOGIN POSTS TO TOKEN IF REGISTER POSTS TO REGISTER
             const response = await api.post(endpoint, newUser);
 
             if (props.method === 'login') {
+                auth.setToken(response.data.access)
                 localStorage.setItem(ACCESS_TOKEN, response.data.access);
                 localStorage.setItem(REFRESH_TOKEN, response.data.refresh);
                 console.log('Data:', response);

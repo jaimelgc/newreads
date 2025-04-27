@@ -2,6 +2,7 @@
 
     // import logo from '@/assets/img/logo.png'
     import { RouterLink, useRoute } from 'vue-router';
+    import { storeToRefs } from 'pinia'
     import { useAuthStore } from '@/stores/auth'
     import { computed } from 'vue'
 
@@ -11,13 +12,19 @@
     }
 
     const auth = useAuthStore()
+    const { isLoggedIn } = storeToRefs(auth)
+    console.log(isLoggedIn.value)
 
     const buttonDestination = computed(() => {
-      return auth.isLoggedIn ? { name: 'UserDetail' } : { name: 'Login' }
+      if (isLoggedIn.value && auth.user) {
+        return { name: 'UserDetail', params: { username: auth.user.username } }
+      } else {
+        return { name: 'Login' }
+      }
     })
 
     const buttonText = computed(() => {
-      return auth.isLoggedIn ? 'View Profile' : 'Login'
+      return isLoggedIn.value ? 'View Profile' : 'Login'
     })
 
 </script>
@@ -47,6 +54,9 @@
                 </RouterLink>
                 <RouterLink :to="buttonDestination" :class="[isActiveLink('/user') ? 'bg-green-900' : 'hover:bg-green-900 hover:text-white', 'text-white', 'rounded-md', 'px-3', 'py-2']">
                   {{ buttonText }}
+                </RouterLink>
+                <RouterLink v-if="buttonText==='Login'" to="/register" :class="[isActiveLink('/register') ? 'bg-green-900' : 'hover:bg-green-900 hover:text-white', 'text-white', 'rounded-md', 'px-3', 'py-2']">
+                  Sign up
                 </RouterLink>
               </div>
             </div>
