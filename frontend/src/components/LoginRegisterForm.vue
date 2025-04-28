@@ -38,11 +38,11 @@
         }
 
         try {
-            const auth = useAuthStore()
             // IF LOGIN POSTS TO TOKEN IF REGISTER POSTS TO REGISTER
             const response = await api.post(endpoint, newUser);
 
             if (props.method === 'login') {
+                const auth = useAuthStore()
                 auth.setToken(response.data.access)
                 localStorage.setItem(ACCESS_TOKEN, response.data.access);
                 localStorage.setItem(REFRESH_TOKEN, response.data.refresh);

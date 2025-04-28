@@ -1,9 +1,8 @@
-// stores/auth.ts
 import { defineStore } from 'pinia'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    token: localStorage.getItem('token') || null,
+    token: localStorage.getItem('ACCESS_TOKEN') || null,
     user: null as null | { id: number, username: string, name: string },
   }),
   getters: {
@@ -12,12 +11,12 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     setToken(newToken: string) {
       this.token = newToken
-      localStorage.setItem('token', newToken)
+      localStorage.setItem('ACCESS_TOKEN', newToken)
     },
     clearAuth() {
       this.token = null
       this.user = null
-      localStorage.removeItem('token')
+      localStorage.removeItem('ACCESS_TOKEN')
     },
     async fetchUser() {
       if (!this.token || !this.user?.username) return;
