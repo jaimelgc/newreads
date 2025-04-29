@@ -2,36 +2,37 @@
         import { ref } from 'vue';
         import axios from 'axios'
         import api from '@/api';
+        import Books from './Books.vue';
 
 
     function useBookSearch() {
         const results = ref(null)
         const error = ref(null)
-        const loading = ref(false)
+        const isLoading = ref(false)
 
         const searchBooks = async (key: string, url: string, page = 1) => {
-            loading.value = true
+            isLoading.value = true
             error.value = null
 
             try {
                 const response = await api.get('/library/search/', {
                     params: { key, url, page },
                 })
-                    results.value = response.data
+                    results.value = response.data.docs
                 } catch (err: any) {
                     error.value = err.response?.data?.error || 'Something went wrong'
                 } finally {
-                    loading.value = false
+                    isLoading.value = false
             }
         }
 
         console.log("SALIDA", results)
         console.error("ERROR", error)
-        return { results, error, loading, searchBooks }
+        return { results, error, isLoading, searchBooks }
     }   
 
     const searchTerm = ref('')
-    const { results, error, loading, searchBooks } = useBookSearch()
+    const { results, error, isLoading, searchBooks } = useBookSearch()
 
     const search = () => {
         const key = `book-search-${searchTerm.value}`
@@ -45,11 +46,10 @@
     <div>
       <input v-model="searchTerm" placeholder="Search books..." />
       <button @click="search">Search</button>
-  
-      <div v-if="loading">Loading...</div>
+      <div v-if="isLoading">Loading...</div>
       <div v-else-if="error">{{ error }}</div>
       <div v-else-if="results">
-        <pre>{{ results }}</pre>
+        <Books :results="results" :isLoading="isLoading" :limit="10"/>
       </div>
     </div>
   </template>

@@ -2,16 +2,19 @@
     import { defineProps, ref, computed } from 'vue';
     import axios from 'axios'
 
+    const props = defineProps<{
+        book: {
+            title: string;
+            author_name?: string[];
+            first_publish_year?: number;
+            cover_i?: number;
+        };
+    }>();
 
-    interface Book {
-        id: string,
-        title: string
-        author?: string
-        description: string
-        // add more fields as needed
-    }
-
-    const props = defineProps<{ book: Book }>()
+    
+    const coverUrl = props.book.cover_i
+    ? `https://covers.openlibrary.org/b/id/${props.book.cover_i}-M.jpg`
+    : 'https://via.placeholder.com/150';
 
     // og JS
     
@@ -19,25 +22,34 @@
     //     book: Object
     // })
 
+
+    // full description
    
-    const showFullDescription = ref(false)
+    // const showFullDescription = ref(false)
 
-    const toggleFullDescription = () => {
-        showFullDescription.value = !showFullDescription.value
-    }
+    // const toggleFullDescription = () => {
+    //     showFullDescription.value = !showFullDescription.value
+    // }
 
-    const truncateDescription = computed(() => {
-        let description = props.book.description;
-        if (!showFullDescription.value) {
-            description = description.substring(0,90) + '...';
-        }
-        return description;
-    });
+    // const truncateDescription = computed(() => {
+    //     let description = props.book.description;
+    //     if (!showFullDescription.value) {
+    //         description = description.substring(0,90) + '...';
+    //     }
+    //     return description;
+    // });
 
 </script>
 
 <template>
-    <div class="bg-white rounded-xl shadow-md relative">
+    <div class="border rounded shadow p-4 bg-white">
+        <img :src="coverUrl" alt="Book Cover" class="mb-4" />
+        <h3 class="text-xl font-semibold">{{ book.title }}</h3>
+        <p class="text-gray-600">by {{ book.author_name?.join(', ') || 'Unknown' }}</p>
+        <p class="text-sm text-gray-500">First published: {{ book.first_publish_year || 'N/A' }}</p>
+    </div>
+    
+    <!-- <div class="bg-white rounded-xl shadow-md relative">
         <div class="p-4">
             <div class="mb-6">
                 <div class="text-gray-600 my-2">{{ book.title }}</div>
@@ -52,5 +64,5 @@
                 Read More
             </RouterLink>
         </div>
-    </div>
+    </div> -->
 </template>
