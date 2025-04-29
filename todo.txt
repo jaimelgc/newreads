@@ -17,7 +17,6 @@
 - Add pagination
 - Add book description in preview
 - Fix visuals of search bar and list
-- Fix whatever's happening with the token
 !!!!!!!!!!!!!!!!!!!!!
 
   - Search by author
