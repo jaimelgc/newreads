@@ -9,9 +9,17 @@
 - Make breadcrumbs
 - Make user detail view
 - Make user edit view
-- Make book search listing
-  - Individual book preview
-  - List of books
+------ Make book search listing
+  ------ Individual book preview
+  ------ List of books
+
+!!!!!!!!!!!!!!!!!!!!!
+- Add pagination
+- Add book description in preview
+- Fix visuals of search bar and list
+- Fix whatever's happening with the token
+!!!!!!!!!!!!!!!!!!!!!
+
   - Search by author
   - Filter search
 - Make book detail view
