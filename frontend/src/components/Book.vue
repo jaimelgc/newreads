@@ -16,12 +16,6 @@
     ? `https://covers.openlibrary.org/b/id/${props.book.cover_i}-M.jpg`
     : 'https://via.placeholder.com/150';
 
-    // og JS
-    
-    // const props = defineProps({
-    //     book: Object
-    // })
-
 
     // full description
    
