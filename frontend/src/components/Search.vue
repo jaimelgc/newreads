@@ -19,6 +19,7 @@
                     params: { key, url, page },
                 })
                     results.value = response.data.docs
+                    console.log(results.value)
                 } catch (err: any) {
                     error.value = err.response?.data?.error || 'Something went wrong'
                 } finally {
@@ -27,7 +28,7 @@
         }
 
         console.log("SALIDA", results)
-        console.error("ERROR", error)
+        // console.error("ERROR", error)
         return { results, error, isLoading, searchBooks }
     }   
 

@@ -16,7 +16,7 @@
             results: BookType[];
             isLoading: boolean;
             limit?: number;
-            showButton?: boolean;
+            showButton?: boolean; // vestigial
         }>(),
         {
             limit: 10,
@@ -24,12 +24,6 @@
         }
     );
 
-    const state = reactive({
-        books: [],
-        isLoading: true
-    });
-
-    console.log("it gets to books.vue");
 </script>
 
 <template>
@@ -44,9 +38,9 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Book
           v-for="book in props.results.slice(0, props.limit)"
-          :key="book.key"
           :book="book"
         />
+        <!-- :key="book.key" -->
       </div>
 
       <div v-if="props.showButton" class="text-center mt-6">

@@ -4,6 +4,7 @@
 
     const props = defineProps<{
         book: {
+            key: string; // /works/OL27482W
             title: string;
             author_name?: string[];
             first_publish_year?: number;
@@ -16,9 +17,8 @@
     ? `https://covers.openlibrary.org/b/id/${props.book.cover_i}-M.jpg`
     : 'https://via.placeholder.com/150';
 
+    // full
 
-    // full description
-   
     // const showFullDescription = ref(false)
 
     // const toggleFullDescription = () => {
@@ -39,8 +39,12 @@
     <div class="border rounded shadow p-4 bg-white">
         <img :src="coverUrl" alt="Book Cover" class="mb-4" />
         <h3 class="text-xl font-semibold">{{ book.title }}</h3>
+        <h3 class="text-xl font-semibold">{{ book.key }}</h3>
         <p class="text-gray-600">by {{ book.author_name?.join(', ') || 'Unknown' }}</p>
         <p class="text-sm text-gray-500">First published: {{ book.first_publish_year || 'N/A' }}</p>
+        <RouterLink :to="'library/books/' + book.key" class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm">
+            Read More
+        </RouterLink>
     </div>
     
     <!-- <div class="bg-white rounded-xl shadow-md relative">
