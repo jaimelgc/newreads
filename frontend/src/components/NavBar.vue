@@ -5,6 +5,7 @@
     import { storeToRefs } from 'pinia'
     import { useAuthStore } from '@/stores/auth'
     import { computed } from 'vue'
+    import { CURRENT_USER } from '@/constants';
 
     const isActiveLink = (routePath:string) => {
       const route = useRoute();
@@ -13,17 +14,20 @@
 
     const auth = useAuthStore()
     const { isLoggedIn } = storeToRefs(auth)
+    const res = localStorage.getItem(CURRENT_USER);
+    const name = res ? JSON.parse(res).username : null;
+    console.log(name)
 
     const buttonDestination = computed(() => {
       if (isLoggedIn.value && auth.user) {
-        return { name: 'UserDetail', params: { username: auth.user.username } }
+        return { name: 'UserDetail', params: { username: name } }
       } else {
         return { name: 'Login' }
       }
     })
 
     const buttonText = computed(() => {
-      return isLoggedIn.value ? 'View Profile' : 'Login'
+      return isLoggedIn.value ? name : 'Login'
     })
 
 </script>

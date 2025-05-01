@@ -1,4 +1,5 @@
 ------ Fix token
+------ Fix navbar
 - Fix book search
 - Add description
 - Add toggle long description
