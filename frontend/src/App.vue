@@ -8,7 +8,7 @@
   onMounted(() => {
     const auth = useAuthStore()
     if (auth.token) {
-      auth.fetchUser()
+      auth.user
     }
   })
 </script>

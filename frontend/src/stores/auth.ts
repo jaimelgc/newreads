@@ -7,7 +7,6 @@ export const useAuthStore = defineStore('auth', {
   }),
   getters: {
     isLoggedIn: (state) => !!state.token,
-    loggedInUser: (state) => state.user,
   },
   actions: {
     setToken(newToken: string) {

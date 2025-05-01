@@ -2,10 +2,11 @@
     import { reactive } from 'vue';
     import { useRoute } from 'vue-router';
     import router from '@/router';
-    import { ACCESS_TOKEN, REFRESH_TOKEN } from '@/constants';
+    import { ACCESS_TOKEN, REFRESH_TOKEN, CURRENT_USER } from '@/constants';
     import api from '@/api';
     import { useUserStore } from '@/stores/user';
     import { useAuthStore } from '@/stores/auth';
+    import axios from 'axios';
 
     const route = useRoute();
 
@@ -41,12 +42,19 @@
             const response = await api.post(endpoint, newUser);
 
             if (props.method === 'login') {
-                const auth = useAuthStore()
-                auth.setToken(response.data.access)
+
+                const auth = useAuthStore();
+                auth.setToken(response.data.access);
                 localStorage.setItem(ACCESS_TOKEN, response.data.access);
                 localStorage.setItem(REFRESH_TOKEN, response.data.refresh);
+
+                const res = await api.get(`/user/${newUser.username}/`);
+                console.log("res", res.data)
+                localStorage.setItem(CURRENT_USER, JSON.stringify(res.data));
                 console.log('Data:', response);
-                router.push('/');
+                router.push('/library');
+                
+
             } else {
                 const dataUser = await api.get(`/user/${newUser.username}/`, newUser);
                 const userStore = useUserStore();

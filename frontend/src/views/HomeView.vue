@@ -3,9 +3,9 @@
     import { useAuthStore } from '@/stores/auth'
 
     const auth = useAuthStore()
-    const { isLoggedIn, loggedInUser } = storeToRefs(auth)
+    const { isLoggedIn } = storeToRefs(auth)
     console.log(isLoggedIn.value)
-    console.log(loggedInUser.value)
+    console.log(auth.user)
 </script>
 
 <template>

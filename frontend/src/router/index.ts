@@ -6,7 +6,7 @@ import UserDetailView from '@/views/user/UserDetailView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import RegisterView from '@/views/auth/RegisterView.vue'
 import LoginView from '@/views/auth/LoginView.vue'
-import LogoutView from '@/views/auth/LogoutView.vue'
+// import LogoutView from '@/views/auth/LogoutView.vue'
 import UserEditView from '@/views/user/UserEditView.vue'
 import BookSearchView from '@/views/library/BookSearchView.vue'
 import BookDetailView from '@/views/library/BookDetailView.vue'
@@ -33,12 +33,12 @@ const router = createRouter({
       component: LoginView,
       meta: { breadcrumb: 'Login' },
     },
-    {
-      path: '/logout',
-      name: 'Logout',
-      component: LogoutView,
-      meta: { breadcrumb: 'Logout' },
-    },
+    // {
+    //   path: '/logout',
+    //   name: 'Logout',
+    //   component: LogoutView,
+    //   meta: { breadcrumb: 'Logout' },
+    // },
     {
       path: '/library/search',
       name: 'BookSearch',
