@@ -11,6 +11,7 @@
 
     const props = defineProps<{
         method: 'login' | 'register';
+        hasLoggedOut: boolean;
     }>();
 
     const title = props.method === 'login' ? 'Login' : 'Sign Up';
@@ -22,8 +23,6 @@
         password: '',
         isLoading: false
     });
-
-    
 
     const handleSubmit = async () => {
         form.isLoading = true;

@@ -13,7 +13,6 @@
 
     const auth = useAuthStore()
     const { isLoggedIn } = storeToRefs(auth)
-    console.log(isLoggedIn.value)
 
     const buttonDestination = computed(() => {
       if (isLoggedIn.value && auth.user) {

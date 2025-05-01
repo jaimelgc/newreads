@@ -4,5 +4,5 @@
 </script>
 
 <template>
-    <LoginRegisterForm method="login" />
+    <LoginRegisterForm method="login" :hasLoggedOut="false" />
 </template>
