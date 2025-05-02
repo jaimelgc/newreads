@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import Building from '@/components/Building.vue';
-
+    import Search from '@/components/Search.vue';
+    import Books from '@/components/Books.vue';
 </script>
 
 <template>
-  <main>
-    <Building />
-  </main>
+    <Search />
 </template>

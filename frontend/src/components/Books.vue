@@ -23,6 +23,7 @@
             showButton: false,
         }
     );
+    console.log("props", props)
 
 </script>
 
@@ -42,16 +43,6 @@
         />
         <!-- :key="book.key" -->
       </div>
-
-      <div v-if="props.showButton" class="text-center mt-6">
-        <button class="btn btn-primary">Show More</button>
-      </div>
     </div>
-    </section>
-
-    <section v-if="showButton" class="m-auto max-w-lg my-10 px-6">
-      <RouterLink to="/jobs" class="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
-        >View All Jobs
-      </RouterLink>
     </section>
 </template>
