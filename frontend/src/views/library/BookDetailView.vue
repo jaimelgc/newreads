@@ -9,6 +9,7 @@
 
     const edition = ref<any>(null);
     const work = ref<any>(null);
+      const editions = ref<any>(null);
 
     const { results, error, isLoading, fetchData } = useApiSearch()
 
@@ -28,7 +29,15 @@
           url: `https://openlibrary.org${workKey}.json`,
         });
         work.value = results.value;
-      }
+        console.log(work)
+
+        await fetchData('/api/library/search/', {
+            key: `work-get-${workKey}`,
+            url: `https://openlibrary.org${workKey}editions.json?limit=10`,
+          });
+          editions.value = results.value;
+          console.log(work)
+        }
     });
 
 </script>
@@ -42,6 +51,9 @@
     <div class="mt-4">
       <h2 class="text-lg font-semibold">Description</h2>
       <p>{{ work.description?.value || work.description || 'No description available.' }}</p>
+    </div>
+    <div>
+      {{ work.json }}
     </div>
   </div>
 </template>
