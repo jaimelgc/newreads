@@ -1,7 +1,35 @@
 <script setup lang="ts">
+    import { onMounted, ref } from 'vue';
+    import { useRoute } from 'vue-router';
+    import axios from 'axios';
 
+    const route = useRoute();
+    const editionId = route.params.editionId as string;
+
+    const edition = ref<any>(null);
+    const work = ref<any>(null);
+
+    onMounted(async () => {
+    const editionRes = await axios.get(`https://openlibrary.org/books/${editionId}.json`);
+    edition.value = editionRes.data;
+
+    const workKey = edition.value?.works?.[0]?.key;
+    if (workKey) {
+        const workRes = await axios.get(`https://openlibrary.org${workKey}.json`);
+        work.value = workRes.data;
+    }
+    });
 </script>
 
 <template>
-    
+  <div v-if="edition && work">
+    <h1 class="text-2xl font-bold mb-2">{{ edition.title }}</h1>
+    <p class="text-gray-600">Published by: {{ edition.publishers?.join(', ') }}</p>
+    <p class="text-gray-600">Published on: {{ edition.publish_date }}</p>
+
+    <div class="mt-4">
+      <h2 class="text-lg font-semibold">Description</h2>
+      <p>{{ work.description?.value || work.description || 'No description available.' }}</p>
+    </div>
+  </div>
 </template>

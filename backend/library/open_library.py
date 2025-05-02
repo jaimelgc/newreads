@@ -43,4 +43,4 @@ def get_catch_data(key, url, timeout=60 * 60 * 24):
     return None
 
 
-get_catch_data('test_key', 'https://openlibrary.org/isbn/9780261103344.json')
+# get_catch_data('test_key', 'https://openlibrary.org/isbn/9780261103344.json')

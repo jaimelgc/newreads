@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    import Books from '@/components/Books.vue';
+    import Books from './Books.vue';
     import { useApiSearch } from '@/search';
 
     const searchTerm = ref('')
@@ -17,7 +17,7 @@
 </script>
 
 <template>
-        <div>
+    <div>
       <input v-model="searchTerm" placeholder="Search books..." />
       <button @click="search">Search</button>
       <div v-if="isLoading">Loading...</div>
@@ -26,4 +26,4 @@
         <Books :results="results" :isLoading="isLoading" :limit="10"/>
       </div>
     </div>
-</template>
+  </template>

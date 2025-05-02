@@ -50,7 +50,11 @@
         <!-- <h3 class="text-xl font-semibold">{{ book.key }}</h3> -->
         <p class="text-gray-600">by {{ book.author_name?.join(', ') || 'Unknown' }}</p>
         <p class="text-sm text-gray-500">First published: {{ book.first_publish_year || 'N/A' }}</p>
-        <RouterLink :to="'library/books/' + book.cover_i" class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm">
+        <RouterLink
+            v-if="selectedEditionId"
+            :to="`/library/books/${selectedEditionId}`" 
+            class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm">
+            
             Read More
         </RouterLink>
     </div>
