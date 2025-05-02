@@ -2,23 +2,35 @@
     import { onMounted, ref } from 'vue';
     import { useRoute } from 'vue-router';
     import axios from 'axios';
+    import { useApiSearch } from '@/search';
 
     const route = useRoute();
-    const editionId = route.params.editionId as string;
+    const editionId = route.params.id as string;
 
     const edition = ref<any>(null);
     const work = ref<any>(null);
 
-    onMounted(async () => {
-    const editionRes = await axios.get(`https://openlibrary.org/books/${editionId}.json`);
-    edition.value = editionRes.data;
+    const { results, error, isLoading, fetchData } = useApiSearch()
 
-    const workKey = edition.value?.works?.[0]?.key;
-    if (workKey) {
-        const workRes = await axios.get(`https://openlibrary.org${workKey}.json`);
-        work.value = workRes.data;
-    }
+    onMounted(async () => {
+
+      await fetchData('/api/library/search/', {
+        key: `edition-search-${editionId}`,
+        url: `https://openlibrary.org/books/${editionId}.json`,
+      });
+      edition.value = results.value;
+
+      const workKey = edition.value?.works?.[0]?.key;
+
+      if (workKey) {
+        await fetchData('/api/library/search/', {
+          key: `work-get-${workKey}`,
+          url: `https://openlibrary.org${workKey}.json`,
+        });
+        work.value = results.value;
+      }
     });
+
 </script>
 
 <template>

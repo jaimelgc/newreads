@@ -52,7 +52,7 @@ const router = createRouter({
       meta: { breadcrumb: ':name' },
     },
     {
-      path: '/library/book/:id',
+      path: '/library/books/:id',
       name: 'BookDetail',
       component: BookDetailView,
       meta: { breadcrumb: 'Book' },
