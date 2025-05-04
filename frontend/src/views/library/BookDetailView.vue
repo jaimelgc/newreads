@@ -36,7 +36,7 @@
             url: `https://openlibrary.org${workKey}editions.json?limit=10`,
           });
           editions.value = results.value;
-          console.log(work)
+          console.log(editions)
         }
     });
 
@@ -54,6 +54,9 @@
     </div>
     <div>
       {{ work.json }}
+    </div>
+    <div>
+      {{ editions.json }}
     </div>
   </div>
 </template>
