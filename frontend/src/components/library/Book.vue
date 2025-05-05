@@ -30,7 +30,6 @@
         <h3 class="text-xl font-semibold">{{ book.title }}</h3>
         <h3 class="text-xl font-semibold">{{ book.cover_i }}</h3>
         <h3 class="text-xl font-semibold">{{ book.cover_edition_key }}</h3>
-        <!-- <h3 class="text-xl font-semibold">{{ book.key }}</h3> -->
         <p class="text-gray-600">by {{ book.author_name?.join(', ') || 'Unknown' }}</p>
         <p class="text-sm text-gray-500">First published: {{ book.first_publish_year || 'N/A' }}</p>
         <RouterLink
