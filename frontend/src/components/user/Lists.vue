@@ -1,6 +1,12 @@
 <script setup lang="ts">
     import { ref, computed, defineProps, withDefaults } from 'vue';
     import List from '@/components/user/List.vue'
+
+    interface UserType {
+        id: number;
+        name: string;
+        profile_picture: string;
+    }
    
     interface EditionType {
         key: string;
@@ -17,7 +23,7 @@
     interface ListType {
         id: number;
         title: string;
-        author: string;
+        author: UserType;
         created_at: string;
         books: EditionType[];
     }
