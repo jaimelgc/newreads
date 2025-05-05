@@ -2,7 +2,7 @@
     import { onMounted, ref } from 'vue';
     import { useRoute } from 'vue-router';
     import { useApiSearch } from '@/search';
-    import Editions from '@/components/Editions.vue';
+    import Editions from '@/components/library/Editions.vue';
 
     const route = useRoute();
     const editionId = route.params.id as string;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    import Books from './Books.vue';
+    import Books from './library/Books.vue';
     import { useApiSearch } from '@/search';
 
     const searchTerm = ref('')

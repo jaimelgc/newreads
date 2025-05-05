@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    import Books from '@/components/Books.vue';
+    import Books from '@/components/library/Books.vue';
     import { useApiSearch } from '@/search';
     import { storeToRefs } from 'pinia'
     import { useAuthStore } from '@/stores/auth'

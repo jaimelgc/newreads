@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import LoginRegisterForm from '@/components/LoginRegisterForm.vue';
+    import LoginRegisterForm from '@/components/library/LoginRegisterForm.vue';
 
 </script>
 

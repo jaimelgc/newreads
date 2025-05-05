@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import Book from './Book.vue';
+    import Book from '@/components/library/Book.vue';
     import { ref, computed, defineProps, withDefaults } from 'vue';
     import api from '@/api';
    
