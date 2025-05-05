@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import { ref, computed, defineProps, withDefaults } from 'vue';
+    import Edition from '@/components/library/Edition.vue';
    
     interface EditionType {
         key: string;
@@ -44,10 +45,10 @@
         No results found.
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Book
+        <Edition
           v-for="edition in paginatedResults"
           :key="edition.key"
-          :book="edition"
+          :edition="edition"
         />
        
       </div>
