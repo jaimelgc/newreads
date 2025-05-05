@@ -1,15 +1,15 @@
 <script setup lang="ts">
     import { onMounted, ref } from 'vue';
     import { useRoute } from 'vue-router';
-    import axios from 'axios';
     import { useApiSearch } from '@/search';
+    import Editions from '@/components/Editions.vue';
 
     const route = useRoute();
     const editionId = route.params.id as string;
 
     const edition = ref<any>(null);
     const work = ref<any>(null);
-      const editions = ref<any>(null);
+    const editions = ref<any>(null);
 
     const { results, error, isLoading, fetchData } = useApiSearch()
 
@@ -33,7 +33,7 @@
 
         await fetchData('/api/library/search/', {
             key: `work-get-${workKey}`,
-            url: `https://openlibrary.org${workKey}editions.json?limit=10`,
+            url: `https://openlibrary.org${workKey}/editions.json?limit=10`,
           });
           editions.value = results.value;
           console.log(editions)
@@ -56,7 +56,7 @@
       {{ work.json }}
     </div>
     <div>
-      {{ editions.json }}
+      <Editions :results="editions" :isLoading="isLoading" :limit="10"/>
     </div>
   </div>
 </template>

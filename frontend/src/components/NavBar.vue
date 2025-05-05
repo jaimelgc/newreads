@@ -49,7 +49,7 @@
                 <RouterLink to="/" :class="[isActiveLink('/') ? 'bg-green-900' : 'hover:bg-green-900 hover:text-white', 'text-white', 'rounded-md', 'px-3', 'py-2']">
                   Home
                 </RouterLink>
-                <RouterLink to="/library" :class="[isActiveLink('/library') ? 'bg-green-900' : 'hover:bg-green-900 hover:text-white', 'text-white', 'rounded-md', 'px-3', 'py-2']">
+                <RouterLink to="/" :class="[isActiveLink('/') ? 'bg-green-900' : 'hover:bg-green-900 hover:text-white', 'text-white', 'rounded-md', 'px-3', 'py-2']">
                   Library
                 </RouterLink>
                 <RouterLink to="/forum" :class="[isActiveLink('/forum') ? 'bg-green-900' : 'hover:bg-green-900 hover:text-white', 'text-white', 'rounded-md', 'px-3', 'py-2']">

@@ -8,19 +8,11 @@ import RegisterView from '@/views/auth/RegisterView.vue'
 import LoginView from '@/views/auth/LoginView.vue'
 // import LogoutView from '@/views/auth/LogoutView.vue'
 import UserEditView from '@/views/user/UserEditView.vue'
-import BookSearchView from '@/views/library/BookSearchView.vue'
 import BookDetailView from '@/views/library/BookDetailView.vue'
-import BookResultsView from '@/views/library/BookResultsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: HomeView,
-      meta: { breadcrumb: 'Home' },
-    },
     {
       path: '/register',
       name: 'Register',
@@ -40,25 +32,13 @@ const router = createRouter({
     //   meta: { breadcrumb: 'Logout' },
     // },
     {
-      path: '/library/search',
-      name: 'BookSearch',
-      component: BookSearchView,
-      meta: { breadcrumb: 'Search' },
-    },
-    {
-      path: '/library/:name',
-      name: 'BookResults',
-      component: BookResultsView,
-      meta: { breadcrumb: ':name' },
-    },
-    {
-      path: '/library/books/:id',
+      path: '/books/:id',
       name: 'BookDetail',
       component: BookDetailView,
       meta: { breadcrumb: 'Book' },
     },
     {
-      path: '/library',
+      path: '/',
       name: 'Library',
       component: LibraryView, // BookSearchView
       meta: { breadcrumb: 'Library' },

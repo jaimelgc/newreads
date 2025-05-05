@@ -46,7 +46,7 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Book
-          v-for="book in props.results.slice(0, props.limit)"
+          v-for="book in paginatedResults"
           :key="book.key"
           :book="book"
         />

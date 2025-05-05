@@ -52,7 +52,7 @@
                 console.log("res", res.data)
                 localStorage.setItem(CURRENT_USER, JSON.stringify(res.data));
                 console.log('Data:', response);
-                router.push('/library');
+                router.push('/');
                 
 
             } else {

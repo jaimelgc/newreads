@@ -2,6 +2,13 @@
     import { ref } from 'vue';
     import Books from '@/components/Books.vue';
     import { useApiSearch } from '@/search';
+    import { storeToRefs } from 'pinia'
+    import { useAuthStore } from '@/stores/auth'
+
+    const auth = useAuthStore()
+    const { isLoggedIn } = storeToRefs(auth)
+    console.log(isLoggedIn.value)
+    console.log(auth.user)
 
     const searchTerm = ref('')
     const { results, error, isLoading, fetchData } = useApiSearch()

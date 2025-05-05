@@ -1,7 +1,5 @@
 <script setup lang="ts">
-    import Book from './Book.vue';
     import { ref, computed, defineProps, withDefaults } from 'vue';
-    import api from '@/api';
    
     interface EditionType {
         key: string;
@@ -9,18 +7,19 @@
         author_name?: string[];
         first_publish_year?: number;
         cover_i?: number;
+        publishers?: string[];
+        number_of_pages?: number;
+        by_statement?: string;
     }
 
     const props = withDefaults(
         defineProps<{
-            results: BookType[];
+            results: EditionType[];
             isLoading: boolean;
             limit?: number;
-            showButton?: boolean; // vestigial
         }>(),
         {
             limit: 12,
-            showButton: false,
         }
     );
     console.log("props", props)
@@ -46,9 +45,9 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Book
-          v-for="book in props.results.slice(0, props.limit)"
-          :key="book.key"
-          :book="book"
+          v-for="edition in paginatedResults"
+          :key="edition.key"
+          :book="edition"
         />
        
       </div>
