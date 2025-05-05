@@ -11,4 +11,4 @@ urlpatterns = [
     path('library/', include('library.urls')),
     path('user/', include('userprofile.urls')),
     path('forum/', include('forum.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

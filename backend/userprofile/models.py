@@ -3,13 +3,15 @@ from django.db import models
 from django.utils.timezone import now
 from library.models import Book
 
+def user_directory_path(instance, filename):
+    return f'user_{instance.user.id}/{filename}'
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     created = models.DateField(auto_now_add=True)
     bio = models.TextField(blank=True)
     profile_picture = models.ImageField(
-        upload_to='profile_pics/', default='profile_pics/default.jpg'
+        upload_to=user_directory_path, default='profile_pics/default.jpg'
     )
     is_moderator = models.BooleanField(default=False)
     is_writer = models.BooleanField(default=False)
