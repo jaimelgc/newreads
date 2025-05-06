@@ -11,13 +11,10 @@
   const isActiveLink = (routePath: string) => route.path.startsWith(routePath);
 
   const buttonDestination = computed(() => {
-    if (isLoggedIn.value && user.value.username) {
-      return { name: 'UserDetailView', params: { username: user.value.username } };
-    }
-    return { name: 'Login' };
+    return isLoggedIn.value && user.value
+      ? { name: 'UserDetailView', params: { username: user.value.username } }
+      : { name: 'Login' };
   });
-
-  console.log('userrr', user.value?.username)
 
   const buttonText = computed(() => {
     return isLoggedIn.value && user.value ? user.value.username : 'Login';
