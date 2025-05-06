@@ -2,5 +2,5 @@
 ------ Fix description
 ------ Add toggle description
 ------ Add button to detail
-- Add pagination
+------ Add pagination
 - Add button to save (just visual)

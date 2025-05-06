@@ -6,9 +6,9 @@
     import { useAuthStore } from '@/stores/auth'
 
     const auth = useAuthStore()
-    const { isLoggedIn } = storeToRefs(auth)
+    const { isLoggedIn, user } = storeToRefs(auth)
     console.log(isLoggedIn.value)
-    console.log(auth.user)
+    console.log(user.value)
 
     const searchTerm = ref('')
     const { results, error, isLoading, fetchData } = useApiSearch()

@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import { defineProps, computed } from 'vue';
+    import { RouterLink } from 'vue-router';
 
     const props = defineProps<{
         book: {
@@ -7,7 +8,7 @@
             title: string;
             author_name?: string[];
             first_publish_year?: number;
-            cover_edition_key?: string, 
+            cover_edition_key?: string;
             cover_i?: number;
             edition_count?: number;
             edition_key?: string[];

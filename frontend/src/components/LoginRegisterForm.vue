@@ -7,6 +7,7 @@
     import { useUserStore } from '@/stores/user';
     import { useAuthStore } from '@/stores/auth';
     import axios from 'axios';
+    import apiFree from '@/f-api';
 
     const route = useRoute();
 
@@ -39,9 +40,10 @@
 
         try {
             // IF LOGIN POSTS TO TOKEN IF REGISTER POSTS TO REGISTER
-            const response = await api.post(endpoint, newUser);
+            // const response = await api.post(endpoint, newUser);
 
             if (props.method === 'login') {
+                const response = await api.post(endpoint, newUser);
 
                 const auth = useAuthStore();
                 auth.setToken(response.data.access);
@@ -49,16 +51,16 @@
                 localStorage.setItem(REFRESH_TOKEN, response.data.refresh);
 
                 const res = await api.get(`/user/${newUser.username}/`);
-                console.log("res", res.data)
-                localStorage.setItem(CURRENT_USER, JSON.stringify(res.data));
-                console.log('Data:', response);
-                router.push('/');
-                
+                auth.setUser(res.data); // ✅ THIS LINE FIXES NAVBAR
 
-            } else {
-                const dataUser = await api.get(`/user/${newUser.username}/`, newUser);
                 const userStore = useUserStore();
-                userStore.setUser(dataUser.data);
+                userStore.setUser(res.data);
+
+                localStorage.setItem(CURRENT_USER, JSON.stringify(res.data));
+
+                router.push('/');
+            } else {
+                const response = await apiFree.post(endpoint, newUser);
                 router.push('/login');
             }
         } catch (error) {

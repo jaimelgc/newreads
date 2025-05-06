@@ -7,6 +7,7 @@
 
   onMounted(() => {
     const auth = useAuthStore()
+    auth.loadAuthFromStorage()
     if (auth.token) {
       auth.user
     }

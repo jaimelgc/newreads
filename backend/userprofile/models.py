@@ -3,8 +3,10 @@ from django.db import models
 from django.utils.timezone import now
 from library.models import Book
 
+
 def user_directory_path(instance, filename):
     return f'user_{instance.user.id}/{filename}'
+
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
@@ -14,7 +16,7 @@ class User(AbstractUser):
         upload_to=user_directory_path, default='profile_pics/default.jpg'
     )
     is_moderator = models.BooleanField(default=False)
-    is_writer = models.BooleanField(default=False)
+    is_banned = models.BooleanField(default=False)
 
 
 class BookList(models.Model):

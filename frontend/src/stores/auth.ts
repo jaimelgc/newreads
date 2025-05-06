@@ -3,40 +3,65 @@ import { defineStore } from 'pinia'
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     token: localStorage.getItem('ACCESS_TOKEN') || null,
-    user: null as null | { id: number, username: string, name: string },
+    user: null as null | {
+      id: number,
+      username: string,
+      profilePicture: string,
+      bio: string,
+      isModerator: boolean,
+      isBanned: boolean,
+    },
   }),
   getters: {
     isLoggedIn: (state) => !!state.token,
   },
   actions: {
-    setToken(newToken: string) {
+    setToken(newToken: string, userData?: typeof this.user) {
       this.token = newToken
       localStorage.setItem('ACCESS_TOKEN', newToken)
+
+      if (userData) {
+        this.user = userData
+        localStorage.setItem('CURRENT_USER', JSON.stringify(userData))
+      }
+    },
+    setUser(userData: typeof this.user) {
+      this.user = userData
+      localStorage.setItem('CURRENT_USER', JSON.stringify(userData))
     },
     clearAuth() {
       this.token = null
       this.user = null
       localStorage.removeItem('ACCESS_TOKEN')
+      localStorage.removeItem('CURRENT_USER')
+    },
+    loadAuthFromStorage() {
+      const storedToken = localStorage.getItem('ACCESS_TOKEN')
+      const storedUser = localStorage.getItem('CURRENT_USER')
+
+      if (storedToken) this.token = storedToken
+      if (storedUser) this.user = JSON.parse(storedUser)
     },
     async fetchUser() {
-      if (!this.token || !this.user?.username) return;
+      if (!this.token || !this.user?.username) return
 
       try {
-        const backendUrl = import.meta.env.VITE_BACKEND_URL;
+        const backendUrl = import.meta.env.VITE_BACKEND_URL
         const res = await fetch(`${backendUrl}/api/user/${this.user.username}/`, {
           headers: {
             Authorization: `Bearer ${this.token}`,
           },
-        });
+        })
 
         if (res.ok) {
-          this.user = await res.json()
+          const data = await res.json()
+          this.setUser(data)
         } else {
           this.clearAuth()
         }
-      } catch (error) {
+      } catch {
         this.clearAuth()
       }
-    }
-  }
+    },
+  },
 })
