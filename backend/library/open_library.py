@@ -1,4 +1,5 @@
 import requests
+from .models import Book
 
 # from django.core.cache import cache
 
@@ -42,5 +43,23 @@ def get_catch_data(key, url, timeout=60 * 60 * 24):
     print("❌ Not found or error")
     return None
 
+def get_or_create_book(ol_id: str) -> Book:
+    try:
+        return Book.objects.get(ol_id=ol_id)
+    except Book.DoesNotExist:
+        response = requests.get(f"https://openlibrary.org/books/{ol_id}.json")
+        if response.status_code != 200:
+            raise ValueError("Book not found on Open Library")
 
-# get_catch_data('test_key', 'https://openlibrary.org/isbn/9780261103344.json')
+        data = response.json()
+        return Book.objects.create(
+            ol_id=ol_id,
+            title=data.get("title", "Untitled"),
+            author_names="; ".join(data.get("authors", [])),
+            cover_url=f"https://covers.openlibrary.org/b/id/{data.get('covers', [])[0]}-L.jpg"
+                if data.get("covers") else None,
+            description=data.get("description", "") if isinstance(data.get("description"), str) else "",
+            publish_date=data.get("publish_date", ""),
+        )
+    
+
