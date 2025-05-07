@@ -35,12 +35,3 @@ class BookListItem(models.Model):
 
     class Meta:
         unique_together = ('book_list', 'book')
-
-
-class SearchHistory(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="search_history")
-    query = models.CharField(max_length=500)
-    searched_at = models.DateTimeField(default=now)
-
-    def __str__(self):
-        return f"{self.user.username} - '{self.query}' - {self.searched_at}"

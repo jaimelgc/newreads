@@ -1,5 +1,5 @@
 from django.db import models
-from library.models import Work
+from library.models import Book
 from userprofile.models import User
 
 
@@ -10,7 +10,7 @@ class Post(models.Model):
         User, on_delete=models.SET_NULL, null=True, related_name="user_posts"
     )
     book = models.ForeignKey(
-        Work, on_delete=models.SET_NULL, null=True, blank=True, related_name="book_posts"
+        Book, on_delete=models.SET_NULL, null=True, blank=True, related_name="book_posts"
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -24,4 +24,3 @@ class Comment(models.Model):
     )
     quote = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    # [quote=Kage Goomba;591764935569058073]This thread is full of win. [/quote]

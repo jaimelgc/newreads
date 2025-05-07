@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db.models import Q
 from rest_framework import generics, permissions
 
-from .models import BookList  # SearchHistory
+from .models import BookList
 from .serializers import (  # BooklistItemSerializer,; SearchHistorySerializer,
     BooklistSerializer,
     RegisterSerializer,
@@ -71,11 +71,3 @@ class BookListDetailView(generics.RetrieveAPIView):
     def get_queryset(self):
         user = self.request.user
         return BookList.objects.filter(Q(is_public=True) | Q(user=user))
-
-
-# class SearchHistoryView(generics.ListAPIView):
-#     serializer_class = SearchHistorySerializer
-#     permission_classes = [permissions.IsAuthenticated]
-
-#     def get_queryset(self):
-#         return SearchHistory.objects.filter(user=self.request.user)
