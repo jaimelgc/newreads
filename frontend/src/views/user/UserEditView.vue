@@ -60,7 +60,7 @@ const updateUser = async () => {
     });
     state.success = 'Profile updated successfully!';
     setTimeout(() => {
-      router.push(`/user/${userName}`);
+      router.push(`/users/${userName}`);
     }, 1000);
   } catch (e) {
     state.error = 'Failed to update user.';
@@ -117,14 +117,14 @@ const updateUser = async () => {
 
             <div class="flex gap-4">
             <button type="submit" class="btn btn-success">Save</button>
-            <router-link :to="`/user/${userName}`" class="btn btn-secondary">Cancel</router-link>
+            <router-link :to="`/users/${userName}`" class="btn btn-secondary">Cancel</router-link>
             </div>
         </form>
         </div>
     </section>
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
     .form-control {
         @apply w-full border border-gray-300 rounded p-2;
     }

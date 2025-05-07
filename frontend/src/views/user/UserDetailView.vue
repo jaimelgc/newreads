@@ -1,7 +1,11 @@
 <script setup lang="ts">
   import { useRoute } from 'vue-router';
-  import { reactive, onMounted } from 'vue';
+  import { ref, reactive, computed, onMounted } from 'vue';
   import api from '@/api';
+  import { useApiSearch } from '@/search';
+  import Lists from '@/components/user/Lists.vue';
+  import Posts from '@/components/user/Posts.vue';
+  import { useAuthStore } from '@/stores/auth';
 
   const route = useRoute();
   const userName = route.params.username;
@@ -20,10 +24,20 @@
     isLoading: true
   });
 
+  const currentUser = useAuthStore().user; 
+  const canCreate = computed(() => currentUser?.username === state.user.username);
+
+  const activeTab = ref<'lists' | 'posts'>('lists');
+  const userLists = ref([]);
+  const userPosts = ref([]);
+
   onMounted(async () => {
     try {
-      const response = await api.get(`/user/${userName}/`);
+      const  response = await api.get(`/user/${userName}/`);
       state.user = response.data;
+      const listsResponse = await api.get(`/user/${userName}/lists/`);
+      userLists.value = listsResponse.data;
+      const userPosts = await api.get(`/user/${userName}/lists/`); 
     } catch (error) {
       console.error('Error fetching user');
     } finally {
@@ -54,13 +68,42 @@
               </div>
             </div>
           </div>
+          <div class="mt-10">
+            <div class="flex border-b mb-4">
+              <button
+                class="py-2 px-4 font-semibold"
+                :class="activeTab === 'lists' ? 'border-b-2 border-green-600 text-green-700' : 'text-gray-500'"
+                @click="activeTab = 'lists'"
+              >
+                Lists
+              </button>
+              <button
+                class="py-2 px-4 font-semibold"
+                :class="activeTab === 'posts' ? 'border-b-2 border-green-600 text-green-700' : 'text-gray-500'"
+                @click="activeTab = 'posts'"
+              >
+                Posts
+              </button>
+            </div>
+
+            <div>
+              <Lists v-if="activeTab === 'lists'"
+                :results="userLists"
+                :isLoading="state.isLoading"
+                :limit="10"
+                context="user"
+                :canCreate="canCreate" 
+              />
+              <Posts v-if="activeTab === 'posts'" :results="userPosts" :isLoading="state.isLoading" :limit="10" />
+            </div>
+          </div>
         </main>
       </div>
     </div>
   </section>
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .badge {
   @apply px-2 py-1 rounded-full text-sm;
 }
