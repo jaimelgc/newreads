@@ -1,8 +1,8 @@
 # from datetime import timedelta
 
 from django.db import models
-from django.utils.timezone import now
-from slugify import slugify
+# from slugify import slugify
+
 
 class Book(models.Model):
     ol_id = models.CharField(primary_key=True, max_length=100, unique=True, db_index=True)
