@@ -1,11 +1,9 @@
-from django.shortcuts import render
-from rest_framework import viewsets
-from rest_framework.response import Response
-from rest_framework import status
-from .models import Post
-from .serializers import PostSerializer, CommentSerializer
-
 from library.open_library import get_or_create_book
+from rest_framework import viewsets
+
+from .models import Post
+from .serializers import CommentSerializer, PostSerializer
+
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
@@ -15,3 +13,12 @@ class PostViewSet(viewsets.ModelViewSet):
         ol_id = self.request.data.get('ol_id')
         book = get_or_create_book(ol_id) if ol_id else None
         serializer.save(poster=self.request.user, book=book)
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = CommentSerializer
+
+    def perform_create(self, serializer):
+        original_post = self.request.data.get('original_post')
+        serializer.save(poster=self.request.user, original_post=original_post)

@@ -1,21 +1,12 @@
 # from django.db.models import Q
-from rest_framework import generics, permissions, status
+from rest_framework import permissions, status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Author, Book, Publisher, Subject, Work
-from .open_library import get_catch_data
-from .serializers import (
-    AuthorSerializer,
-    BookSerializer,
-    PublisherSerializer,
-    SubjectSerializer,
-    WorkSerializer,
-)
-
-# Open library views
-# ---------------------------------------------------------
+# from .models import Book
+from .open_library import get_catch_data, get_or_create_book
+from .serializers import BookSerializer
 
 
 class OpenLibrarySearchView(APIView):
@@ -32,50 +23,14 @@ class OpenLibrarySearchView(APIView):
         return Response({"error": "Not found"}, status=status.HTTP_404_NOT_FOUND)
 
 
-# Local database views
-# ---------------------------------------------------------
-
-
-class WorkSearchView(generics.ListAPIView):
-    serializer_class = WorkSerializer
+class GetOrCreateBookView(APIView):
     permission_classes = [permissions.AllowAny]
 
-    def get_queryset(self):
-        search_query = self.request.query_params.get('search', '')
-        return Work.objects.filter(title__icontains=search_query)
+    def get(self, request, ol_id):
+        try:
+            book = get_or_create_book(ol_id)
+        except ValueError as e:
+            return Response({'detail': str(e)}, status=status.HTTP_404_NOT_FOUND)
 
-
-class BookSearchView(generics.ListAPIView):
-    serializer_class = BookSerializer
-    permission_classes = [permissions.AllowAny]
-
-    def get_queryset(self):
-        search_query = self.request.query_params.get('search', '')
-        return Book.objects.filter(title__icontains=search_query)
-
-
-class AuthorSearchView(generics.ListAPIView):
-    serializer_class = AuthorSerializer
-    permission_classes = [permissions.AllowAny]
-
-    def get_queryset(self):
-        search_query = self.request.query_params.get('search', '')
-        return Author.objects.filter(name__icontains=search_query)
-
-
-class PublisherSearchView(generics.ListAPIView):
-    serializer_class = PublisherSerializer
-    permission_classes = [permissions.AllowAny]
-
-    def get_queryset(self):
-        search_query = self.request.query_params.get('search', '')
-        return Publisher.objects.filter(name__icontains=search_query)
-
-
-class SubjectSearchView(generics.ListAPIView):
-    serializer_class = SubjectSerializer
-    permission_classes = [permissions.AllowAny]
-
-    def get_queryset(self):
-        search_query = self.request.query_params.get('search', '')
-        return Subject.objects.filter(name__icontains=search_query)
+        serializer = BookSerializer(book)
+        return Response(serializer.data, status=status.HTTP_200_OK)

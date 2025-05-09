@@ -59,9 +59,3 @@ class BooklistItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookListItem
         fields = ['user', 'name', 'description', 'created_at', 'is_public']
-
-
-# class SearchHistorySerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = SearchHistory
-#         fields = ['user', 'name', 'description', 'created_at', 'is_public']

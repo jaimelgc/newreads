@@ -22,5 +22,4 @@ class Comment(models.Model):
     quoted_post = models.ForeignKey(
         "self", on_delete=models.CASCADE, null=True, blank=True, related_name="quoted"
     )
-    quote = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
