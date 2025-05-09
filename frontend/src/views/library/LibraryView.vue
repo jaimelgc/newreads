@@ -1,37 +1,40 @@
 <script setup lang="ts">
-    import { ref, computed } from 'vue';
-    import Books from '@/components/library/Books.vue';
-    import Book from '@/components/library/Book.vue';
-    import { useApiSearch } from '@/search';
-    import { storeToRefs } from 'pinia'
-    import { useAuthStore } from '@/stores/auth'
+  import { ref, computed, onMounted } from 'vue';
+  import Books from '@/components/library/Books.vue';
+  import Book from '@/components/library/Book.vue';
+  import { useApiSearch, useSingleFetch } from '@/search';
+  import { storeToRefs } from 'pinia'
+  import { useAuthStore } from '@/stores/auth'
 
-    const auth = useAuthStore()
-    const { isLoggedIn, user } = storeToRefs(auth)
+  // CHECK AUTH
+  const auth = useAuthStore()
+  const { isLoggedIn, user } = storeToRefs(auth)
 
-    console.log(isLoggedIn.value)
-    console.log(user.value)
+  console.log(isLoggedIn.value)
+  console.log(user.value)
 
-    const searchTerm = ref('')
-    const { results, error, isLoading, fetchData } = useApiSearch()
+  // SEARCH
+  const searchTerm = ref('')
+  const { results, error, isLoading, fetchData } = useApiSearch()
 
-    const featuredBook = () => {
-      const endpoint = '/api/library/search/'
-      const params = {
-          key: `book-featured`,
-          url: `https://openlibrary.org/isbn/9780261103344.json`
-      }
-      fetchData(endpoint, params)
+  const search = () => {
+    const endpoint = '/api/library/search/'
+    const params = {
+        key: `book-search-${searchTerm.value}`,
+        url: `https://openlibrary.org/search.json?q=${encodeURIComponent(searchTerm.value)}`
     }
+    fetchData(endpoint, params)
+  }
 
-    const search = () => {
-      const endpoint = '/api/library/search/'
-      const params = {
-          key: `book-search-${searchTerm.value}`,
-          url: `https://openlibrary.org/search.json?q=${encodeURIComponent(searchTerm.value)}`
-      }
-      fetchData(endpoint, params)
-    }
+  // FEATURES
+  const { res: featuredBook, error: bookError, isLoading: bookIsLoading, fetchSingle: fetchFeaturedBook } = useSingleFetch()
+  const { res: featuredList, error: listError, isLoading: listIsLoading, fetchSingle: fetchFeaturedList } = useSingleFetch()
+  const { res: featuredPost, error: postError, isLoading: postIsLoading, fetchSingle: fetchFeaturedPost } = useSingleFetch()
+  onMounted(() => { 
+    fetchFeaturedBook('books/OL21419612M')
+    fetchFeaturedBook('books/OL21419612M')
+    fetchFeaturedBook('books/OL21419612M')
+  })
 </script>
 
 <template>
@@ -44,7 +47,9 @@
         <Books :results="results" :isLoading="isLoading" :limit="10"/>
       </div>
       <div id="featuredBook">
-        <Book :key="book.key" :book="featuredBook" />
+        <div v-if="!bookError && !bookIsLoading" && featuredBook>
+          <Book :key="featuredBook.key" :book="featuredBook" />
+        </div>
       </div>
       <div id="featuredList">
 
