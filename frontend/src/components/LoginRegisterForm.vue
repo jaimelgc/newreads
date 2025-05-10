@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { reactive } from 'vue';
+    import { reactive, defineProps } from 'vue';
     import { useRoute } from 'vue-router';
     import router from '@/router';
     import { ACCESS_TOKEN, REFRESH_TOKEN, CURRENT_USER } from '@/constants';

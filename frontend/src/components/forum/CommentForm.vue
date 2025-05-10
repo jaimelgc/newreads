@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, defineProps } from 'vue';
 import api from '@/api';
 import { useAuthStore } from '@/stores/auth';
 

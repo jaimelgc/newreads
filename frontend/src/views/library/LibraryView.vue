@@ -1,7 +1,9 @@
 <script setup lang="ts">
-  import { ref, computed, onMounted } from 'vue';
+  import { ref, computed, onMounted, onActivated } from 'vue';
   import Books from '@/components/library/Books.vue';
   import Book from '@/components/library/Book.vue';
+  import List from '@/components/user/List.vue';
+  import Post from '@/components/user/Post.vue';
   import { useApiSearch, useSingleFetch } from '@/search';
   import { storeToRefs } from 'pinia'
   import { useAuthStore } from '@/stores/auth'
@@ -32,10 +34,16 @@
   const { res: featuredPost, error: postError, isLoading: postIsLoading, fetchSingle: fetchFeaturedPost } = useSingleFetch()
   onMounted(() => { 
     fetchFeaturedBook('library/books/OL21419612M/')
-    // fetchFeaturedBook('books/OL21419612M')
-    // fetchFeaturedBook('books/OL21419612M')
+    // fetchFeaturedList('library/books/OL21419612M')
+    // fetchFeaturedPost('library/books/OL21419612M')
   })
-  console.log('hey', featuredBook)
+  onActivated(() => {
+    if (!featuredBook) {
+      fetchFeaturedBook('library/books/OL21419612M/')
+    }
+    // if (!featuredList) fetchFeaturedList('library/books/OL21419612M')
+    // if (!featuredPost) fetchFeaturedPost('library/books/OL21419612M')
+  })
 </script>
 
 <template>
@@ -54,12 +62,14 @@
         <div v-else><h1>hello</h1></div>
       </div>
       <div id="featuredList">
-
-
+        <div v-if="!listError && !listIsLoading && featuredList">
+          <List :key="featuredList.key" :book="featuredList" />
+        </div>
       </div>
       <div id="featuredPost">
-
-
+        <div v-if="!postError && !postIsLoading && featuredPost">
+          <Post :key="featuredPost.key" :book="featuredPost" />
+        </div>
       </div>
     </div>
 </template>

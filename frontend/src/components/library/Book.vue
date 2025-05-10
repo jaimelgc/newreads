@@ -5,6 +5,7 @@
     const props = defineProps<{
         book: {
             title: string;
+            ol_id: string;
             author_name?: string | string[];
             publish_date?: string;
             cover_url?: string;
@@ -17,7 +18,7 @@
     }>();
 
     const selectedEditionId = computed(() => {
-        return props.book.cover_edition_key || props.book.edition_key?.[0] || null;
+        return props.book.cover_edition_key || props.book.edition_key?.[0] || props.book.ol_id || props.book.lending_edition_s?.[0] || null;
     });
     
     const coverUrl = computed(() => {
@@ -40,8 +41,10 @@
             v-if="selectedEditionId"
             :to="`/books/${selectedEditionId}`" 
             class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm">
-            
             Read More
         </RouterLink>
+        <div v-else>
+            {{ book.lending_edition_s }}
+        </div>
     </div>
 </template>
