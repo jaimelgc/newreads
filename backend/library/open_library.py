@@ -54,17 +54,27 @@ def get_or_create_book(ol_id: str) -> Book:
             raise ValueError("Book not found on Open Library")
 
         data = response.json()
+
+        # Extract author keys and fetch names
+        authors = []
+        for author_ref in data.get("authors", []):
+            author_key = author_ref.get("key")
+            if author_key:
+                author_resp = requests.get(f"https://openlibrary.org{author_key}.json")
+                if author_resp.status_code == 200:
+                    author_data = author_resp.json()
+                    name = author_data.get("name")
+                    if name:
+                        authors.append(name)
+
         return Book.objects.create(
             ol_id=ol_id,
             title=data.get("title", "Untitled"),
-            author_names="; ".join(data.get("authors", [])),
+            author_name="; ".join(authors),
             cover_url=(
                 f"https://covers.openlibrary.org/b/id/{data.get('covers', [])[0]}-L.jpg"
                 if data.get("covers")
                 else None
-            ),
-            description=(
-                data.get("description", "") if isinstance(data.get("description"), str) else ""
             ),
             publish_date=data.get("publish_date", ""),
         )

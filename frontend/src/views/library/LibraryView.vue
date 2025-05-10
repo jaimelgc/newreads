@@ -31,10 +31,11 @@
   const { res: featuredList, error: listError, isLoading: listIsLoading, fetchSingle: fetchFeaturedList } = useSingleFetch()
   const { res: featuredPost, error: postError, isLoading: postIsLoading, fetchSingle: fetchFeaturedPost } = useSingleFetch()
   onMounted(() => { 
-    fetchFeaturedBook('books/OL21419612M')
-    fetchFeaturedBook('books/OL21419612M')
-    fetchFeaturedBook('books/OL21419612M')
+    fetchFeaturedBook('library/books/OL21419612M/')
+    // fetchFeaturedBook('books/OL21419612M')
+    // fetchFeaturedBook('books/OL21419612M')
   })
+  console.log('hey', featuredBook)
 </script>
 
 <template>
@@ -47,9 +48,10 @@
         <Books :results="results" :isLoading="isLoading" :limit="10"/>
       </div>
       <div id="featuredBook">
-        <div v-if="!bookError && !bookIsLoading" && featuredBook>
+        <div v-if="!bookError && !bookIsLoading && featuredBook">
           <Book :key="featuredBook.key" :book="featuredBook" />
         </div>
+        <div v-else><h1>hello</h1></div>
       </div>
       <div id="featuredList">
 

@@ -3,11 +3,14 @@
     import { ref, computed, defineProps, withDefaults } from 'vue';
    
     interface BookType {
-        key: string;
-        title: string;
-        author_name?: string[];
-        first_publish_year?: number;
-        cover_i?: number;
+      key: string; // /works/OL27482W
+      title: string;
+      author_name?: string;
+      first_publish_year?: number;
+      cover_edition_key?: string;
+      cover_i?: number;
+      edition_count?: number;
+      edition_key?: string[];
     }
 
     const props = withDefaults(

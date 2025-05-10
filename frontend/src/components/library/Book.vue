@@ -4,14 +4,15 @@
 
     const props = defineProps<{
         book: {
-            key: string; // /works/OL27482W
             title: string;
-            author_name?: string[];
-            first_publish_year?: number;
+            author_name?: string | string[];
+            publish_date?: string;
+            cover_url?: string;
             cover_edition_key?: string;
             cover_i?: number;
-            edition_count?: number;
             edition_key?: string[];
+            key?: string;
+            first_publish_year?: number;
         };
     }>();
 
@@ -19,9 +20,11 @@
         return props.book.cover_edition_key || props.book.edition_key?.[0] || null;
     });
     
-    const coverUrl = props.book.cover_i
-    ? `https://covers.openlibrary.org/b/id/${props.book.cover_i}-M.jpg`
-    : 'https://via.placeholder.com/150';
+    const coverUrl = computed(() => {
+        if (props.book.cover_url) return props.book.cover_url; // From backend
+        if (props.book.cover_i) return `https://covers.openlibrary.org/b/id/${props.book.cover_i}-M.jpg`;
+        return 'https://via.placeholder.com/150';
+    });
 
 </script>
 
@@ -31,8 +34,8 @@
         <h3 class="text-xl font-semibold">{{ book.title }}</h3>
         <h3 class="text-xl font-semibold">{{ book.cover_i }}</h3>
         <h3 class="text-xl font-semibold">{{ book.cover_edition_key }}</h3>
-        <p class="text-gray-600">by {{ book.author_name?.join(', ') || 'Unknown' }}</p>
-        <p class="text-sm text-gray-500">First published: {{ book.first_publish_year || 'N/A' }}</p>
+        <p class="text-gray-600">{{ Array.isArray(book.author_name) ? book.author_name.join(', ') : book.author_name }}</p>
+        <p class="text-sm text-gray-500">First published: {{ book.first_publish_year || book.publish_date || 'N/A' }}</p>
         <RouterLink
             v-if="selectedEditionId"
             :to="`/books/${selectedEditionId}`" 
