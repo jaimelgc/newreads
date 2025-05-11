@@ -10,12 +10,21 @@
     const edition = ref<any>(null);
     const work = ref<any>(null);
     const authors = ref<any[]>([]);
-    const books = ref<any[]>([]); // To store the books for the selected author
-    const selectedAuthorIndex = ref<number>(0); // Track which author is selected
+    const books = ref<any[]>([]);
+    const selectedAuthorIndex = ref<number>(0); 
+
+    
 
     const { results: editionResults, error: ediitionError, isLoading: editionIsLoading, fetchData: editionFetchData } = useApiSearch();
     const { results: workResults, error: workError, isLoading: workIsLoading, fetchData: workFetchData } = useApiSearch();
     const { results: booksResults, error: booksError, isLoading: booksIsLoading, fetchData: booksFetchData } = useApiSearch();
+
+    const coverUrl = computed(() => {
+      if (edition.value?.cover_url) return edition.value.cover_url;
+      if (edition.value?.cover_i) return `https://covers.openlibrary.org/b/id/${edition.value.cover_i}-L.jpg`;
+      if (edition.value?.covers) return `https://covers.openlibrary.org/b/id/${edition.value.covers[0]}-L.jpg`;
+      return 'https://via.placeholder.com/150';
+    });
 
     onMounted(async () => {
         // Fetch edition data
@@ -59,6 +68,7 @@
 
 <template>
   <div v-if="edition && work">
+    <img :src="coverUrl" alt="Book Cover" class="mb-4" />
     <h1 class="text-2xl font-bold mb-2">{{ edition.title }}</h1>
     <p class="text-gray-600">Published by: {{ edition.publishers?.join(', ') }}</p>
     <p class="text-gray-600">Published on: {{ edition.publish_date }}</p>

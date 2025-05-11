@@ -1,6 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.db.models import Q
-from rest_framework import generics, permissions, viewsets
+from rest_framework import generics, permissions, status, viewsets
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import BookList
 from .serializers import (  # BooklistItemSerializer,; SearchHistorySerializer,
@@ -59,3 +62,15 @@ class BookListViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+
+class UserBookListsView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, username=None):
+        user = User.objects.filter(username=username).first()
+        if not user:
+            return Response({'detail': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
+        book_lists = BookList.objects.filter(user=user)
+        serializer = BooklistSerializer(book_lists, many=True)
+        return Response(serializer.data)

@@ -3,14 +3,16 @@
     import { ref, computed, defineProps, withDefaults } from 'vue';
    
     interface BookType {
-      key: string; // /works/OL27482W
       title: string;
-      author_name?: string;
-      first_publish_year?: number;
+      ol_id: string;
+      author_name?: string | string[];
+      publish_date?: string;
+      cover_url?: string;
       cover_edition_key?: string;
       cover_i?: number;
-      edition_count?: number;
       edition_key?: string[];
+      key?: string;
+      first_publish_year?: number;
     }
 
     const props = withDefaults(
@@ -27,9 +29,14 @@
     );
     console.log("props", props)
 
+    const filteredResults = computed(() =>
+      props.results.filter(book =>
+        book.cover_edition_key || book.edition_key?.[0] || book.ol_id
+      )
+    );
     const visibleCount = ref(props.limit);
     const paginatedResults = computed(() =>
-      props.results.slice(0, visibleCount.value)
+    filteredResults.value.slice(0, visibleCount.value)
     );
 
     function loadMore() {
@@ -49,7 +56,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Book
           v-for="book in paginatedResults"
-          :key="book.key"
+          :key="book.key || book.ol_id"
           :book="book"
         />
        
