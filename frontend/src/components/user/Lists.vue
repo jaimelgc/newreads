@@ -35,6 +35,7 @@
           limit?: number;
           context?: 'user' | 'search';
           canCreate?: boolean;
+          username?: string;
         }>(),
         {
           limit: 12,
@@ -65,19 +66,20 @@
       <div class="container-xl lg:container m-auto">
         <div class="flex items-center justify-between mb-6">
           <h2 class="text-3xl font-bold text-green-500 mb-6 text-center">Results</h2>
-          <button
+          <RouterLink
             v-if="canCreate"
+            :to="`/users/${props.username}/lists/create`"
             class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
           >
             + Create New List
-          </button>
+          </Routerlink>
         </div>
 
         <div v-if="!props.isLoading && props.results.length === 0" class="text-center text-gray-500">
           No results found.
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 gap-6">
           <List
             v-for="list in paginatedResults"
             :key="list.id"

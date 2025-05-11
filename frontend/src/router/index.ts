@@ -10,7 +10,8 @@ import LogoutView from '@/views/auth/LogoutView.vue'
 import UserEditView from '@/views/user/UserEditView.vue'
 import BookDetailView from '@/views/library/BookDetailView.vue'
 import ListDetailView from '@/views/list/ListDetailView.vue'
-import ListCreateEditView from '@/views/list/ListCreateEditView.vue'
+import ListEditView from '@/views/list/ListEditView.vue'
+import ListCreateView from '@/views/list/ListCreateView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -52,14 +53,19 @@ const router = createRouter({
       meta: { breadcrumb: 'Forum' },
     },
     {
+      path: '/users/:username/lists/:listId/edit',
+      name: 'ListEdit',
+      component: ListEditView
+    },
+    {
       path: '/users/:username/lists/:listId',
       name: 'ListDetail',
       component: ListDetailView
     },
     {
-      path: '/users/:username/lists/:listId/edit',
-      name: 'ListDetail',
-      component: ListCreateEditView
+      path: '/users/:username/lists/create',
+      name: 'ListCreate',
+      component: ListCreateView
     },
     {
       path: '/users/:username/edit',

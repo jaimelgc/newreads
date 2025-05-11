@@ -50,9 +50,9 @@ class BooklistSerializer(serializers.ModelSerializer):
         model = BookList
         fields = ['name', 'description', 'created_at', 'is_public', 'author']
 
-    def create(self, validated_data):
-        user = self.context['request'].user
-        return BookList.objects.create(user=user, **validated_data)
+    # def create(self, validated_data):
+    #     user = self.context['request'].user
+    #     return BookList.objects.create(user=user, **validated_data)
 
 
 class BooklistItemSerializer(serializers.ModelSerializer):

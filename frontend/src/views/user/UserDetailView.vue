@@ -35,9 +35,11 @@
     try {
       const  response = await api.get(`/user/${userName}/`);
       state.user = response.data;
-      const listsResponse = await api.get(`/user/${userName}/lists/`);
+      const listsResponse = await api.get(`/user/booklists/`, {
+        params: { username: userName },
+      });
       userLists.value = listsResponse.data;
-      const userPosts = await api.get(`/user/${userName}/lists/`); 
+      // const userPosts = await api.get(`/user/${userName}/lists/`); 
     } catch (error) {
       console.error('Error fetching user');
     } finally {
@@ -86,15 +88,18 @@
               </button>
             </div>
 
-            <div>
-              <Lists v-if="activeTab === 'lists'"
+            <div v-if="activeTab === 'lists'">
+              <Lists
                 :results="userLists"
                 :isLoading="state.isLoading"
                 :limit="10"
                 context="user"
                 :canCreate="canCreate" 
+                :username="state.user.username"
               />
-              <Posts v-if="activeTab === 'posts'" :results="userPosts" :isLoading="state.isLoading" :limit="10" />
+            </div>
+            <div v-if="activeTab === 'posts'" >
+              <Posts :results="userPosts" :isLoading="state.isLoading" :limit="10" />
             </div>
           </div>
         </main>
