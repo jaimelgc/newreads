@@ -4,7 +4,7 @@
 
     interface UserType {
         id: number;
-        name: string;
+        username: string;
         profile_picture: string;
     }
    
@@ -21,11 +21,12 @@
     }
 
     interface ListType {
-        id: number;
-        title: string;
-        author: UserType;
-        created_at: string;
-        books: EditionType[];
+      id: number;
+      name: string;
+      description: string;
+      author: UserType;
+      created_at: string;
+      books: EditionType[];
     }
 
     const props = withDefaults(

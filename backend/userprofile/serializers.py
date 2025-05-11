@@ -48,7 +48,7 @@ class BooklistSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = BookList
-        fields = ['name', 'description', 'created_at', 'is_public', 'author']
+        fields = ['id', 'name', 'description', 'created_at', 'is_public', 'author']
 
     # def create(self, validated_data):
     #     user = self.context['request'].user

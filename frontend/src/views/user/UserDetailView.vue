@@ -39,6 +39,7 @@
         params: { username: userName },
       });
       userLists.value = listsResponse.data;
+      console.log('lists', userLists.value)
       // const userPosts = await api.get(`/user/${userName}/lists/`); 
     } catch (error) {
       console.error('Error fetching user');
