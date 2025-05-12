@@ -23,11 +23,15 @@ onMounted(async () => {
   }
 });
 
-async function handleSubmit(data: { name: string; books: any[] }) {
+async function handleSubmit(data: { name: string; description: string; items: any[]; is_public: boolean }) {
   if (!userId.value) return;
   const payload = {
     ...data,
-    user: userId.value
+    items: data.items.map(item => ({
+      book: item.book.ol_id,
+      title: item.title,
+    })),
+    user: userId.value,
   };
   await api.post(`/user/booklists/`, payload);
   router.push(`/users/${username}/lists`);

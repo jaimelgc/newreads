@@ -1,9 +1,16 @@
-- Add Booklist detail
-- Add booklist edit
+----- Add Booklist detail
+----- Add booklist edit
+- Add book adding and deleting
+    - Create/Delete Model Object booklistItem
+        -  needs user, book, list 
+- Create booklist with starting book
+
 - Add booklist copy feature
     - Add attribute to backend
     - Copy button for logged user
     - Copy tab in UserDetailView
     - Signal if a booklist is copied
+
+
 - Add booklist to search <- depends on fixing search
-- Add book adding and deleting
+- Create default lists when creating user

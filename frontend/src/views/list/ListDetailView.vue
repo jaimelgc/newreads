@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import api from '@/api';
 
 const route = useRoute();
+const router = useRouter();
 const listId = route.params.listId;
 const username = route.params.username;
 
@@ -17,16 +18,15 @@ const list = ref<{
     profile_picture: string;
   };
   created_at: string;
-  books: {
-    key: string;
-    title: string;
-    author_name?: string[];
-    first_publish_year?: number;
-    cover_i?: number;
-    publishers?: string[];
-    number_of_pages?: number;
-    by_statement?: string;
-    cover_edition_key?: string;
+  items: {
+    id: number;
+    book: {
+      ol_id: string;
+      title: string;
+      author_name?: string;
+      cover_url?: string;
+    };
+    added_at: string;
   }[];
 } | null>(null);
 
@@ -42,6 +42,15 @@ onMounted(async () => {
     isLoading.value = false;
   }
 });
+
+const deleteList = async () => {
+  try {
+    await api.delete(`/user/booklists/${listId}/`);
+    router.push(`/users/${username}`);
+  } catch (error) {
+    console.error('Error deleting list:', error);
+  }
+};
 </script>
 
 <template>
@@ -59,16 +68,30 @@ onMounted(async () => {
       <p class="text-sm text-gray-400 mb-4">Created: {{ list?.created_at }}</p>
       <p class="text-gray-700 mb-6">{{ list?.description }}</p>
 
-      <div v-if="list?.books && list.books.length" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div v-for="book in list.books" :key="book.key" class="text-center">
+      <div class="flex gap-4 mb-6">
+        <RouterLink
+          :to="`/users/${username}/lists/${listId}/edit`"
+          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 inline-block"
+        >
+          Edit List
+        </RouterLink>
+        <button
+          @click="deleteList"
+          class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+        >
+          Delete List
+        </button>
+      </div>
+
+      <div v-if="list?.items && list.items.length" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div v-for="item in list.items" :key="item.id" class="text-center">
           <img
-            :src="book.cover_i
-              ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
-              : 'https://via.placeholder.com/150'"
+            :src="item.book.cover_url || 'https://via.placeholder.com/150'"
             class="w-full h-auto rounded"
             alt="Book cover"
           />
-          <div class="mt-2 text-sm font-medium">{{ book.title }}</div>
+          <div class="mt-2 text-sm font-medium">{{ item.book.title }}</div>
+          <div class="text-xs text-gray-500">{{ item.book.author_name }}</div>
         </div>
       </div>
       <p v-else>No books in this list yet.</p>

@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from library.serializers import BookSerializer
 from rest_framework import serializers
 
 from .models import BookList, BookListItem  # SearchHistory
@@ -43,19 +44,22 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 
+class BooklistItemSerializer(serializers.ModelSerializer):
+    book = BookSerializer()
+
+    class Meta:
+        model = BookListItem
+        fields = ['id', 'book', 'title', 'added_at']
+
+
 class BooklistSerializer(serializers.ModelSerializer):
     author = UserPublicSerializer(source='user', read_only=True)
+    items = BooklistItemSerializer(many=True, read_only=True)
 
     class Meta:
         model = BookList
-        fields = ['id', 'name', 'description', 'created_at', 'is_public', 'author']
+        fields = ['id', 'name', 'description', 'created_at', 'is_public', 'author', 'items']
 
     # def create(self, validated_data):
     #     user = self.context['request'].user
     #     return BookList.objects.create(user=user, **validated_data)
-
-
-class BooklistItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = BookListItem
-        fields = ['user', 'name', 'description', 'created_at', 'is_public']

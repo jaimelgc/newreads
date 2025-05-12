@@ -2,14 +2,24 @@
 import { ref, watch } from 'vue';
 
 const props = defineProps<{
-  initialData?: { name: string; books: any[]; description: string; is_public: boolean; };
-  onSubmit: (data: { name: string; books: any[]; description: string; is_public: boolean; }) => Promise<void>;
+  initialData?: {
+    name: string;
+    description: string;
+    items: { book: { ol_id: string; title: string }; title?: string }[];
+    is_public: boolean;
+  };
+  onSubmit: (data: {
+    name: string;
+    description: string;
+    items: { book: { ol_id: string }; title?: string }[];
+    is_public: boolean;
+  }) => Promise<void>;
 }>();
 
 const form = ref({
   name: props.initialData?.name || '',
-  books: props.initialData?.books || [],
   description: props.initialData?.description || '',
+  items: props.initialData?.items || [],
   is_public: props.initialData?.is_public ?? true,
 });
 
@@ -18,8 +28,8 @@ watch(
   (newData) => {
     if (newData) {
       form.value.name = newData.name;
-      form.value.books = newData.books;
       form.value.description = newData.description;
+      form.value.items = newData.items;
       form.value.is_public = newData.is_public;
     }
   },
@@ -29,11 +39,26 @@ watch(
 const isSaving = ref(false);
 const error = ref<string | null>(null);
 
+function addItem() {
+  form.value.items.push({ book: { ol_id: '', title: '' }, title: '' });
+}
+
+function removeItem(index: number) {
+  form.value.items.splice(index, 1);
+}
+
 async function submit() {
   isSaving.value = true;
   error.value = null;
   try {
-    await props.onSubmit({ ...form.value });
+    const payload = {
+      ...form.value,
+      items: form.value.items.map((item) => ({
+        book: { ol_id: item.book.ol_id },
+        title: item.title,
+      })),
+    };
+    await props.onSubmit(payload);
   } catch (err) {
     error.value = 'Failed to save.';
   } finally {
@@ -59,6 +84,39 @@ async function submit() {
       rows="4"
     ></textarea>
 
+    <label class="block mb-1 font-medium">Books</label>
+    <div v-for="(item, index) in form.items" :key="index" class="mb-4">
+      <div class="flex gap-2 items-center">
+        <input
+          v-model="item.book.ol_id"
+          class="border p-2 rounded flex-1"
+          type="text"
+          placeholder="Book OL ID"
+          required
+        />
+        <input
+          v-model="item.book.title"
+          class="border p-2 rounded flex-1"
+          type="text"
+          placeholder="Book Title"
+        />
+        <button
+          type="button"
+          @click="removeItem(index)"
+          class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+    <button
+      type="button"
+      @click="addItem"
+      class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-4"
+    >
+      Add Book
+    </button>
+
     <label class="block mb-1 font-medium">Public</label>
     <input
       type="checkbox"
@@ -66,6 +124,7 @@ async function submit() {
       class="mb-4"
     />
     <span class="ml-2">{{ form.is_public ? 'Yes' : 'No' }}</span>
+
     <button
       type="submit"
       :disabled="isSaving"
