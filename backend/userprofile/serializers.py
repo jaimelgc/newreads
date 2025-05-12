@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from library.serializers import BookSerializer
+# from library.serializers import BookSerializer
 from rest_framework import serializers
 
 from .models import BookList, BookListItem  # SearchHistory
@@ -45,11 +45,9 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class BooklistItemSerializer(serializers.ModelSerializer):
-    book = BookSerializer()
-
     class Meta:
         model = BookListItem
-        fields = ['id', 'book', 'title', 'added_at']
+        fields = ['id', 'book', 'book_list', 'added_at']
 
 
 class BooklistSerializer(serializers.ModelSerializer):

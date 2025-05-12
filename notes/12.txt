@@ -1,9 +1,14 @@
 ----- Add Booklist detail
 ----- Add booklist edit
-- Add book adding and deleting
-    - Create/Delete Model Object booklistItem
-        -  needs user, book, list 
-- Create booklist with starting book
+----- Add book adding and deleting
+    ----- Create/Delete Model Object booklistItem
+        -----  needs user, book, list 
+
+- ???? Create booklist with starting book
+    - add new list button to pop up
+        - takes user to list create view with book already added
+
+!!! Next depends on fixing search + adding user and list to search
 
 - Add booklist copy feature
     - Add attribute to backend

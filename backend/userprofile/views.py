@@ -2,8 +2,9 @@ from django.contrib.auth import get_user_model
 from django.db.models import Q
 from rest_framework import generics, permissions, viewsets
 
-from .models import BookList
-from .serializers import (  # BooklistItemSerializer,; SearchHistorySerializer,
+from .models import BookList, BookListItem
+from .serializers import (  # SearchHistorySerializer,
+    BooklistItemSerializer,
     BooklistSerializer,
     RegisterSerializer,
     UserPrivateSerializer,
@@ -47,6 +48,12 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
         return User.objects.filter(username__icontains=search_query)
 
 
+class BookListItemViewSet(viewsets.ModelViewSet):
+    queryset = BookListItem.objects.all()
+    serializer_class = BooklistItemSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
 class BookListViewSet(viewsets.ModelViewSet):
     queryset = BookList.objects.all()
     serializer_class = BooklistSerializer
@@ -74,15 +81,3 @@ class BookListViewSet(viewsets.ModelViewSet):
     # def perform_destroy(self, instance):
     #     if instance.user == self.request.user:
     #         instance.delete()
-
-
-# class UserBookListsView(APIView):
-#     permission_classes = [IsAuthenticated]
-
-#     def get(self, request, username=None):
-#         user = User.objects.filter(username=username).first()
-#         if not user:
-#             return Response({'detail': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
-#         book_lists = BookList.objects.filter(user=user)
-#         serializer = BooklistSerializer(book_lists, many=True)
-#         return Response(serializer.data)

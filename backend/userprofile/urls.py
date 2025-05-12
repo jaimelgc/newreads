@@ -3,6 +3,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from .views import (  # UserBookListsView,
+    BookListItemViewSet,
     BookListViewSet,
     ProfileView,
     RegisterView,
@@ -10,6 +11,7 @@ from .views import (  # UserBookListsView,
 )
 
 router = DefaultRouter()
+router.register(r'blitems', BookListItemViewSet, basename='blitems')
 router.register(r'booklists', BookListViewSet, basename='booklist')
 router.register(r'', UserViewSet, basename='user')
 
