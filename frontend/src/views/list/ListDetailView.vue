@@ -107,13 +107,13 @@ onMounted(async () => {
         </div>
       </div>
       <p v-else>No books in this list yet.</p>
-      <ConfirmModal
+      <Modal
         :show="showDeleteModal"
         @close="closeDeleteModal"
         @confirm="confirmDelete"
       >
         <p>Are you sure you want to delete this list?</p>
-      </ConfirmModal>
+      </Modal>
     </div>
   </section>
 </template>

@@ -1,0 +1,13 @@
+- Fix JWT
+    - doesn't refresh access token
+
+- Fix navbar showing user
+    - keeps showing user indefinitely even without token
+
+- Hide actions that require logged user
+
+- Make django admin view and add modeartors
+
+- Create moderation options for is_moderator
+
+- Restric stuff for is_banned

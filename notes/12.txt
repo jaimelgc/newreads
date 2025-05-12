@@ -9,7 +9,7 @@
     - Delete Model Object booklistItem
         - Fix model visual in booklist detail view
 
-- ???? Create booklist with starting book
+- Create booklist with starting book
     - add new list button to pop up
         - takes user to list create view with book already added
 
@@ -23,11 +23,8 @@
     - Copy tab in UserDetailView
     - ? Signal if a booklist is copied
 
-!!! Válido hacer el 13
 
-- Add booklist to search
-    - Tab en results
-        - Solo hacer la búsqueda cuando se abra el tab y guardar
+
 
 
 

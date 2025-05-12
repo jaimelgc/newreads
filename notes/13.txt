@@ -1,0 +1,5 @@
+- !! Separate search from home view 
+
+- Add booklists/users/posts to search
+    - Tab en results
+        - Solo hacer la búsqueda cuando se abra el tab y guardar
