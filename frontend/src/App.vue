@@ -3,7 +3,7 @@
   import NavBar from '@/components/NavBar.vue';
   import { onMounted } from 'vue'
   import { useAuthStore } from '@/stores/auth'
-  import Breadcrumbs from './components/Breadcrumbs.vue';
+
 
   onMounted(() => {
     const auth = useAuthStore()
@@ -16,6 +16,6 @@
 
 <template>
   <NavBar />
-  <Breadcrumbs />
+
   <RouterView />
 </template>

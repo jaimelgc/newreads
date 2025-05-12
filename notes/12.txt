@@ -1,23 +1,33 @@
 ----- Add Booklist detail
+
 ----- Add booklist edit
+
 ----- Add book adding and deleting
     ----- Create/Delete Model Object booklistItem
         -----  needs user, book, list 
         
     - Delete Model Object booklistItem
+        - Fix model visual in booklist detail view
 
 - ???? Create booklist with starting book
     - add new list button to pop up
         - takes user to list create view with book already added
 
-!!! Next depends on fixing search + adding user and list to search
+- Create default lists when creating user
+    - modificar creación de usuario para que venga con 2 listas por defecto, favorites and backlog
 
 - Add booklist copy feature
     - Add attribute to backend
+    - Copying just means creating a replica of the current list, with copy=true and og_author=id creador original
     - Copy button for logged user
     - Copy tab in UserDetailView
-    - Signal if a booklist is copied
+    - ? Signal if a booklist is copied
+
+!!! Válido hacer el 13
+
+- Add booklist to search
+    - Tab en results
+        - Solo hacer la búsqueda cuando se abra el tab y guardar
 
 
-- Add booklist to search <- depends on fixing search
-- Create default lists when creating user
+

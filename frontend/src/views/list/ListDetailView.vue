@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import api from '@/api';
+import Modal from '@/components/Modal.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -32,6 +33,26 @@ const list = ref<{
 
 const isLoading = ref(true);
 
+const showDeleteModal = ref(false);
+
+const openDeleteModal = () => {
+  showDeleteModal.value = true;
+};
+
+const closeDeleteModal = () => {
+  showDeleteModal.value = false;
+};
+
+const confirmDelete = async () => {
+  showDeleteModal.value = false;
+  try {
+    await api.delete(`/user/booklists/${listId}/`);
+    router.push(`/users/${username}`);
+  } catch (error) {
+    console.error('Error deleting list:', error);
+  }
+};
+
 onMounted(async () => {
   try {
     const response = await api.get(`/user/booklists/${listId}/`);
@@ -42,15 +63,6 @@ onMounted(async () => {
     isLoading.value = false;
   }
 });
-
-const deleteList = async () => {
-  try {
-    await api.delete(`/user/booklists/${listId}/`);
-    router.push(`/users/${username}`);
-  } catch (error) {
-    console.error('Error deleting list:', error);
-  }
-};
 </script>
 
 <template>
@@ -76,7 +88,7 @@ const deleteList = async () => {
           Edit List
         </RouterLink>
         <button
-          @click="deleteList"
+          @click="openDeleteModal"
           class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
         >
           Delete List
@@ -95,6 +107,13 @@ const deleteList = async () => {
         </div>
       </div>
       <p v-else>No books in this list yet.</p>
+      <ConfirmModal
+        :show="showDeleteModal"
+        @close="closeDeleteModal"
+        @confirm="confirmDelete"
+      >
+        <p>Are you sure you want to delete this list?</p>
+      </ConfirmModal>
     </div>
   </section>
 </template>
