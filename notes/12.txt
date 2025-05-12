@@ -3,6 +3,8 @@
 ----- Add book adding and deleting
     ----- Create/Delete Model Object booklistItem
         -----  needs user, book, list 
+        
+    - Delete Model Object booklistItem
 
 - ???? Create booklist with starting book
     - add new list button to pop up
