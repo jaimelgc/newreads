@@ -30,12 +30,11 @@ class GetOrCreateBookView(APIView):
 
     def get(self, request, ol_id):
         try:
-            book = get_or_create_book(ol_id)
+            book = get_or_create_book(ol_id)  # Fetch or create the Book object
         except ValueError as e:
             return Response({'detail': str(e)}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = BookSerializer(book)
-        print(serializer.data)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 

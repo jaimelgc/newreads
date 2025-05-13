@@ -13,8 +13,9 @@
         ----- Add modal
 
 - Create booklist with starting book
-    - add new list button to pop up
-        - takes user to list create view with book already added
+    ----- add new list button to pop up
+        ----- takes user to list create view with book already added
+        - do request properly
 
 - Create default lists when creating user
     - modificar creación de usuario para que venga con 2 listas por defecto, favorites and backlog

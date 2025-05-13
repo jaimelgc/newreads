@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from rest_framework import generics, permissions, viewsets
+# from library.utils import get_or_create_book
 
 from .models import BookList, BookListItem
 from .serializers import (  # SearchHistorySerializer,
@@ -53,6 +54,15 @@ class BookListItemViewSet(viewsets.ModelViewSet):
     serializer_class = BooklistItemSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+    # def perform_create(self, serializer):
+    #     book_data = self.request.data.get('book')
+    #     if book_data:
+    #         if isinstance(book_data, str):
+    #             book = get_or_create_book(book_data)
+    #             serializer.save(book=book, book_list_id=self.request.data.get('book_list'))
+    #         else:
+    #             serializer.save()
+
 
 class BookListViewSet(viewsets.ModelViewSet):
     queryset = BookList.objects.all()
@@ -73,11 +83,3 @@ class BookListViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-
-    # def perform_update(self, serializer):
-    #     if serializer.instance.user == self.request.user:
-    #         serializer.save()
-
-    # def perform_destroy(self, instance):
-    #     if instance.user == self.request.user:
-    #         instance.delete()
