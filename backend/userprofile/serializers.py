@@ -41,6 +41,8 @@ class RegisterSerializer(serializers.ModelSerializer):
         )
         user.set_password(validated_data['password'])
         user.save()
+        BookList.objects.create(user=user, name="Favorites", is_public=True)
+        BookList.objects.create(user=user, name="To Read", is_public=True)
         return user
 
 

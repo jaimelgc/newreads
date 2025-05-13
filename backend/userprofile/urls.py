@@ -20,6 +20,5 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('register/', RegisterView.as_view(), name='register'),
     path('profile/', ProfileView.as_view(), name='profile'),
-    # path('<str:username>/lists/', UserBookListsView.as_view(), name='user-book-lists'),
     path('', include(router.urls)),
 ]
