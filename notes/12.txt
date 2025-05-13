@@ -6,8 +6,11 @@
     ----- Create/Delete Model Object booklistItem
         -----  needs user, book, list 
         
-    - Delete Model Object booklistItem
-        - Fix model visual in booklist detail view
+    ----- Delete Model Object booklistItem
+        ----- Fix model visual in booklist detail view
+        ----- ! List object carries id of book, need to fetch book!
+        ----- Add function to delete in /blitem/ emdpoint
+        ----- Add modal
 
 - Create booklist with starting book
     - add new list button to pop up

@@ -52,7 +52,7 @@
         if (!selectedListId.value || !selectedEditionId.value) return;
 
         try {
-            const bookResponse = await api.get(`/library/books/${selectedEditionId.value}/`);
+            const bookResponse = await api.get(`/library/getbook/${selectedEditionId.value}/`);
             const bookId = bookResponse.data.id;
             console.log(selectedListId.value, bookId)
 

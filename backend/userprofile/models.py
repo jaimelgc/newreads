@@ -29,7 +29,6 @@ class BookList(models.Model):
 class BookListItem(models.Model):
     book_list = models.ForeignKey(BookList, on_delete=models.CASCADE, related_name="items")
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    # title = models.CharField(max_length=500)
     added_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

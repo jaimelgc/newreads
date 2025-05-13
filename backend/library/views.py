@@ -1,8 +1,10 @@
 # from django.db.models import Q
-from rest_framework import permissions, status
+from rest_framework import permissions, status, viewsets
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from .models import Book
 
 # from .models import Book
 from .open_library import get_catch_data, get_or_create_book
@@ -35,3 +37,9 @@ class GetOrCreateBookView(APIView):
         serializer = BookSerializer(book)
         print(serializer.data)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class BookViewSet(viewsets.ModelViewSet):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+    permission_classes = [permissions.AllowAny]

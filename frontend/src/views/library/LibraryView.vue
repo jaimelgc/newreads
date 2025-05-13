@@ -33,16 +33,16 @@
   const { res: featuredList, error: listError, isLoading: listIsLoading, fetchSingle: fetchFeaturedList } = useSingleFetch()
   const { res: featuredPost, error: postError, isLoading: postIsLoading, fetchSingle: fetchFeaturedPost } = useSingleFetch()
   onMounted(() => { 
-    fetchFeaturedBook('library/books/OL21419612M/')
-    // fetchFeaturedList('library/books/OL21419612M')
-    // fetchFeaturedPost('library/books/OL21419612M')
+    fetchFeaturedBook('library/getbook/OL21419612M/')
+    // fetchFeaturedList('library/getbook/OL21419612M')
+    // fetchFeaturedPost('library/getbook/OL21419612M')
   })
   onActivated(() => {
     if (!featuredBook) {
-      fetchFeaturedBook('library/books/OL21419612M/')
+      fetchFeaturedBook('library/getbook/OL21419612M/')
     }
-    // if (!featuredList) fetchFeaturedList('library/books/OL21419612M')
-    // if (!featuredPost) fetchFeaturedPost('library/books/OL21419612M')
+    // if (!featuredList) fetchFeaturedList('library/getbook/OL21419612M')
+    // if (!featuredPost) fetchFeaturedPost('library/getbook/OL21419612M')
   })
 </script>
 
