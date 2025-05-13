@@ -18,7 +18,6 @@ onMounted(async () => {
     const res = await api.get(`/user/${username}/`);
     userId.value = res.data.id;
 
-    // Extract book data from query parameters
     if (route.query.book) {
       bookToAdd.value = JSON.parse(route.query.book as string);
     }
@@ -33,21 +32,18 @@ async function handleSubmit(data: { name: string; description: string; is_public
   if (!userId.value) return;
 
   try {
-    // Create the new list
     const listResponse = await api.post(`/user/booklists/`, {
       ...data,
       user: userId.value,
     });
 
-    // If a book is provided, add it to the newly created list
     if (bookToAdd.value) {
       await api.post('/user/blitems/', {
         book_list: listResponse.data.id,
         book: bookToAdd.value.ol_id,
       });
     }
-
-    // Redirect to the user's lists page
+    
     router.push(`/users/${username}/lists`);
   } catch (err) {
     error.value = 'Failed to create the list.';

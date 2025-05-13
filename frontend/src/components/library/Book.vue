@@ -50,11 +50,15 @@
   }
 
   async function addBookToList() {
-    if (!selectedListId.value || !selectedEditionId.value) return;
+    if (!selectedListId.value || !selectedEditionId.value) {
+      console.error('no pasa por el business')
+      return
+    };
 
     try {
       const bookResponse = await api.get(`/library/getbook/${selectedEditionId.value}/`);
       const bookId = bookResponse.data.id;
+      console.log("response", bookResponse.data)
 
       await api.post('/user/blitems/', {
         book_list: selectedListId.value,
@@ -68,14 +72,18 @@
     }
   }
 
-  function goToCreateList() {
+  async function goToCreateList() {
     if (!selectedEditionId.value) return;
+
+    const bookResponse = await api.get(`/library/getbook/${selectedEditionId.value}/`);
+    const bookId = bookResponse.data.id;
+    console.log("response", bookResponse.data)
     router.push({
       name: 'ListCreate',
       params: { username: user.value?.username },
       query: {
         book: JSON.stringify({
-          ol_id: props.book.ol_id,
+          ol_id: bookId,
           title: props.book.title,
         }),
       },
