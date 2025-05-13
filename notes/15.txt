@@ -10,4 +10,4 @@
 
 - Create moderation options for is_moderator
 
-- Restric stuff for is_banned
+- Restrict stuff for is_banned
