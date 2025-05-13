@@ -20,6 +20,7 @@
 ----- Create default lists when creating user
     ----- modificar creación de usuario para que venga con 2 listas por defecto, favorites and backlog
 
+
 - Add booklist copy feature
     - Add attribute to backend
     - Copying just means creating a replica of the current list, with copy=true and og_author=id creador original
