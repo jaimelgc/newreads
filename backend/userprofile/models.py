@@ -24,6 +24,8 @@ class BookList(models.Model):
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     is_public = models.BooleanField(default=False)
+    is_bookmarked = models.BooleanField(default=False)
+    original_author = models.CharField(max_length=55, null=True)
 
 
 class BookListItem(models.Model):

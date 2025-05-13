@@ -22,7 +22,7 @@
 
 
 - Add booklist copy feature
-    - Add attribute to backend
+    ----- Add attribute to backend
     - Copying just means creating a replica of the current list, with copy=true and og_author=id creador original
     - Copy button for logged user
     - Copy tab in UserDetailView
