@@ -1,4 +1,5 @@
-- !! Separate search from home view 
+
+- Separate search from home view 
 
 - Add booklists/users/posts to search
     - Tab en results
