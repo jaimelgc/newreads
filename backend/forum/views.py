@@ -1,12 +1,10 @@
-from drf_yasg.utils import swagger_auto_schema
 from library.open_library import get_or_create_book
 from rest_framework import viewsets
 
-from .models import Post
+from .models import Post, Comment
 from .serializers import CommentSerializer, PostSerializer
 
 
-@swagger_auto_schema(operation_description="CRUD Post View")
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -17,11 +15,15 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer.save(poster=self.request.user, book=book)
 
 
-@swagger_auto_schema(operation_description="CRUD Comment View")
 class CommentViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
+    queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
     def perform_create(self, serializer):
-        original_post = self.request.data.get('original_post')
-        serializer.save(poster=self.request.user, original_post=original_post)
+        original_post_id = self.request.data.get('original_post')
+        quoted_post_id = self.request.data.get('quoted_post')
+
+        original_post = Post.objects.get(id=original_post_id)
+        quoted_post = Comment.objects.get(id=quoted_post_id) if quoted_post_id else None
+
+        serializer.save(poster=self.request.user, original_post=original_post, quoted_post=quoted_post)
