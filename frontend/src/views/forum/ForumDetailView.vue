@@ -29,6 +29,7 @@
   const fetchPost = async () => {
   const res = await api.get(`/forum/posts/${route.params.id}/`);
     post.value = res.data;
+    console.log('post', post.value)
   };
 
   const submitComment = async () => {

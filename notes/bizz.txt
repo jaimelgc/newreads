@@ -1,18 +1,18 @@
 
 - Check forum functionalities
-    - Basic form 
-        - decent visuals
+    ----- Basic form 
+        ----- decent visuals
 
-    - Show recent posts in forum navbar tab
+    ----- Show recent posts in forum navbar tab
 
     - Create new post button
 
-    
-    - Basic detail view
+    ----- Basic detail view
 
-    - Button to add comment and basic comment form from create form
+    ----- Button to add comment and basic comment form from create form
 
     - Show posts and comments in user detail
+        - Need to get user from id for comment user display 
 
 - Add booklists/users/posts to search
     - Tab en results
