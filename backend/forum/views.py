@@ -1,7 +1,7 @@
 from library.open_library import get_or_create_book
 from rest_framework import viewsets
 
-from .models import Post, Comment
+from .models import Comment, Post
 from .serializers import CommentSerializer, PostSerializer
 
 
@@ -26,4 +26,6 @@ class CommentViewSet(viewsets.ModelViewSet):
         original_post = Post.objects.get(id=original_post_id)
         quoted_post = Comment.objects.get(id=quoted_post_id) if quoted_post_id else None
 
-        serializer.save(poster=self.request.user, original_post=original_post, quoted_post=quoted_post)
+        serializer.save(
+            poster=self.request.user, original_post=original_post, quoted_post=quoted_post
+        )
