@@ -1,0 +1,28 @@
+
+- Check forum functionalities
+    - Basic form 
+        - decent visuals
+
+    - Show recent posts in forum navbar tab
+
+    - Create new post button
+
+    
+    - Basic detail view
+
+    - Button to add comment and basic comment form from create form
+
+    - Show posts and comments in user detail
+
+- Add booklists/users/posts to search
+    - Tab en results
+        - Solo hacer la búsqueda cuando se abra el tab y guardar
+            - booklists
+            - users
+            - posts
+
+- Fix JWT
+    - doesn't refresh access token
+
+- Fix navbar showing user
+    - keeps showing user indefinitely even without token

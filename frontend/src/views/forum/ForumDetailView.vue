@@ -2,6 +2,7 @@
   import { ref, onMounted } from 'vue';
   import { useRoute } from 'vue-router';
   import axios from 'axios';
+  import api from '@/api';
 
   interface Comment {
     id: number;
@@ -26,13 +27,13 @@
   const quotedCommentId = ref<number | null>(null);
 
   const fetchPost = async () => {
-  const res = await axios.get(`/api/posts/${route.params.id}/`);
+  const res = await api.get(`/forum/posts/${route.params.id}/`);
     post.value = res.data;
   };
 
   const submitComment = async () => {
   try {
-    await axios.post('/api/comments/', {
+    await api.post('/forum/comments/', {
       content: newComment.value,
       original_post: post.value?.id,
       quoted_post: quotedCommentId.value,
