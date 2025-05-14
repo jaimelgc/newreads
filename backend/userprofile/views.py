@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from rest_framework import generics, permissions, viewsets
-# from library.utils import get_or_create_book
 
 from .models import BookList, BookListItem
 from .serializers import (  # SearchHistorySerializer,
@@ -11,6 +10,9 @@ from .serializers import (  # SearchHistorySerializer,
     UserPrivateSerializer,
     UserPublicSerializer,
 )
+
+# from library.utils import get_or_create_book
+
 
 # from rest_framework.permissions import IsAuthenticated
 # from rest_framework.response import Response
@@ -47,7 +49,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         search_query = self.request.query_params.get('search', '')
         return User.objects.filter(username__icontains=search_query)
-    
+
     def perform_create(self, serializer):
         user = serializer.save()
         BookList.objects.create(user=user, name="Favorites", is_public=True)
