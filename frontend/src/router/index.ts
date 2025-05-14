@@ -11,6 +11,10 @@ import BookDetailView from '@/views/library/BookDetailView.vue'
 import ListDetailView from '@/views/list/ListDetailView.vue'
 import ListEditView from '@/views/list/ListEditView.vue'
 import ListCreateView from '@/views/list/ListCreateView.vue'
+import SearchView from '@/views/library/SearchView.vue'
+import ForumListView from '@/views/forum/ForumListView.vue'
+import ForumDetailView from '@/views/forum/ForumDetailView.vue'
+import CreatePostView from '@/views/forum/CreatePostView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,9 +45,29 @@ const router = createRouter({
       component: LibraryView,
     },
     {
-      path: '/forum',
-      name: 'Forum',
-      component: ForumView,
+      path: '/search',
+      name: 'SearchView',
+      component: SearchView,
+    },
+    // {
+    //   path: '/forum',
+    //   name: 'Forum',
+    //   component: ForumView,
+    // },
+    { 
+      path: '/forum', 
+      name: 'ForumList', 
+      component: ForumListView 
+    },
+    { 
+      path: '/:username/forum/new', 
+      name: 'CreatePostView', 
+      component: CreatePostView 
+    },
+    { 
+      path: '/forum/:id', 
+      name: 'ForumDetail', 
+      component: ForumDetailView 
     },
     {
       path: '/users/:username/lists/:listId/edit',

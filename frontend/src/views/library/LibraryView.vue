@@ -1,75 +1,75 @@
 <script setup lang="ts">
-  import { ref, computed, onMounted, onActivated } from 'vue';
+  import { ref, onMounted, onActivated } from 'vue';
+  import { useRouter } from 'vue-router';
   import Books from '@/components/library/Books.vue';
   import Book from '@/components/library/Book.vue';
   import List from '@/components/user/List.vue';
   import Post from '@/components/user/Post.vue';
-  import { useApiSearch, useSingleFetch } from '@/search';
-  import { storeToRefs } from 'pinia'
-  import { useAuthStore } from '@/stores/auth'
+  import { useSingleFetch } from '@/search';
 
-  // CHECK AUTH
-  const auth = useAuthStore()
-  const { isLoggedIn, user } = storeToRefs(auth)
-
-  console.log(isLoggedIn.value)
-  console.log(user.value)
-
-  // SEARCH
-  const searchTerm = ref('')
-  const { results, error, isLoading, fetchData } = useApiSearch()
+  const router = useRouter();
+  const searchTerm = ref('');
 
   const search = () => {
-    const endpoint = '/api/library/search/'
-    const params = {
-        key: `book-search-${searchTerm.value}`,
-        url: `https://openlibrary.org/search.json?q=${encodeURIComponent(searchTerm.value)}`
+    if (searchTerm.value.trim()) {
+      router.push({ name: 'SearchView', query: { q: searchTerm.value } });
     }
-    fetchData(endpoint, params)
-  }
+  };
 
-  // FEATURES
-  const { res: featuredBook, error: bookError, isLoading: bookIsLoading, fetchSingle: fetchFeaturedBook } = useSingleFetch()
-  const { res: featuredList, error: listError, isLoading: listIsLoading, fetchSingle: fetchFeaturedList } = useSingleFetch()
-  const { res: featuredPost, error: postError, isLoading: postIsLoading, fetchSingle: fetchFeaturedPost } = useSingleFetch()
-  onMounted(() => { 
-    fetchFeaturedBook('library/getbook/OL21419612M/')
-    // fetchFeaturedList('library/getbook/OL21419612M')
-    // fetchFeaturedPost('library/getbook/OL21419612M')
-  })
+  const {
+    res: featuredBook,
+    error: bookError,
+    isLoading: bookIsLoading,
+    fetchSingle: fetchFeaturedBook,
+  } = useSingleFetch();
+
+  const {
+    res: featuredList,
+    error: listError,
+    isLoading: listIsLoading,
+    fetchSingle: fetchFeaturedList,
+  } = useSingleFetch();
+
+  const {
+    res: featuredPost,
+    error: postError,
+    isLoading: postIsLoading,
+    fetchSingle: fetchFeaturedPost,
+  } = useSingleFetch();
+
+  onMounted(() => {
+    fetchFeaturedBook('library/getbook/OL21419612M/');
+  });
+
   onActivated(() => {
-    if (!featuredBook) {
-      fetchFeaturedBook('library/getbook/OL21419612M/')
+    if (!featuredBook.value) {
+      fetchFeaturedBook('library/getbook/OL21419612M/');
     }
-    // if (!featuredList) fetchFeaturedList('library/getbook/OL21419612M')
-    // if (!featuredPost) fetchFeaturedPost('library/getbook/OL21419612M')
-  })
+  });
 </script>
 
 <template>
-        <div>
-      <input v-model="searchTerm" placeholder="Search books..." />
-      <button @click="search">Search</button>
-      <div v-if="isLoading">Loading...</div>
-      <div v-else-if="error">{{ error }}</div>
-      <div v-else-if="results">
-        <Books :results="results" :isLoading="isLoading" :limit="10"/>
+  <div>
+    <input v-model="searchTerm" placeholder="Search books..." />
+    <button @click="search">Search</button>
+    
+    <div id="featuredBook">
+      <div v-if="!bookError && !bookIsLoading && featuredBook">
+        <Book :key="featuredBook.key" :book="featuredBook" />
       </div>
-      <div id="featuredBook">
-        <div v-if="!bookError && !bookIsLoading && featuredBook">
-          <Book :key="featuredBook.key" :book="featuredBook" />
-        </div>
-        <div v-else><h1>hello</h1></div>
-      </div>
-      <div id="featuredList">
-        <div v-if="!listError && !listIsLoading && featuredList">
-          <List :key="featuredList.key" :book="featuredList" />
-        </div>
-      </div>
-      <div id="featuredPost">
-        <div v-if="!postError && !postIsLoading && featuredPost">
-          <Post :key="featuredPost.key" :book="featuredPost" />
-        </div>
+      <div v-else><h1>hello</h1></div>
+    </div>
+
+    <div id="featuredList">
+      <div v-if="!listError && !listIsLoading && featuredList">
+        <List :key="featuredList.key" :book="featuredList" />
       </div>
     </div>
+
+    <div id="featuredPost">
+      <div v-if="!postError && !postIsLoading && featuredPost">
+        <Post :key="featuredPost.key" :book="featuredPost" />
+      </div>
+    </div>
+  </div>
 </template>

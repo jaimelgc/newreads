@@ -77,9 +77,25 @@
 
     const bookResponse = await api.get(`/library/getbook/${selectedEditionId.value}/`);
     const bookId = bookResponse.data.id;
-    console.log("response", bookResponse.data)
     router.push({
       name: 'ListCreate',
+      params: { username: user.value?.username },
+      query: {
+        book: JSON.stringify({
+          ol_id: bookId,
+          title: props.book.title,
+        }),
+      },
+    });
+  }
+
+  async function goToCreatePost() {
+    if (!selectedEditionId.value) return;
+
+    const bookResponse = await api.get(`/library/getbook/${selectedEditionId.value}/`);
+    const bookId = bookResponse.data.id;
+    router.push({
+      name: 'PostCreate',
       params: { username: user.value?.username },
       query: {
         book: JSON.stringify({
@@ -119,6 +135,12 @@
         class="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm"
       >
         Add to List
+      </button>
+      <button
+        @click="goToCreatePost"
+        class="h-[36px] bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm"
+      >
+        New Post
       </button>
     </div>
     <Modal :show="showModal" @close="showModal = false" @confirm="addBookToList">
