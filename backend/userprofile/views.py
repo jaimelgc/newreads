@@ -40,20 +40,11 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     lookup_field = 'username'
     permission_classes = [permissions.AllowAny]
-
-    def get_serializer_class(self):
-        if self.action == 'retrieve':
-            return UserPublicSerializer
-        return UserPublicSerializer
+    serializer_class = UserPublicSerializer
 
     def get_queryset(self):
         search_query = self.request.query_params.get('search', '')
         return User.objects.filter(username__icontains=search_query)
-
-    def perform_create(self, serializer):
-        user = serializer.save()
-        BookList.objects.create(user=user, name="Favorites", is_public=True)
-        BookList.objects.create(user=user, name="To Read", is_public=True)
 
 
 class BookListItemViewSet(viewsets.ModelViewSet):

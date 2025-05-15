@@ -7,13 +7,14 @@
 
     - Create new post button
 
-    ----- Basic detail view
+    - Basic detail view
+        ---- Comment text
+        - Need to get user from id for comment user display 
 
     ----- Button to add comment and basic comment form from create form
 
     - Show posts and comments in user detail
-        - Need to get user from id for comment user display 
-
+        
 - Add booklists/users/posts to search
     - Tab en results
         - Solo hacer la búsqueda cuando se abra el tab y guardar
