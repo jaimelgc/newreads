@@ -8,8 +8,10 @@
     - Create new post button
 
     - Basic detail view
-        ---- Comment text
-        - Need to get user from id for comment user display 
+        ----- Comment text
+        ----- Need to get user from id for comment user display 
+        - Fix reply to comment
+            - Reply is a variable that gets a comment id when you hit reply...
 
     ----- Button to add comment and basic comment form from create form
 
