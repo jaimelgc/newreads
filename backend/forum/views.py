@@ -1,5 +1,5 @@
 from library.open_library import get_or_create_book
-from rest_framework import viewsets
+from rest_framework import filters, viewsets
 
 from .models import Comment, Post
 from .serializers import CommentSerializer, PostSerializer
@@ -8,6 +8,8 @@ from .serializers import CommentSerializer, PostSerializer
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['poster__username']
 
     def perform_create(self, serializer):
         ol_id = self.request.data.get('ol_id')
@@ -18,6 +20,8 @@ class PostViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['poster__username']
 
     def perform_create(self, serializer):
         original_post_id = self.request.data.get('original_post')

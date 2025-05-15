@@ -1,21 +1,21 @@
 
-- Check forum functionalities
+----- Check forum functionalities
     ----- Basic form 
         ----- decent visuals
 
     ----- Show recent posts in forum navbar tab
 
-    - Create new post button
+    ----- Create new post button
 
-    - Basic detail view
+    ----- Basic detail view
         ----- Comment text
         ----- Need to get user from id for comment user display 
-        - Fix reply to comment
-            - Reply is a variable that gets a comment id when you hit reply...
+        ----- Fix reply to comment
+            ----- Reply is a variable that gets a comment id when you hit reply...
 
     ----- Button to add comment and basic comment form from create form
 
-    - Show posts and comments in user detail
+    ----- Show posts and comments in user detail
         
 - Add booklists/users/posts to search
     - Tab en results

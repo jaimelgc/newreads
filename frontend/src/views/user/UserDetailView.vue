@@ -1,13 +1,15 @@
 <script setup lang="ts">
-  import { useRoute } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
   import { ref, reactive, computed, onMounted } from 'vue';
   import api from '@/api';
   import { useApiSearch } from '@/search';
   import Lists from '@/components/user/Lists.vue';
-  import Posts from '@/components/user/Posts.vue';
+  // import Posts from '@/components/user/Posts.vue';
   import { useAuthStore } from '@/stores/auth';
+  import Posts from '@/components/forum/Posts.vue';
 
   const route = useRoute();
+  const router = useRouter();
   const userName = route.params.username;
 
 
@@ -31,6 +33,10 @@
   const userLists = ref([]);
   const userPosts = ref([]);
 
+  function goToPost(postId: number) {
+    router.push({ name: 'PostDetail', params: { id: postId } });
+  }
+
   onMounted(async () => {
     try {
       const  response = await api.get(`/user/${userName}/`);
@@ -40,7 +46,9 @@
       });
       userLists.value = listsResponse.data;
       console.log('lists', userLists.value)
-      // const userPosts = await api.get(`/user/${userName}/lists/`); 
+      const postsResponse = await api.get(`/forum/posts/?poster__username=${userName}`); 
+      const userComments = await api.get(`/forum/comments/?poster__username=${userName}`); 
+      userPosts.value = postsResponse.data;
     } catch (error) {
       console.error('Error fetching user');
     } finally {
@@ -48,7 +56,7 @@
     }
   });
 </script>
-
+forum
 <template>
   <section v-if="!state.isLoading" class="bg-green-50">
     <div class="container m-auto py-10 px-6">
@@ -100,7 +108,7 @@
               />
             </div>
             <div v-if="activeTab === 'posts'" >
-              <Posts :results="userPosts" :isLoading="state.isLoading" :limit="10" />
+              <Posts :posts="userPosts" :username="userName as string" @select="goToPost" />
             </div>
           </div>
         </main>

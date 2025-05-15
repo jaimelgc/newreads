@@ -65,8 +65,8 @@ const router = createRouter({
       component: CreatePostView 
     },
     { 
-      path: '/forum/:id', 
-      name: 'ForumDetail', 
+      path: '/post/:id', 
+      name: 'PostDetail', 
       component: ForumDetailView 
     },
     {
