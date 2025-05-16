@@ -6,6 +6,7 @@
 
   const route = useRoute();
   const auth = useAuthStore();
+  
   const { isLoggedIn, user } = storeToRefs(auth);
 
   const isActiveLink = (routePath: string) => route.path.startsWith(routePath);

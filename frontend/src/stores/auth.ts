@@ -41,6 +41,8 @@ export const useAuthStore = defineStore('auth', {
 
       if (storedToken) this.token = storedToken
       if (storedUser) this.user = JSON.parse(storedUser)
+
+      this.fetchUser();
     },
     async fetchUser() {
       if (!this.token || !this.user?.username) return

@@ -51,12 +51,7 @@
                 localStorage.setItem(REFRESH_TOKEN, response.data.refresh);
 
                 const res = await api.get(`/user/${newUser.username}/`);
-                auth.setUser(res.data); // ✅ THIS LINE FIXES NAVBAR
-
-                const userStore = useUserStore();
-                userStore.setUser(res.data);
-
-                localStorage.setItem(CURRENT_USER, JSON.stringify(res.data));
+                auth.setUser(res.data);
 
                 router.push('/');
             } else {
