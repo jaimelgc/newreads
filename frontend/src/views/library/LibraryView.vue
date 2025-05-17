@@ -99,7 +99,11 @@
       class="border rounded-lg p-4 hover:shadow-lg transition"
     >
       <div v-if="!postError && !postIsLoading && featuredPost">
-        <Post :key="featuredPost.key" :book="featuredPost" />
+        <Post
+          :key="post.id"
+          :post="post"
+          @click="emit('select', post.id)"
+        />
       </div>
       <div v-else>
         <h1 class="text-center text-gray-500">No post found</h1>
