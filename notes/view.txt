@@ -1,0 +1,37 @@
+Views
+
+- Home/Library Views
+    - Main colors and structure
+    - Main effects and fonts
+    - Search bar with logo and description text
+    - Featured Book
+    - Featured List
+    - Featured Post 
+
+- Login/Register Views
+
+- User edit View
+
+- User detail View
+
+- Search View (Books)
+
+- Book View
+
+- List creation View
+
+- List detail View
+
+- List edit View
+
+- Search View (Lists)
+
+- Forum main View
+
+- Forum creation
+
+- Forum detail View
+
+- Search View (Posts)
+
+- User detail View (check lists and posts)

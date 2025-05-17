@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LibraryView from '@/views/library/LibraryView.vue'
-import ForumView from '@/views/forum/ForumView.vue'
 import UserDetailView from '@/views/user/UserDetailView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import RegisterView from '@/views/auth/RegisterView.vue'
@@ -49,11 +48,6 @@ const router = createRouter({
       name: 'SearchView',
       component: SearchView,
     },
-    // {
-    //   path: '/forum',
-    //   name: 'Forum',
-    //   component: ForumView,
-    // },
     { 
       path: '/forum', 
       name: 'ForumList', 

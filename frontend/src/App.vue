@@ -11,11 +11,16 @@
     if (auth.token) {
       auth.user
     }
+    console.log('auth token', auth.token)
+    console.log('auth user', auth.user)
   })
 </script>
 
 <template>
-  <NavBar />
-
-  <RouterView />
+  <div class="bg-sideground">
+    <div class="container-xl lg:container m-auto bg-background">
+    <NavBar />
+    <RouterView />
+    </div>
+  </div>
 </template>

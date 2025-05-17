@@ -34,13 +34,23 @@
 
 <template>
   <div>
-    <input v-model="searchTerm" placeholder="Search books..." />
-    <button @click="search">Search</button>
-
+    <div class="flex gap-2 mb-4 mt-2">
+      <input
+        v-model="searchTerm"
+        placeholder="Search books..."
+        class="border border-gray-300 rounded px-4 py-2 w-full"
+      />
+      <button
+        @click="search"
+        class="px-6 py-2 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white rounded-lg text-sm transition"
+      >
+        Search
+      </button>
+    </div>
     <div v-if="isLoading">Loading...</div>
     <div v-else-if="error">{{ error }}</div>
     <div v-else-if="results && results.length">
-      <Books :results="results" :isLoading="isLoading" :limit="10" />
+      <Books :results="results" :isLoading="isLoading" :limit="12" />
     </div>
     <div v-else>
       <p>No results found. Try a different search.</p>

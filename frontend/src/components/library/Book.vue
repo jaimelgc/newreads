@@ -111,38 +111,44 @@
 </script>
 
 <template>
-  <div class="border rounded shadow p-4 bg-white">
-    <img :src="coverUrl" alt="Book Cover" class="mb-4" />
-    <h3 class="text-xl font-semibold">{{ book.title }}</h3>
-    <p class="text-gray-600">
-      {{ Array.isArray(book.author_name) ? book.author_name.join(', ') : book.author_name }}
-    </p>
-    <p class="text-sm text-gray-500">
-      First published: {{ book.first_publish_year || book.publish_date || 'N/A' }}
-    </p>
-
-    <div class="flex gap-2 mt-4">
+  <div class="border-background rounded shadow p-6 bg-background hover:border-blue-300 border-4 flex flex-col items-center text-center"> 
+    <div class="flex flex-col items-center text-center"></div>
       <RouterLink
         v-if="selectedEditionId"
         :to="`/books/${selectedEditionId}`"
-        class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm"
+        class="rounded shadow p-6 bg-background flex flex-col items-center text-center"
       >
-        Read More
-      </RouterLink>
+        <img
+          :src="coverUrl"
+          alt="Book Cover"
+          class="mb-4 h-60 w-40 object-cover"
+        />
 
-      <button
-        @click="showModal = true"
-        class="h-[36px] bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm"
-      >
-        Add to List
-      </button>
-      <button
-        @click="goToCreatePost"
-        class="h-[36px] bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm"
-      >
-        New Post
-      </button>
+        <h3 class="text-xl font-semibold mb-1 text-white">{{ book.title }}</h3>
+        <p class="text-gray-300 mb-1">
+          {{ Array.isArray(book.author_name) ? book.author_name.join(', ') : book.author_name }}
+        </p>
+        <p class="text-sm text-gray-300 mb-4">
+          First published: {{ book.first_publish_year || book.publish_date || 'N/A' }}
+        </p>
+      </RouterLink>
+      <div class="flex flex-wrap justify-center gap-2">
+        <button
+          @click.stop="showModal = true"
+          class="h-[36px] border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-4 py-1.5 rounded-lg text-sm transition"
+        >
+          Add to List
+        </button>
+
+        <button
+          @click.stop="goToCreatePost"
+          class="h-[36px] border border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white px-4 py-1.5 rounded-lg text-sm transition"
+        >
+          New Post
+        </button>
+      </div>
     </div>
+    
     <Modal :show="showModal" @close="showModal = false" @confirm="addBookToList">
       <template #default>
         <h2 class="text-lg font-semibold mb-4">Choose a list to add this book to:</h2>
@@ -160,5 +166,4 @@
         </button>
       </template>
     </Modal>
-  </div>
 </template>
