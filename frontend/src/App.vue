@@ -16,7 +16,7 @@
   })
 </script>
 
-<template>
+<template class="h-full">
   <div class="bg-sideground">
     <div class="container-xl lg:container m-auto bg-background">
     <NavBar />

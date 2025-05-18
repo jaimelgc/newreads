@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import axios from 'axios'
+import api from './api'
 
 export function useApiSearch<T = any>() {
   const results = ref<T | null>(null)
@@ -36,7 +37,7 @@ export function useSingleFetch<T = any>() {
     error.value = null
 
     try {
-      const response = await axios.get(`/api/${route}`)
+      const response = await api.get(`${route}`)
       res.value = response.data
     } catch (err: any) {
       error.value = err.response?.data?.detail || 'Failed to load book'

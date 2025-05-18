@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { ACCESS_TOKEN, REFRESH_TOKEN, CURRENT_USER } from '@/constants'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -36,13 +37,23 @@ export const useAuthStore = defineStore('auth', {
       localStorage.removeItem('CURRENT_USER')
     },
     loadAuthFromStorage() {
-      const storedToken = localStorage.getItem('ACCESS_TOKEN')
-      const storedUser = localStorage.getItem('CURRENT_USER')
-
-      if (storedToken) this.token = storedToken
-      if (storedUser) this.user = JSON.parse(storedUser)
-
-      this.fetchUser();
+      const storedToken = localStorage.getItem(ACCESS_TOKEN);
+      const storedUser = localStorage.getItem(CURRENT_USER);
+    
+      if (storedToken) this.token = storedToken;
+    
+      if (storedUser) {
+        try {
+          this.user = JSON.parse(storedUser);
+        } catch (e) {
+          console.error("Failed to parse user from localStorage:", e);
+          this.user = null;
+        }
+      }
+    
+      if (this.token && !this.user) {
+        this.fetchUser();
+      }
     },
     async fetchUser() {
       if (!this.token || !this.user?.username) return

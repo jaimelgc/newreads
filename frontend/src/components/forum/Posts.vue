@@ -40,7 +40,6 @@
           v-for="post in posts"
           :key="post.id"
           :post="post"
-          @click="emit('select', post.id)"
         />
       </div>
     </div>

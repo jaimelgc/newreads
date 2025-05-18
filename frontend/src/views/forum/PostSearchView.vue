@@ -1,8 +1,9 @@
 <script setup lang="ts">
     import { ref, watch } from 'vue';
     import { useRoute, useRouter } from 'vue-router';
-    import Books from '@/components/library/Books.vue';
+    import Posts from '@/components/forum/Posts.vue';
     import { useApiSearch } from '@/search';
+    import api from '@/api';
 
     const route = useRoute();
     const router = useRouter();
@@ -10,15 +11,11 @@
 
     const { results, error, isLoading, fetchData } = useApiSearch();
 
-    const search = () => {
+    const search = (async () => {
     if (searchTerm.value.trim()) {
         router.replace({ query: { q: searchTerm.value } });
-        fetchData('/api/library/search/', {
-        key: `book-search-${searchTerm.value}`,
-        url: `https://openlibrary.org/search.json?q=${encodeURIComponent(searchTerm.value)}`,
-        });
-    }
-    };
+        const postsResponse = await api.get(`/forum/posts/?title=${searchTerm.value}`); 
+    }});
 
     watch(
     () => route.query.q,

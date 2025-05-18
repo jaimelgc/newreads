@@ -13,9 +13,9 @@
 </script>
 
 <template>
-  <div
+  <RouterLink
     class="border-white border-t-4 rounded shadow p-6 bg-background hover:border-blue-300 border-4 flex flex-col text-left cursor-pointer transition-all"
-    @click="$emit('click')"
+    :to="`/books/${post.id}`"
   >
     <h3 class="text-xl font-semibold mb-1 text-white">{{ post.title }}</h3>
     <p class="text-gray-300 text-sm mb-1">
@@ -24,7 +24,7 @@
     <p class="text-xs text-gray-400">
       {{ new Date(post.created_at).toLocaleString() }}
     </p>
-  </div>
+  </RouterLink>
 </template>
   
 

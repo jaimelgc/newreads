@@ -49,7 +49,8 @@
                 auth.setToken(response.data.access);
                 localStorage.setItem(ACCESS_TOKEN, response.data.access);
                 localStorage.setItem(REFRESH_TOKEN, response.data.refresh);
-
+                localStorage.setItem(CURRENT_USER, JSON.stringify(newUser));
+                
                 const res = await api.get(`/user/${newUser.username}/`);
                 auth.setUser(res.data);
 

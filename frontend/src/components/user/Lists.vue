@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref, computed, defineProps, withDefaults } from 'vue';
-    import List from '@/components/user/List.vue'
+    import ListCard from '@/components/user/List.vue'
 
     interface UserType {
         id: number;
@@ -80,8 +80,8 @@
           No results found.
         </div>
 
-        <div class="grid grid-cols-1 gap-6">
-          <List
+        <div class="grid grid-cols-2 gap-6">
+          <ListCard
             v-for="list in paginatedResults"
             :key="list.id"
             :list="list"

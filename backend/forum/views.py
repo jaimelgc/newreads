@@ -1,5 +1,6 @@
 from library.open_library import get_or_create_book
 from rest_framework import filters, viewsets
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from .models import Comment, Post
 from .serializers import CommentSerializer, PostSerializer
@@ -10,6 +11,11 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['poster__username']
+
+    def get_permissions(self):
+        if self.request.method in ['GET', 'HEAD', 'OPTIONS']:
+            return [AllowAny()]
+        return [IsAuthenticated()]
 
     def perform_create(self, serializer):
         ol_id = self.request.data.get('ol_id')
@@ -22,6 +28,11 @@ class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['poster__username']
+
+    def get_permissions(self):
+        if self.request.method in ['GET', 'HEAD', 'OPTIONS']:
+            return [AllowAny()]
+        return [IsAuthenticated()]
 
     def perform_create(self, serializer):
         original_post_id = self.request.data.get('original_post')
