@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref, computed, defineProps, withDefaults } from 'vue';
-    import User from './User.vue';
+    import User from '@/components/user/User.vue';
    
     interface UserType {
         id: number;
@@ -41,7 +41,7 @@
         No results found.
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Edition
+        <User
           v-for="user in paginatedResults"
           :key="user.id"
           :edition="user"

@@ -37,7 +37,7 @@
     <div class="flex gap-2 mb-4 mt-2">
       <input
         v-model="searchTerm"
-        placeholder="Search posts..."
+        placeholder="browse posts..."
         class="border border-gray-300 rounded px-4 py-2 w-full"
       />
       <button
@@ -50,7 +50,7 @@
 
     <div v-if="!route.query.q && !isLoading">
       <div class="bg-gray-100 p-6 rounded-lg text-center text-gray-600">
-        <h2 class="text-xl font-semibold mb-2">Search posts by title</h2>
+        <h2 class="text-xl font-semibold mb-2">Search for posts by title</h2>
         <p>Join the conversation about your favorite reads</p>
       </div>
     </div>
@@ -61,7 +61,7 @@
         <Posts :results="results" :isLoading="isLoading" :limit="12" method='Results'/>
       </div>
       <div v-else>
-        <p>No results found. Try a different search.</p>
+        <p>No posts found. Try a different search.</p>
       </div>
     </div>
   </div>
