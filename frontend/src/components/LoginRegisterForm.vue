@@ -39,9 +39,6 @@
         }
 
         try {
-            // IF LOGIN POSTS TO TOKEN IF REGISTER POSTS TO REGISTER
-            // const response = await api.post(endpoint, newUser);
-
             if (props.method === 'login') {
                 const response = await api.post(endpoint, newUser);
 
