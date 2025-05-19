@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
-from django.db.models import Q
-from rest_framework import generics, permissions, viewsets
+
+# from django.db.models import Q
+from rest_framework import filters, generics, permissions, viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from .models import BookList, BookListItem
@@ -42,10 +43,8 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     lookup_field = 'username'
     permission_classes = [permissions.AllowAny]
     serializer_class = UserPublicSerializer
-
-    def get_queryset(self):
-        search_query = self.request.query_params.get('search', '')
-        return User.objects.filter(username__icontains=search_query)
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['username']
 
 
 class BookListItemViewSet(viewsets.ModelViewSet):
@@ -63,22 +62,23 @@ class BookListViewSet(viewsets.ModelViewSet):
     queryset = BookList.objects.all()
     serializer_class = BooklistSerializer
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [filters.SearchFilter]
 
     def get_permissions(self):
         if self.request.method in ['GET', 'HEAD', 'OPTIONS']:
             return [AllowAny()]
         return [IsAuthenticated()]
 
-    def get_queryset(self):
-        user = self.request.user
-        username = self.request.query_params.get('username')
+    def get_search_fields(self):
+        search_field = self.request.query_params.get('field', None)
 
-        if self.action == 'list':
-            if username:
-                return BookList.objects.filter(user__username=username, is_public=True)
-            else:
-                return BookList.objects.filter(user=user)
-        return BookList.objects.filter(Q(is_public=True) | Q(user=user))
+        match search_field:
+            case 'name':
+                return ['name']
+            case 'author__username':
+                return ['author__username']
+            case _:
+                return ['name']
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

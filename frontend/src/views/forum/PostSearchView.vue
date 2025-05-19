@@ -3,7 +3,6 @@
     import { useRoute, useRouter } from 'vue-router';
     import Posts from '@/components/forum/Posts.vue';
     import { useApiSearch } from '@/search';
-    import api from '@/api';
 
     const route = useRoute();
     const router = useRouter();
@@ -11,21 +10,25 @@
 
     const { results, error, isLoading, fetchData } = useApiSearch();
 
-    const search = (async () => {
-    if (searchTerm.value.trim()) {
-        router.replace({ query: { q: searchTerm.value } });
-        const postsResponse = await api.get(`/forum/posts/?title=${searchTerm.value}`); 
-    }});
+    const search = () => {
+        if (searchTerm.value.trim()) {
+            router.replace({ query: { q: searchTerm.value } });
+            fetchData('/api/forum/posts/', {
+                search: searchTerm.value,
+                field: "title",
+            });
+        }
+    };
 
     watch(
-    () => route.query.q,
-    (newQuery) => {
-        if (newQuery) {
-        searchTerm.value = newQuery as string;
-        search();
-        }
-    },
-    { immediate: true }
+        () => route.query.q,
+        (newQuery) => {
+            if (newQuery) {
+                searchTerm.value = newQuery as string;
+                search();
+            }
+        },
+        { immediate: true }
     );
 </script>
 
@@ -34,7 +37,7 @@
     <div class="flex gap-2 mb-4 mt-2">
       <input
         v-model="searchTerm"
-        placeholder="Search books..."
+        placeholder="Search posts..."
         class="border border-gray-300 rounded px-4 py-2 w-full"
       />
       <button
@@ -47,15 +50,15 @@
 
     <div v-if="!route.query.q && !isLoading">
       <div class="bg-gray-100 p-6 rounded-lg text-center text-gray-600">
-        <h2 class="text-xl font-semibold mb-2">Welcome to the Library</h2>
-        <p>Use the search bar above to find books from the Open Library.</p>
+        <h2 class="text-xl font-semibold mb-2">Search posts by title</h2>
+        <p>Join the conversation about your favorite reads</p>
       </div>
     </div>
     <div v-else>
       <div v-if="isLoading">Loading...</div>
       <div v-else-if="error">{{ error }}</div>
       <div v-else-if="results && results.length">
-        <Books :results="results" :isLoading="isLoading" :limit="12" />
+        <Posts :results="results" :isLoading="isLoading" :limit="12" method='Results'/>
       </div>
       <div v-else>
         <p>No results found. Try a different search.</p>

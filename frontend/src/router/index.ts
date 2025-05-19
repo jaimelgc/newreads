@@ -14,6 +14,7 @@ import SearchView from '@/views/library/SearchView.vue'
 import ForumListView from '@/views/forum/ForumListView.vue'
 import ForumDetailView from '@/views/forum/ForumDetailView.vue'
 import CreatePostView from '@/views/forum/CreatePostView.vue'
+import PostSearchView from '@/views/forum/PostSearchView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -47,6 +48,11 @@ const router = createRouter({
       path: '/search',
       name: 'SearchView',
       component: SearchView,
+    },
+    {
+      path: '/forum/search',
+      name: 'PostSearchView',
+      component: PostSearchView,
     },
     { 
       path: '/forum', 
