@@ -44,7 +44,7 @@
         <User
           v-for="user in paginatedResults"
           :key="user.id"
-          :edition="user"
+          :user="user"
         />
        
       </div>

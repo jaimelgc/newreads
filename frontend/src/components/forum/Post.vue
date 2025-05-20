@@ -15,7 +15,7 @@
 <template>
   <RouterLink
     class="border-white border-t-4 rounded shadow p-6 bg-background hover:border-blue-300 border-4 flex flex-col text-left cursor-pointer transition-all"
-    :to="`/books/${post.id}`"
+    :to="`/post/${post.id}`"
   >
     <h3 class="text-xl font-semibold mb-1 text-white">{{ post.title }}</h3>
     <p class="text-gray-300 text-sm mb-1">

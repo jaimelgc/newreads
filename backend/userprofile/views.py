@@ -63,22 +63,19 @@ class BookListViewSet(viewsets.ModelViewSet):
     serializer_class = BooklistSerializer
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [filters.SearchFilter]
+    search_fields = ['name']
 
     def get_permissions(self):
         if self.request.method in ['GET', 'HEAD', 'OPTIONS']:
             return [AllowAny()]
         return [IsAuthenticated()]
 
-    def get_search_fields(self):
-        search_field = self.request.query_params.get('field', None)
-
-        match search_field:
-            case 'name':
-                return ['name']
-            case 'author__username':
-                return ['author__username']
-            case _:
-                return ['name']
+    def get_queryset(self):
+        queryset = self.queryset
+        username = self.request.query_params.get('username')
+        if username:
+            queryset = queryset.filter(user__username=username)
+        return queryset
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)

@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { ref, watch } from 'vue';
     import { useRoute, useRouter } from 'vue-router';
-    import Users from '@src/components/user/Users.vue';
+    import Users from '@/components/user/Users.vue';
     import { useApiSearch } from '@/search';
 
     const route = useRoute();

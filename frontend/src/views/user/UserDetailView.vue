@@ -2,9 +2,7 @@
   import { useRoute, useRouter } from 'vue-router';
   import { ref, reactive, computed, onMounted } from 'vue';
   import api from '@/api';
-  import { useApiSearch } from '@/search';
   import Lists from '@/components/user/Lists.vue';
-  // import Posts from '@/components/user/Posts.vue';
   import { useAuthStore } from '@/stores/auth';
   import Posts from '@/components/forum/Posts.vue';
 
@@ -47,7 +45,7 @@
       userLists.value = listsResponse.data;
       console.log('lists', userLists.value)
       const postsResponse = await api.get(`/forum/posts/?poster__username=${userName}`); 
-      const userComments = await api.get(`/forum/comments/?poster__username=${userName}`); 
+      // const userComments = await api.get(`/forum/comments/?poster__username=${userName}`); 
       userPosts.value = postsResponse.data;
     } catch (error) {
       console.error('Error fetching user');
@@ -56,7 +54,7 @@
     }
   });
 </script>
-forum
+
 <template>
   <section v-if="!state.isLoading" class="bg-background">
     <div class="container m-auto py-10 px-6">
@@ -107,7 +105,7 @@ forum
               />
             </div>
             <div v-if="activeTab === 'posts'" >
-              <Posts :posts="userPosts" :username="userName as string" @select="goToPost" />
+              <Posts :results="userPosts" :username="userName as string" @select="goToPost" />
             </div>
           </div>
         </main>

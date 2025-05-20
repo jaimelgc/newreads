@@ -49,18 +49,28 @@
     </div>
 
     <div v-if="!route.query.q && !isLoading">
-      <div class="bg-gray-100 p-6 rounded-lg text-center text-gray-600">
-        <h2 class="text-xl font-semibold mb-2">Welcome to the Library</h2>
-        <p>Use the search bar above to find books from the Open Library.</p>
+      <div
+        class="min-h-screen flex items-center justify-center bg-gray-100 p-6 rounded-lg text-center text-gray-600"
+      >
+        <div>
+          <h2 class="text-xl font-semibold mb-2">Welcome to the Library</h2>
+          <p>Use the search bar above to find books from the Open Library.</p>
+        </div>
       </div>
     </div>
+
     <div v-else>
-      <div v-if="isLoading">Loading...</div>
+      <div v-if="isLoading" class="min-h-screen flex items-center justify-center">
+        <div>Loading...</div>
+      </div>
+
       <div v-else-if="error">{{ error }}</div>
+
       <div v-else-if="results && results.length">
         <Books :results="results" :isLoading="isLoading" :limit="12" />
       </div>
-      <div v-else>
+
+      <div v-else class="min-h-screen flex items-center justify-center text-gray-600">
         <p>No results found. Try a different search.</p>
       </div>
     </div>
