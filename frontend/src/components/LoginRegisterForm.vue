@@ -172,7 +172,7 @@
                         {{ showPassword ? 'Hide' : 'Show' }}
                     </button>
                 </div>
-                <button class="border- border-secondary-light hover:bg-secondary-light text-secondary-light hover:text-white mt-3 font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline" type="submit">
+                <button class="border border-secondary-light hover:bg-secondary-light text-secondary-light hover:text-white mt-3 font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline" type="submit">
                     {{ title }}
                 </button>
             </div>

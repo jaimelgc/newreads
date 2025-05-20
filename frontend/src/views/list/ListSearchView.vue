@@ -49,9 +49,9 @@
     </div>
 
     <div v-if="!route.query.q && !isLoading">
-      <div class="bg-gray-100 p-6 rounded-lg text-center text-gray-600">
-        <h2 class="text-xl font-semibold mb-2">Search for book lists</h2>
-        <p>Search for lists and find your next reads</p>
+      <div class="min-h-screen bg-background p-6 rounded-lg text-center ">
+        <h2 class="text-2xl font-semibold mb-2 text-secondary-light">Search for book lists</h2>
+        <p class="text-xl text-gray-200">Search for lists and find your next reads</p>
       </div>
     </div>
     <div v-else>

@@ -40,7 +40,7 @@ const submitPost = async () => {
 </script>
 
 <template>
-  <div class="max-w-2xl mx-auto mt-10 p-6 bg-white shadow rounded">
+  <div class="max-w-2xl mx-auto mt-10 p-6 bg-background">
     <h1 class="text-2xl font-bold mb-4">Create New Post</h1>
     <p v-if="error" class="text-red-500 mb-2">{{ error }}</p>
 

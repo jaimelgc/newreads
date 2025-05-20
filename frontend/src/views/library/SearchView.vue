@@ -34,7 +34,7 @@
 
 <template>
   <div>
-    <div class="flex gap-2 mb-4 mt-2">
+    <div class="flex gap-2 mb-4 mt-2 ml-6 mr-6">
       <input
         v-model="searchTerm"
         placeholder="Search books..."
@@ -50,18 +50,18 @@
 
     <div v-if="!route.query.q && !isLoading">
       <div
-        class="min-h-screen flex items-center justify-center bg-gray-100 p-6 rounded-lg text-center text-gray-600"
+        class="min-h-screen flex items-center justify-center bg-background p-6 rounded-lg text-center "
       >
         <div>
-          <h2 class="text-xl font-semibold mb-2">Welcome to the Library</h2>
-          <p>Use the search bar above to find books from the Open Library.</p>
+          <h2 class="text-2xl font-semibold mb-2 text-secondary-light">Welcome to the Library</h2>
+          <p class="text-xl text-gray-200">Search books by title, author, characters...</p>
         </div>
       </div>
     </div>
 
     <div v-else>
       <div v-if="isLoading" class="min-h-screen flex items-center justify-center">
-        <div>Loading...</div>
+        <div class="text-xl text-gray-200">Loading...</div>
       </div>
 
       <div v-else-if="error">{{ error }}</div>
