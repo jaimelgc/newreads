@@ -44,7 +44,9 @@
       });
       userLists.value = listsResponse.data;
       console.log('lists', userLists.value)
-      const postsResponse = await api.get(`/forum/posts/?poster__username=${userName}`); 
+      const postsResponse = await api.get(`/forum/posts/`, {
+        params: { username: userName },
+      });
       // const userComments = await api.get(`/forum/comments/?poster__username=${userName}`); 
       userPosts.value = postsResponse.data;
     } catch (error) {

@@ -10,22 +10,19 @@ class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     filter_backends = [filters.SearchFilter]
+    search_fields = ['title']
 
     def get_permissions(self):
         if self.request.method in ['GET', 'HEAD', 'OPTIONS']:
             return [AllowAny()]
         return [IsAuthenticated()]
 
-    def get_search_fields(self):
-        search_field = self.request.query_params.get('field', None)
-
-        match search_field:
-            case 'title':
-                return ['poster__username']
-            case 'poster__username':
-                return ['poster__usernamey']
-            case _:
-                return ['name']
+    def get_queryset(self):
+        queryset = self.queryset
+        username = self.request.query_params.get('username')
+        if username:
+            queryset = queryset.filter(user__username=username)
+        return queryset
 
     def perform_create(self, serializer):
         ol_id = self.request.data.get('ol_id')
