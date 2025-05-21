@@ -100,7 +100,13 @@ WSGI_APPLICATION = 'newreads.wsgi.application'
 #     }
 # }
 
-DATABASES = {'default': dj_database_url.config(default=config('DATABASE_URL'))}
+DATABASES = {
+    'default': dj_database_url.config(default=config('DATABASE_URL'))
+}
+
+# Django DB backend is used with mysql-connector
+if DATABASES['default']['ENGINE'] == 'django.db.backends.mysql':
+    DATABASES['default']['ENGINE'] = 'mysql.connector.django'
 
 
 # Password validation
