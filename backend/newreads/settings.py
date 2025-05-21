@@ -100,9 +100,7 @@ WSGI_APPLICATION = 'newreads.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': dj_database_url.config(default=config('DATABASE_URL'))
-}
+DATABASES = {'default': dj_database_url.config(default=config('DATABASE_URL'))}
 
 # Django DB backend is used with mysql-connector
 if DATABASES['default']['ENGINE'] == 'django.db.backends.mysql':
@@ -172,3 +170,5 @@ CORS_ALLOWED_ORIGINS = [
 
 # CORS_ALLOW_ALL_ORIGINS = True
 # CORS_ALLOWS_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = config('ALLOWED_HOSTS').split(',')
