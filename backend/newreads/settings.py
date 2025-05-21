@@ -21,6 +21,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+CSRF_TRUSTED_ORIGINS = config('CSRF').split(',')
+
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 REST_FRAMEWORK = {
@@ -170,5 +172,3 @@ CORS_ALLOWED_ORIGINS = [
 
 # CORS_ALLOW_ALL_ORIGINS = True
 # CORS_ALLOWS_CREDENTIALS = True
-
-CSRF_TRUSTED_ORIGINS = config('CSRF').split(',')
