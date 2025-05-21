@@ -1,3 +1,4 @@
+mysqlclient==2.2.7
 asgiref==3.8.1
 certifi==2025.1.31
 charset-normalizer==3.4.1
@@ -11,7 +12,6 @@ drf-yasg==1.21.10
 gunicorn==23.0.0
 idna==3.10
 inflection==0.5.1
-mysqlclient==2.2.7
 packaging==25.0
 pillow==11.2.1
 PyJWT==2.9.0
