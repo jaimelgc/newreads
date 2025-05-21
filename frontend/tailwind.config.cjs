@@ -16,8 +16,9 @@ module.exports = {
           dark: '#0f799b',
         },
         accent: '#f59e0b',
+        modal: '#272B4A',
         background: '#181A2A',
-        sideground: '#121421',
+        sideground: '#292834',
         brand: {
           light: '#3b82f6',
           DEFAULT: '#1d4ed8',

@@ -1,6 +1,9 @@
 <script setup lang="ts">
     import { defineProps, computed, watchEffect } from 'vue';
     import api from '@/api';
+    import { useAuthStore } from '@/stores/auth';
+    import { useModal } from '@/composables/useModal';
+    import ConfirmModal from '../ConfirmModal.vue';
 
     interface UserType {
         id: number;
@@ -24,13 +27,36 @@
             author: UserType;
             created_at: string;
             items: {
-            id: number;
-            book: number;
-            added_at: string;
-            bookDetails?: BookDetails;
+              id: number;
+              book: number;
+              added_at: string;
+              bookDetails?: BookDetails;
             }[];
         };
     }>();
+
+    const auth = useAuthStore();
+
+    const emit = defineEmits<{
+      (e: 'deleted', id: number): void;
+    }>();
+
+    const canDelete = computed(() => {
+      return auth.user?.username === props.list.author.username || auth.user?.isModerator;
+    });
+
+    const { isOpen, open, close } = useModal();
+
+    async function deleteList() {
+      try {
+        await api.delete(`/user/booklists/${props.list.id}/`);
+        emit('deleted', props.list.id);
+        close();
+        window.location.reload();
+      } catch (error) {
+        console.error('Failed to delete list:', error);
+      }
+    }
 
     async function fetchBookDetails(item: { book: number; bookDetails?: BookDetails }) {
         try {
@@ -58,23 +84,31 @@
     );
 </script>
 
-
 <template>
-    <div
-      class="border-background rounded shadow p-6 bg-background hover:border-blue-300 border-4 flex flex-col items-center text-center"
+  <div class="relative border-background rounded shadow p-6 bg-background hover:border-blue-300 border-4 flex flex-col items-center text-center">
+    <button
+      v-if="canDelete"
+      @click="() => open()"
+      class="absolute top-2 right-2 border hover:bg-red-700 border-red-700 text-red-700 hover:text-white rounded-full w-8 h-8 flex justify-center text-lg font-bold"
+      title="Delete list"
+      aria-label="Delete list"
     >
-      <h3 class="text-xl font-semibold mb-1 text-white">{{ list.name }}</h3>
-  
-      <div class="flex items-center gap-2 mb-2">
-        <img
-          :src="list.author.profile_picture"
-          alt="Profile picture"
-          class="w-6 h-6 rounded-full object-cover"
-        />
-        <p class="text-gray-300 text-sm">{{ list.author.username }}</p>
-      </div>
-  
-      <div v-if="coverUrls.length" class="grid grid-cols-3 gap-2 mb-4">
+      &times;
+    </button>
+
+    <h3 class="text-xl font-semibold mb-1 text-white">{{ list.name }}</h3>
+
+    <div class="flex items-center gap-2 mb-2">
+      <img
+        :src="list.author.profile_picture"
+        alt="Profile picture"
+        class="w-6 h-6 rounded-full object-cover"
+      />
+      <p class="text-gray-300 text-sm">{{ list.author.username }}</p>
+    </div>
+
+    <div class="h-[22rem] w-[26rem] relative border border-secondary-light bg-sideground rounded-lg m-2 p-6">
+      <div v-if="coverUrls.length" class="grid grid-cols-3 gap-2 mb-4 h-full">
         <img
           v-for="(url, index) in coverUrls"
           :key="index"
@@ -83,14 +117,24 @@
           class="w-full h-40 object-cover rounded"
         />
       </div>
-      <p v-else class="text-gray-400 text-sm mb-4">No books in this list yet.</p>
-  
-      <RouterLink
-        :to="`/users/${list.author.username}/lists/${list.id}`"
-        class="h-[36px] border border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-4 py-1.5 rounded-lg text-sm transition"
-      >
-        Read More
-      </RouterLink>
+      <div v-else class="flex items-center justify-center h-full">
+        <p class="text-gray-400 text-sm">No books in this list yet.</p>
+      </div>
     </div>
+
+    <RouterLink
+      :to="`/users/${list.author.username}/lists/${list.id}`"
+      class="h-[36px] border border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-4 py-1.5 rounded-lg text-sm transition"
+    >
+      Read More
+    </RouterLink>
+
+    <ConfirmModal
+      :show="isOpen"
+      title="Confirm Deletion"
+      :message="`Are you sure you want to delete the list '${list.name}'? This action cannot be undone.`"
+      @close="close"
+      @confirm="deleteList"
+    />
+  </div>
 </template>
-  

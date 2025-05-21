@@ -77,10 +77,10 @@ async function handleSubmit(data: { name: string; description: string; items: an
 </script>
 
 <template>
-  <div class="max-w-2xl mx-auto mt-10 p-6 bg-white shadow rounded">
-    <h1 class="text-2xl font-bold mb-4">Edit List</h1>
-    <div v-if="isLoading">Loading...</div>
-    <div v-else-if="error" class="text-red-500">{{ error }}</div>
+  <div class="min-h-screen max-w-2xl mx-auto mt-10 p-6 bg-background shadow rounded">
+    <h1 class="text-secondary-light text-2xl font-bold mb-4">Edit List</h1>
+    <div v-if="isLoading" class="font-bold text-white">Loading...</div>
+    <div v-else-if="error" class="font-bold text-red-500">{{ error }}</div>
     <ListForm v-else :initialData="initialData" :onSubmit="handleSubmit" />
   </div>
 </template>

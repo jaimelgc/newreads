@@ -63,7 +63,7 @@
 </script>
 
 <template>
-    <section class="bg-blue-50 px-4 py-10">
+    <section class="bg-background px-4 py-10">
       <div class="container-xl lg:container m-auto">
         <div class="flex items-center justify-between mb-6">
           <h2 class="text-3xl font-bold text-green-500 mb-6 text-center">Results</h2>

@@ -56,8 +56,9 @@
 </script>
 
 <template>
-  <div class="h-screen overflow-hidden bg-gray-900">
-    <div class="p-4 max-w-6xl mx-auto space-y-4 overflow-y-auto h-full">
+  <div class="h-screen overflow-hidden bg-background">
+    <div class="p-4 max-w-6xl mx-auto space-y-4 overflow-y-auto h-full text-center">
+      <img class="w-auto max-w-[16rem] mx-auto"src="/logo-full-dark.png" alt="NewReads" />
       <div class="text-white text-xl font-bold">Search for your next read</div>
       <div class="flex gap-2 mb-4">
         <input
