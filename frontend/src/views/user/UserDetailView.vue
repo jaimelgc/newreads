@@ -107,7 +107,7 @@
               />
             </div>
             <div v-if="activeTab === 'posts'" >
-              <Posts :results="userPosts" :username="userName as string" @select="goToPost" />
+              <Posts :results="userPosts" :isLoading="false" method="Latest Posts" @select="goToPost" />
             </div>
           </div>
         </main>

@@ -29,5 +29,5 @@
 </script>
 
 <template>
-  <Posts :posts="posts" :username="username" @select="goToPost" />
+  <Posts :results="posts" :isLoading="false" method="Latest Posts" @select="goToPost" />
 </template>

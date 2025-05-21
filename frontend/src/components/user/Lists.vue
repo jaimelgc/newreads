@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref, computed, defineProps, withDefaults } from 'vue';
-    import ListCard from '@/components/user/List.vue'
+    import List from '@/components/user/List.vue'
 
     interface UserType {
         id: number;
@@ -8,16 +8,24 @@
         profile_picture: string;
     }
    
-    interface EditionType {
-        key: string;
+    // interface EditionType {
+    //     key: string;
+    //     title: string;
+    //     author_name?: string[];
+    //     first_publish_year?: number;
+    //     cover_i?: number;
+    //     publishers?: string[];
+    //     number_of_pages?: number;
+    //     by_statement?: string;
+    //     cover_edition_key?: string, 
+    // }
+
+    interface BookDetails {
+        id: number;
+        ol_id: string;
         title: string;
-        author_name?: string[];
-        first_publish_year?: number;
-        cover_i?: number;
-        publishers?: string[];
-        number_of_pages?: number;
-        by_statement?: string;
-        cover_edition_key?: string, 
+        author_name?: string;
+        cover_url?: string;
     }
 
     interface ListType {
@@ -26,7 +34,12 @@
       description: string;
       author: UserType;
       created_at: string;
-      books: EditionType[];
+      items: {
+        id: number;
+        book: number;
+        added_at: string;
+        bookDetails?: BookDetails;
+      }[];
     }
 
     const props = withDefaults(
@@ -81,7 +94,7 @@
         </div>
 
         <div class="grid grid-cols-2 gap-6">
-          <ListCard
+          <List
             v-for="list in paginatedResults"
             :key="list.id"
             :list="list"

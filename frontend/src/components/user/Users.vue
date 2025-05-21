@@ -3,10 +3,12 @@
     import User from '@/components/user/User.vue';
    
     interface UserType {
-        id: number;
-        name: string;
-        profile_picture: string;
-        bio: string;
+      id: number;
+      username: string;
+      profile_picture: string;
+      bio: string;
+      is_moderator?: boolean;
+      is_banned?: boolean;
     }
 
     const props = withDefaults(
