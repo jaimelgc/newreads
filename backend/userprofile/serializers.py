@@ -1,8 +1,7 @@
 from django.contrib.auth import get_user_model
-# from library.serializers import BookSerializer
 from rest_framework import serializers
 
-from .models import BookList, BookListItem  # SearchHistory
+from .models import BookList, BookListItem
 
 User = get_user_model()
 

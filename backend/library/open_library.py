@@ -2,10 +2,6 @@ import requests
 
 from .models import Book
 
-# from django.core.cache import cache
-
-ol_url = "https://openlibrary.org"
-
 # Get singular
 # Search by title: https://openlibrary.org/search.json?title=The+Hobbit
 # Search by author: https://openlibrary.org/search.json?author=Tolkien
@@ -19,14 +15,10 @@ ol_url = "https://openlibrary.org"
 # by author: https://openlibrary.org/search/authors.json?q={query}&page={page}
 # search by isbn? : https://openlibrary.org/isbn/{isbn}.json
 
-# Complex filtering
-# def advanced_search(title=None, author=None, subject=None, language=None, year_range=None):
-# Build query string like:
-# https://openlibrary.org/search.json?title=...&author=...&subject=...
+ol_url = "https://openlibrary.org"
 
 
 def get_catch_data(key, url, timeout=60 * 60 * 24):
-    # cached_data = cache.get(key)
     cached_data = False
 
     if cached_data:
@@ -38,7 +30,7 @@ def get_catch_data(key, url, timeout=60 * 60 * 24):
     if response.status_code == 200:
         data = response.json()
         # cache.set(key, data, timeout)
-        print("📡 Fetched from Open Library and cached")
+        # print("📡 Fetched from Open Library and cached")
         return data
 
     print("❌ Not found or error")
@@ -54,8 +46,6 @@ def get_or_create_book(ol_id: str) -> Book:
             raise ValueError("Book not found on Open Library")
 
         data = response.json()
-
-        # Extract author keys and fetch names
         authors = []
         for author_ref in data.get("authors", []):
             author_key = author_ref.get("key")

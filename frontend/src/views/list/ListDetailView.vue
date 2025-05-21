@@ -144,7 +144,6 @@ onMounted(async () => {
       </div>
       <p v-else>No books in this list yet.</p>
 
-      <!-- Delete List Modal -->
       <Modal
         :show="deleteListModal.isOpen.value"
         @close="deleteListModal.close"

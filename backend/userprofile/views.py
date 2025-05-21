@@ -1,25 +1,15 @@
 from django.contrib.auth import get_user_model
-
-# from django.db.models import Q
 from rest_framework import filters, generics, permissions, viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from .models import BookList, BookListItem
-from .serializers import (  # SearchHistorySerializer,
+from .serializers import (
     BooklistItemSerializer,
     BooklistSerializer,
     RegisterSerializer,
     UserPrivateSerializer,
     UserPublicSerializer,
 )
-
-# from library.utils import get_or_create_book
-
-
-# from rest_framework.permissions import IsAuthenticated
-# from rest_framework.response import Response
-# from rest_framework.views import APIView
-
 
 User = get_user_model()
 

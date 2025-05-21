@@ -1,7 +1,4 @@
-# from datetime import timedelta
-
 from django.db import models
-# from slugify import slugify
 
 
 class Book(models.Model):

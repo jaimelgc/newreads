@@ -74,8 +74,6 @@
         <p class="text-gray-300 text-sm">{{ list.author.username }}</p>
       </div>
   
-      <!-- <p class="text-gray-400 text-sm mb-4">{{ list.description }}</p> -->
-  
       <div v-if="coverUrls.length" class="grid grid-cols-3 gap-2 mb-4">
         <img
           v-for="(url, index) in coverUrls"

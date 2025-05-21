@@ -1,5 +1,7 @@
 import requests
+
 from .models import Book
+
 
 def get_or_create_book(ol_id: str) -> Book:
     try:
@@ -14,8 +16,13 @@ def get_or_create_book(ol_id: str) -> Book:
             ol_id=ol_id,
             title=data.get("title", "Untitled"),
             author_names="; ".join(data.get("authors", [])),
-            cover_url=f"https://covers.openlibrary.org/b/id/{data.get('covers', [])[0]}-L.jpg"
-                if data.get("covers") else None,
-            description=data.get("description", "") if isinstance(data.get("description"), str) else "",
+            cover_url=(
+                f"https://covers.openlibrary.org/b/id/{data.get('covers', [])[0]}-L.jpg"
+                if data.get("covers")
+                else None
+            ),
+            description=(
+                data.get("description", "") if isinstance(data.get("description"), str) else ""
+            ),
             publish_date=data.get("publish_date", ""),
         )

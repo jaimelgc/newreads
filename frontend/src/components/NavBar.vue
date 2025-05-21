@@ -45,12 +45,10 @@
                 Forum
               </RouterLink>
 
-              <!-- Login or Username Link -->
               <RouterLink :to="buttonDestination" class="font-bold bg-secondary-default hover:bg-secondary-light hover:text-white text-white rounded-md px-3 py-2">
                 {{ buttonText }}
               </RouterLink>
 
-              <!-- Sign up or Logout -->
               <RouterLink
                 v-if="!isLoggedIn"
                 to="/register"

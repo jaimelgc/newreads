@@ -44,7 +44,6 @@ const submitPost = async () => {
     <h1 class="text-2xl font-bold mb-4">Create New Post</h1>
     <p v-if="error" class="text-red-500 mb-2">{{ error }}</p>
 
-    <!-- Display book information if provided -->
     <div v-if="bookData" class="mb-4 p-4 border rounded bg-gray-50">
       <h2 class="text-lg font-semibold">Book to Add:</h2>
       <p><strong>Title:</strong> {{ bookData.title }}</p>

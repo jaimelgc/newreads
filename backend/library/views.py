@@ -5,8 +5,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Book
-
-# from .models import Book
 from .open_library import get_catch_data, get_or_create_book
 from .serializers import BookSerializer
 
@@ -30,7 +28,7 @@ class GetOrCreateBookView(APIView):
 
     def get(self, request, ol_id):
         try:
-            book = get_or_create_book(ol_id)  # Fetch or create the Book object
+            book = get_or_create_book(ol_id)
         except ValueError as e:
             return Response({'detail': str(e)}, status=status.HTTP_404_NOT_FOUND)
 

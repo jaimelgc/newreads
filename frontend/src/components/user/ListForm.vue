@@ -84,47 +84,6 @@ async function submit() {
       rows="4"
     ></textarea>
 
-    <label class="block mb-1 font-medium">Books</label>
-    <div v-for="(item, index) in form.items" :key="index" class="mb-4">
-      <div class="flex gap-2 items-center">
-        <input
-          v-model="item.book.ol_id"
-          class="border p-2 rounded flex-1"
-          type="text"
-          placeholder="Book OL ID"
-          required
-        />
-        <input
-          v-model="item.book.title"
-          class="border p-2 rounded flex-1"
-          type="text"
-          placeholder="Book Title"
-        />
-        <button
-          type="button"
-          @click="removeItem(index)"
-          class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-        >
-          Remove
-        </button>
-      </div>
-    </div>
-    <button
-      type="button"
-      @click="addItem"
-      class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-4"
-    >
-      Add Book
-    </button>
-
-    <label class="block mb-1 font-medium">Public</label>
-    <input
-      type="checkbox"
-      v-model="form.is_public"
-      class="mb-4"
-    />
-    <span class="ml-2">{{ form.is_public ? 'Yes' : 'No' }}</span>
-
     <button
       type="submit"
       :disabled="isSaving"

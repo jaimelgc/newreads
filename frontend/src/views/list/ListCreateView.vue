@@ -56,7 +56,6 @@ async function handleSubmit(data: { name: string; description: string; is_public
     <h1 class="text-2xl font-bold mb-4">Create List</h1>
     <p v-if="error" class="text-red-500 mb-2">{{ error }}</p>
 
-    <!-- Display book information if provided -->
     <div v-if="bookToAdd" class="mb-4 p-4 border rounded bg-gray-50">
       <h2 class="text-lg font-semibold">Book to Add:</h2>
       <p><strong>Title:</strong> {{ bookToAdd.title }}</p>
