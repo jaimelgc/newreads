@@ -100,7 +100,7 @@
 
     <div class="flex items-center gap-2 mb-2">
       <img
-        :src="list.author.profile_picture"
+        src="/def.jpg"
         alt="Profile picture"
         class="w-6 h-6 rounded-full object-cover"
       />
