@@ -91,12 +91,12 @@
     router.push({
       name: 'ListCreate',
       params: { username: user.value?.username },
-      query: {
-        book: JSON.stringify({
-          ol_id: bookId,
-          title: props.book.title,
-        }),
-      },
+      // query: {
+      //   book: JSON.stringify({
+      //     ol_id: bookId,
+      //     title: props.book.title,
+      //   }),
+      // },
     });
   }
 
