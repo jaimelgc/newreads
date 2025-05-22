@@ -3,6 +3,7 @@
   import NavBar from '@/components/NavBar.vue';
   import { onMounted } from 'vue'
   import { useAuthStore } from '@/stores/auth'
+import BottomVar from './components/BottomVar.vue';
 
 
   onMounted(() => {
@@ -17,10 +18,11 @@
 </script>
 
 <template class="h-full">
+  <NavBar class=""/>
   <div class="bg-sideground">
     <div class="container-xl lg:container m-auto bg-background">
-    <NavBar />
     <RouterView />
     </div>
   </div>
+  <BottomVar />
 </template>

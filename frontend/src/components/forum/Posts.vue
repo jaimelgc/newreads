@@ -34,7 +34,7 @@
 <template>
   <section class="bg-background min-h-screen px-4 py-10">
     <div class="container-xl lg:container m-auto w-full">
-      <h2 class="text-3xl font-bold text-secondary-default mb-6 text-center">{{ props.method }}</h2>
+      <h2 class="text-3xl font-bold text-secondary-light mb-6 text-center">{{ props.method }}</h2>
 
       <div v-if="props.isLoading" class="text-center text-gray-500 py-6">
         Loading...

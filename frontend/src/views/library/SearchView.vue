@@ -34,15 +34,15 @@
 
 <template>
   <div>
-    <div class="flex gap-2 mb-4 mt-2 ml-6 mr-6">
+    <div class="flex gap-2 mb-4 ml-6 mr-6">
       <input
         v-model="searchTerm"
         placeholder="Search books..."
-        class="border border-gray-300 rounded px-4 py-2 w-full"
+        class="border border-gray-300 rounded px-4 py-2 mt-4 w-full"
       />
       <button
         @click="search"
-        class="px-6 py-2 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white rounded-lg text-sm transition"
+        class="mt-4 px-6 py-2 border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white rounded-lg text-sm transition"
       >
         Search
       </button>

@@ -73,7 +73,7 @@
           Search
         </button>
       </div>
-      <div class="text-white">By title, genre or characters</div>
+      <div class="text-white">Powered by Open Library API</div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div

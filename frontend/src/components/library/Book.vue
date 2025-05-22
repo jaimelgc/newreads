@@ -32,7 +32,7 @@
   });
 
   const coverUrl = computed(() => {
-    if (props.book.cover_url) return props.book.cover_url; // From backend
+    if (props.book.cover_url) return props.book.cover_url;
     if (props.book.cover_i) return `https://covers.openlibrary.org/b/id/${props.book.cover_i}-M.jpg`;
     return 'https://via.placeholder.com/150';
   });
@@ -121,7 +121,6 @@
       },
     });
   }
-
 
   onMounted(fetchUserLists);
 </script>

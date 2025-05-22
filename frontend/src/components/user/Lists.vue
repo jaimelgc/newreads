@@ -7,18 +7,6 @@
         username: string;
         profile_picture: string;
     }
-   
-    // interface EditionType {
-    //     key: string;
-    //     title: string;
-    //     author_name?: string[];
-    //     first_publish_year?: number;
-    //     cover_i?: number;
-    //     publishers?: string[];
-    //     number_of_pages?: number;
-    //     by_statement?: string;
-    //     cover_edition_key?: string, 
-    // }
 
     interface BookDetails {
         id: number;
@@ -63,13 +51,6 @@
       props.results.slice(0, visibleCount.value)
     );
 
-    const sectionTitle = computed(() => {
-      if (props.context === 'user') {
-        return props.canCreate ? 'My Lists' : "User's Lists";
-      }
-      return 'Search Results';
-    });
-
     function loadMore() {
       visibleCount.value += props.limit;
     }
@@ -79,7 +60,7 @@
     <section class="bg-background px-4 py-10">
       <div class="container-xl lg:container m-auto">
         <div class="flex items-center justify-between mb-6">
-          <h2 class="text-3xl font-bold text-green-500 mb-6 text-center">Results</h2>
+          <h2 class="text-3xl font-bold text-secondary-light mb-6 text-center">Results</h2>
           <RouterLink
             v-if="canCreate"
             :to="`/users/${props.username}/lists/create`"

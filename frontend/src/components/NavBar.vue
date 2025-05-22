@@ -27,7 +27,6 @@
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="flex h-20 items-center justify-between">
         <div class="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
-          <!-- Logo -->
           <RouterLink to="/" class="flex flex-shrink-0 items-center mr-4">
             <img class="h-10 w-auto max-w-[8rem]" src="/logo-2-crop.png" alt="NewReads" />
             <span class="hidden md:block text-white text-2xl font-bold ml-2">NewReads</span>
@@ -38,9 +37,40 @@
               <RouterLink to="/" class="font-bold bg-secondary-default hover:bg-secondary-light hover:text-white text-white rounded-md px-3 py-2">
                 Library
               </RouterLink>
-              <RouterLink to="/search" class="font-bold bg-secondary-default hover:bg-secondary-light hover:text-white text-white rounded-md px-3 py-2">
-                Search
-              </RouterLink>
+              <div class="relative group">
+                <button class="font-bold bg-secondary-default hover:bg-secondary-light hover:text-white text-white rounded-md px-3 py-2">
+                  Search
+                </button>
+                <div
+                  class="absolute left-0 z-10 hidden group-hover:flex flex-col bg-gray-800 text-white rounded-md shadow-lg mt-0 w-48"
+                >
+                  <RouterLink
+                    to="/search"
+                    class="block px-4 py-2 hover:bg-secondary-light"
+                  >
+                    Books
+                  </RouterLink>
+                  <RouterLink
+                    to="/booklists/search"
+                    class="block px-4 py-2 hover:bg-secondary-light"
+                  >
+                    Lists
+                  </RouterLink>
+                  <RouterLink
+                    to="/forum/search"
+                    class="block px-4 py-2 hover:bg-secondary-light"
+                  >
+                    Posts
+                  </RouterLink>
+                  <RouterLink
+                    to="/users/search"
+                    class="block px-4 py-2 hover:bg-secondary-light"
+                  >
+                    Users
+                  </RouterLink>
+                </div>
+              </div>
+
               <RouterLink to="/forum" class="font-bold bg-secondary-default hover:bg-secondary-light hover:text-white text-white rounded-md px-3 py-2">
                 Forum
               </RouterLink>

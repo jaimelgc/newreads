@@ -107,14 +107,14 @@
       <p class="text-gray-300 text-sm">{{ list.author.username }}</p>
     </div>
 
-    <div class="h-[22rem] w-[26rem] relative border border-secondary-light bg-sideground rounded-lg m-2 p-6">
+    <div class="h-[22rem] w-[26rem] relative border border-secondary-light bg-sideground rounded-lg m-2 p-4">
       <div v-if="coverUrls.length" class="grid grid-cols-3 gap-2 mb-4 h-full">
         <img
           v-for="(url, index) in coverUrls"
           :key="index"
           :src="url"
           alt="Book cover"
-          class="w-full h-40 object-cover rounded"
+          class="w-full h-40 object-cover rounded text-secondary-default"
         />
       </div>
       <div v-else class="flex items-center justify-center h-full">

@@ -44,7 +44,7 @@ async function handleSubmit(data: { name: string; description: string; is_public
       });
     }
     
-    router.push(`/users/${username}/lists`);
+    router.push(`/users/${username}`);
   } catch (err) {
     error.value = 'Failed to create the list.';
   }
@@ -52,8 +52,8 @@ async function handleSubmit(data: { name: string; description: string; is_public
 </script>
 
 <template>
-  <div class="max-w-2xl mx-auto mt-10 p-6 bg-white shadow rounded">
-    <h1 class="text-2xl font-bold mb-4">Create List</h1>
+  <div class="min-h-screen max-w-2xl mx-auto mt-10 p-6 text-white bg-background shadow rounded">
+    <h1 class="text-secondary-light text-2xl font-bold mb-4">Create List</h1>
     <p v-if="error" class="text-red-500 mb-2">{{ error }}</p>
 
     <div v-if="bookToAdd" class="mb-4 p-4 border rounded bg-gray-50">

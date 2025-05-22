@@ -115,7 +115,7 @@ onMounted(async () => {
           {{ list?.author.username }}
         </RouterLink>
         <img
-          :src="list?.author.profile_picture"
+          src="/def.jpg"
           alt="Author profile picture"
           class="inline-block w-6 h-6 rounded-full object-cover ml-2"
         />
