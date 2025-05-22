@@ -25,6 +25,8 @@ CSRF_TRUSTED_ORIGINS = config('CSRF').split(',')
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
+CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS').split(',')
+
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
@@ -166,9 +168,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     }
 # }
 
-CORS_ALLOWED_ORIGINS = [
-    "https://newreads.app",
-]
 
 # CORS_ALLOW_ALL_ORIGINS = True
 # CORS_ALLOWS_CREDENTIALS = True
