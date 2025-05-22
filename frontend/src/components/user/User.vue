@@ -16,7 +16,7 @@ const props = defineProps<{
 <template>
     <div class="bg-white shadow-md rounded-2xl overflow-hidden flex flex-col items-center text-center p-6">
         <img
-            :src="user.profile_picture"
+            src="/def.jpg"
             alt="Profile picture"
             class="w-24 h-24 rounded-full object-cover border-4 border-secondary-light mb-4"
         />

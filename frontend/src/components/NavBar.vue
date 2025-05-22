@@ -29,7 +29,7 @@
         <div class="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
           <!-- Logo -->
           <RouterLink to="/" class="flex flex-shrink-0 items-center mr-4">
-            <img class="h-10 w-auto max-w-[8rem]"src="/logo-2-crop.png" alt="NewReads" />
+            <img class="h-10 w-auto max-w-[8rem]" src="/logo-2-crop.png" alt="NewReads" />
             <span class="hidden md:block text-white text-2xl font-bold ml-2">NewReads</span>
           </RouterLink>
 

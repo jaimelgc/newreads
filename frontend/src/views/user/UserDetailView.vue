@@ -64,7 +64,7 @@
         <main>
           <div class="bg-background p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center gap-6">
             <img
-              :src="state.user.profile_picture"
+              src="/def.jpg"
               alt="Profile picture"
               class="w-32 h-32 rounded-full object-cover"
             />
