@@ -1,3 +1,13 @@
+<div align="center">
+
+# NEWREADS: ANTEPROYECTO 
+
+</div>
+
+<div align="center">
+<img src="../img/logo-1-crop.png" />
+</div>
+
 ## Índice
 
 1. [IDENTIFICACIÓN](#id1)
@@ -15,11 +25,11 @@
 + Nombre del proyecto: NewReads
 + Alumnos: Jaime León García
 + Curso: 2024/2025 2º DAW
-+ Tutor: David Betancor Quijada
++ Tutor: David Jorge Bilbao
 
 ### 2. OBJETIVOS <a name="id2"></a>
 
-NewReads busca ser una plataforma donde los usuarios puedan buscar, listar y escribir sobre libros con otros lectores en foros de discusión y artículos de opinión con el objetivo de compartir y enriquecer sus lecturas.
+NewReads busca ser una plataforma donde los usuarios puedan buscar, listar y escribir sobre libros con otros lectores en foros de discusión con el objetivo de compartir y enriquecer sus lecturas al mismo tiempo de tener una aplicación comoda para buscar y explorar nuevos libros y autores.
 
 ### 3. PREANÁLISIS DE LO EXISTENTE <a name="id3"></a>
 
@@ -51,19 +61,30 @@ Una vez cumplidos estos requisitos se plantea ampliar el proyecto con las siguie
 
 Tecnologías a utilizar:
 
-- Django como framework para el backend
+### 5. PRE-DISEÑO DEL SISTEMA <a name="id5"></a>
 
-- Django REST Framework para la API.
+- **Backend**: 
+    - Django como framework para el backend
 
-- PostgreSQL como base de datos relacional.
+    - Django REST Framework para la API.
 
-- Redis para el almacenamiento en caché.
+    - MySQL como base de datos relacional.
 
-- Djangorestframework-simplejwt para autenticación basada en tokens JWT.
+    - Redis para el almacenamiento en caché.
 
-- Vue.js como framework para el frontend
+    - Djangorestframework-simplejwt para autenticación basada en tokens JWT.
 
-- VPS con Nginx como proxy inverso.
+- **Frontend**:
+    - Vue.js con typescript como framework para el frontend
 
+- **Despliegue**:
+    - Para el backend una vps de Railway con Gninx como proxy inverso
 
+    - El front Vue será desplegado mediante vercel 
+
+### Estructura del proyecto
+
+<div align="center">
+<img src="../img/mr.png" />
+</div>
 
