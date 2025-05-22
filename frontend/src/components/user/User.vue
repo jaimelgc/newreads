@@ -17,7 +17,7 @@ const props = defineProps<{
     <div class="bg-white shadow-md rounded-2xl overflow-hidden flex flex-col items-center text-center p-6">
         <img
             src="/def.jpg"
-            alt="Profile picture"
+            alt="Profile test"
             class="w-24 h-24 rounded-full object-cover border-4 border-secondary-light mb-4"
         />
         <h3 class="text-xl font-bold text-gray-800">{{ user.username }}</h3>
