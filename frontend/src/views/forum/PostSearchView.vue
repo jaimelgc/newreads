@@ -49,10 +49,7 @@
     </div>
 
     <div v-if="!route.query.q && !isLoading">
-      <div class="min-h-screen bg-background p-6 rounded-lg text-center ">
-        <h2 class="text-2xl font-semibold mb-2 text-secondary-light">Search for posts by title</h2>
-        <p class="text-xl text-gray-200">Join the conversation about your favorite reads</p>
-      </div>
+
     </div>
     <div v-else>
       <div v-if="isLoading">Loading...</div>

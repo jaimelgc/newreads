@@ -1,7 +1,6 @@
 import axios from "axios";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "./constants";
 import { useAuthStore } from "@/stores/auth";
-import router from "@/router";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -48,7 +47,7 @@ api.interceptors.response.use(
       } catch (refreshError) {
         const auth = useAuthStore();
         auth.clearAuth();
-        router.push("/login");
+        console.error("Session expired. Please log in again.");
         return Promise.reject(refreshError);
       }
     }

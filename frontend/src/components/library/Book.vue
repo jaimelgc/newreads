@@ -91,12 +91,12 @@
     router.push({
       name: 'ListCreate',
       params: { username: user.value?.username },
-      // query: {
-      //   book: JSON.stringify({
-      //     ol_id: bookId,
-      //     title: props.book.title,
-      //   }),
-      // },
+      query: {
+        book: JSON.stringify({
+          ol_id: bookId,
+          title: props.book.title,
+        }),
+      },
     });
   }
 
@@ -108,14 +108,14 @@
 
     if (!selectedEditionId.value) return;
 
-    const bookResponse = await api.get(`/library/getbook/${selectedEditionId.value}/`);
-    const bookId = bookResponse.data.id;
+    // const bookResponse = await api.get(`/library/getbook/${selectedEditionId.value}/`);
+    // const bookId = bookResponse.data.id;
     router.push({
       name: 'CreatePostView',
       params: { username: user.value?.username },
       query: {
         book: JSON.stringify({
-          ol_id: bookId,
+          ol_id: selectedEditionId.value,
           title: props.book.title,
         }),
       },
@@ -165,7 +165,7 @@
   <Modal :show="showModal" @close="showModal = false" @confirm="addBookToList">
     <template #default>
       <h2 class="text-lg font-semibold mb-4">Choose a list to add this book to:</h2>
-      <select v-model="selectedListId" class="w-full border rounded p-2 mb-4">
+      <select v-model="selectedListId" class="text-black w-full border rounded p-2 mb-4">
         <option disabled value="">Select a list</option>
         <option v-for="list in userLists" :key="list.id" :value="list.id">
           {{ list.name }}
@@ -173,7 +173,7 @@
       </select>
       <button
         @click="goToCreateList"
-        class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm"
+        class="w-full bg-secondary-light hover:bg-secondary-default text-gray-100 font-bold px-4 py-2 rounded-lg text-sm"
       >
         Create New List
       </button>

@@ -52,14 +52,12 @@ async function handleSubmit(data: { name: string; description: string; is_public
 </script>
 
 <template>
-  <div class="min-h-screen max-w-2xl mx-auto mt-10 p-6 text-white bg-background shadow rounded">
+  <div class="min-h-screen max-w-2xl mx-auto p-6 text-white bg-background shadow rounded">
     <h1 class="text-secondary-light text-2xl font-bold mb-4">Create List</h1>
     <p v-if="error" class="text-red-500 mb-2">{{ error }}</p>
 
-    <div v-if="bookToAdd" class="mb-4 p-4 border rounded bg-gray-50">
-      <h2 class="text-lg font-semibold">Book to Add:</h2>
-      <p><strong>Title:</strong> {{ bookToAdd.title }}</p>
-      <p><strong>Open Library ID:</strong> {{ bookToAdd.ol_id }}</p>
+    <div v-if="bookToAdd" class="mx-5 mb-4 p-4 border rounded bg-modal">
+      <h2 class="text-lg font-semibold">First Book: {{ bookToAdd.title }}</h2>
     </div>
 
     <ListForm v-if="!isLoading" :onSubmit="handleSubmit" />

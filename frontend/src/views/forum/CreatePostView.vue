@@ -22,11 +22,12 @@ const submitPost = async () => {
   try {
     isSubmitting.value = true;
     error.value = '';
+    console.log('bookdata', bookData.value.ol_id)
 
     await api.post('/forum/posts/', {
       title: title.value,
       content: content.value,
-      ol_id: bookData.value?.ol_id || null
+      ol_id: bookData.value.ol_id || null
     });
 
     router.push({ name: 'ForumList' });
@@ -57,7 +58,7 @@ const submitPost = async () => {
           v-model="title"
           type="text"
           required
-          class="border w-full p-2 rounded"
+          class="border w-full p-2 rounded bg-modal"
         />
       </div>
 
@@ -67,7 +68,7 @@ const submitPost = async () => {
           v-model="content"
           required
           rows="6"
-          class="border w-full p-2 rounded"
+          class="border w-full p-2 rounded bg-modal"
         ></textarea>
       </div>
 
