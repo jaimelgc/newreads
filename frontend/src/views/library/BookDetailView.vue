@@ -1,8 +1,21 @@
 <script setup lang="ts">
-  import { onMounted, ref, computed } from 'vue';
+  import { onMounted, ref, computed, watchEffect } from 'vue';
   import { useRoute } from 'vue-router';
   import { useApiSearch } from '@/search';
   import Books from '@/components/library/Books.vue';
+
+  interface BookType {
+    title: string;
+    ol_id: string;
+    author_name?: string | string[];
+    publish_date?: string;
+    cover_url?: string;
+    cover_edition_key?: string;
+    cover_i?: number;
+    edition_key?: string[];
+    key?: string;
+    first_publish_year?: number;
+  }
 
   const route = useRoute();
   const editionId = route.params.id as string;
@@ -10,8 +23,8 @@
   const edition = ref<any>(null);
   const work = ref<any>(null);
   const authors = ref<any[]>([]);
-  const books = ref<any[]>([]);
   const selectedAuthorIndex = ref<number>(0);
+  const isLoading = ref(true);
 
   const {
     results: editionResults,
@@ -44,6 +57,13 @@
     return await response.json();
   };
 
+  const fetchBooksForAuthor = async (authorKey: string, authorName: string) => {
+    fetchBooks('/api/library/search/', {
+        key: `book-search-${authorKey}`,
+        url: `https://openlibrary.org/search.json?q=${encodeURIComponent(authorName)}`,
+        });
+    console.log(booksResults);
+  };
 
   onMounted(async () => {
     await fetchEdition('/api/library/search/', {
@@ -65,16 +85,18 @@
         })
       );
       authors.value = fullAuthors;
+      isLoading.value = false
 
-      // if (authors.value.length > 0) {
-      //   await fetchBooksForAuthor(authors.value[selectedAuthorIndex.value].author.key);
-      //   console.log('Books fetched for author:', booksResults.value);
-      // }
+      if (authors.value.length > 0) {
+        const firstAuthor = authors.value[0].author;
+        await fetchBooksForAuthor(firstAuthor.key.replace('/authors/', ''), firstAuthor.name);
+      }
     }
   });
 </script>
 
 <template>
+  <div v-if="isLoading" class="bg-background min-h-screen">Loading</div>
   <div v-if="edition && work" class="p-6">
     <div class="flex flex-col md:flex-row gap-6 mb-6">
       <div class="flex-shrink-0">
@@ -103,7 +125,8 @@
           :key="author.author.key"
           @click="async () => {
             selectedAuthorIndex = index;
-            // await fetchBooksForAuthor(author.author.key);
+            const authorObj = authors[index].author;
+            await fetchBooksForAuthor(authorObj.key.replace('/authors/', ''), authorObj.name);
           }"
           class="py-2 px-4 border-b-2 font-semibold transition-colors"
           :class="{
@@ -116,8 +139,8 @@
       </div>
     </div>
 
-    <div v-if="books.length > 0">
-      <Books :results="books" :isLoading="booksIsLoading" :limit="10" />
+    <div v-if="booksResults?.length > 0">
+      <Books :results="booksResults || []" :isLoading="booksIsLoading" :limit="6" method="author"/>
     </div>
     <div v-else class="text-gray-500">
       <p class="min-h-screen">No books available or still loading...</p>

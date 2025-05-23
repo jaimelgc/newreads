@@ -23,7 +23,7 @@ class BookList(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    is_public = models.BooleanField(default=False)
+    is_public = models.BooleanField(default=True)
     is_bookmarked = models.BooleanField(default=False)
     original_author = models.CharField(max_length=55, null=True)
 

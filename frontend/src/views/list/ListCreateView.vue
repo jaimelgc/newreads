@@ -2,22 +2,18 @@
 import ListForm from '@/components/user/ListForm.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { onMounted, ref } from 'vue';
+import { useAuthStore } from '@/stores/auth';
 import api from '@/api';
 
+const auth = useAuthStore();
 const route = useRoute();
 const router = useRouter();
-const username = route.params.username as string;
-
-const userId = ref<number | null>(null);
 const isLoading = ref(true);
 const error = ref<string | null>(null);
 const bookToAdd = ref<{ ol_id: string; title: string } | null>(null);
 
 onMounted(async () => {
   try {
-    const res = await api.get(`/user/${username}/`);
-    userId.value = res.data.id;
-
     if (route.query.book) {
       bookToAdd.value = JSON.parse(route.query.book as string);
     }
@@ -29,12 +25,12 @@ onMounted(async () => {
 });
 
 async function handleSubmit(data: { name: string; description: string; is_public: boolean }) {
-  if (!userId.value) return;
+  if (!auth.user?.id) return;
 
   try {
     const listResponse = await api.post(`/user/booklists/`, {
       ...data,
-      user: userId.value,
+      user: auth.user?.id,
     });
 
     if (bookToAdd.value) {
@@ -44,7 +40,7 @@ async function handleSubmit(data: { name: string; description: string; is_public
       });
     }
     
-    router.push(`/users/${username}`);
+    router.push(`/users/${auth.user?.username}`);
   } catch (err) {
     error.value = 'Failed to create the list.';
   }

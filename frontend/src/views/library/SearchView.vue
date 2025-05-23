@@ -26,6 +26,7 @@
         if (newQuery) {
         searchTerm.value = newQuery as string;
         search();
+        console.log('results', results)
         }
     },
     { immediate: true }
@@ -67,7 +68,7 @@
       <div v-else-if="error">{{ error }}</div>
 
       <div v-else-if="results && results.length">
-        <Books :results="results" :isLoading="isLoading" :limit="12" />
+        <Books :results="results" :isLoading="isLoading" :limit="12" method="search" />
       </div>
 
       <div v-else class="min-h-screen flex items-center justify-center text-gray-600">

@@ -23,8 +23,9 @@ class PostViewSet(viewsets.ModelViewSet):
         queryset = self.queryset
         username = self.request.query_params.get('username')
         if username:
-            queryset = queryset.filter(user__username=username)
+            queryset = queryset.filter(poster__username=username)
         return queryset
+
 
     def perform_create(self, serializer):
         print('POST CREATE')

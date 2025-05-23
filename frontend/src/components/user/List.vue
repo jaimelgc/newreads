@@ -1,87 +1,107 @@
 <script setup lang="ts">
-    import { defineProps, computed, watchEffect } from 'vue';
-    import api from '@/api';
-    import { useAuthStore } from '@/stores/auth';
-    import { useModal } from '@/composables/useModal';
-    import ConfirmModal from '../ConfirmModal.vue';
+  import { defineProps, ref, computed, watchEffect } from 'vue';
+  import api from '@/api';
+  import { RouterLink, useRouter } from 'vue-router';
+  import { useAuthStore } from '@/stores/auth';
+  import { useModal } from '@/composables/useModal';
+  import ConfirmModal from '../ConfirmModal.vue';
+  import AuthModal from '@/components/AuthModal.vue';
 
-    interface UserType {
-        id: number;
-        username: string;
-        profile_picture: string;
-    }
+  const router = useRouter();
 
-    interface BookDetails {
-        id: number;
-        ol_id: string;
-        title: string;
-        author_name?: string;
-        cover_url?: string;
-    }
+  interface UserType {
+      id: number;
+      username: string;
+      profile_picture: string;
+  }
 
-    const props = defineProps<{
-        list: {
+  interface BookDetails {
+      id: number;
+      ol_id: string;
+      title: string;
+      author_name?: string;
+      cover_url?: string;
+  }
+
+  const props = defineProps<{
+      list: {
+          id: number;
+          name: string;
+          description: string;
+          author: UserType;
+          created_at: string;
+          items: {
             id: number;
-            name: string;
-            description: string;
-            author: UserType;
-            created_at: string;
-            items: {
-              id: number;
-              book: number;
-              added_at: string;
-              bookDetails?: BookDetails;
-            }[];
-        };
-    }>();
+            book: number;
+            added_at: string;
+            bookDetails?: BookDetails;
+          }[];
+      };
+  }>();
 
-    const auth = useAuthStore();
+  const auth = useAuthStore();
+  const showLoginPrompt = ref(false);
+  const error = ref<string | null>(null);
+  const emit = defineEmits<{
+    (e: 'deleted', id: number): void;
+  }>();
 
-    const emit = defineEmits<{
-      (e: 'deleted', id: number): void;
-    }>();
+  const canDelete = computed(() => {
+    return auth.user?.username === props.list.author.username || auth.user?.isModerator;
+  });
 
-    const canDelete = computed(() => {
-      return auth.user?.username === props.list.author.username || auth.user?.isModerator;
-    });
+  const { isOpen, open, close } = useModal();
 
-    const { isOpen, open, close } = useModal();
+  async function deleteList() {
+    try {
+      await api.delete(`/user/booklists/${props.list.id}/`);
+      emit('deleted', props.list.id);
+      close();
+      window.location.reload();
+    } catch (error) {
+      console.error('Failed to delete list:', error);
+    }
+  }
 
-    async function deleteList() {
+  async function fetchBookDetails(item: { book: number; bookDetails?: BookDetails }) {
       try {
-        await api.delete(`/user/booklists/${props.list.id}/`);
-        emit('deleted', props.list.id);
-        close();
-        window.location.reload();
+          const response = await api.get(`/library/books/${item.book}/`);
+          item.bookDetails = response.data;
       } catch (error) {
-        console.error('Failed to delete list:', error);
+          console.error('Error fetching book details:', error);
       }
+  }
+
+  watchEffect(() => {
+      if (props.list.items?.length) {
+          props.list.items.forEach(item => {
+              if (!item.bookDetails) {
+                  fetchBookDetails(item);
+              }
+          });
+      }
+  });
+
+  const coverUrls = computed(() =>
+      props.list.items
+          .map(item => item.bookDetails?.cover_url)
+          .slice(0, 6)
+  );
+
+  async function bookmark() {
+    if (!auth.user?.id) {
+      showLoginPrompt.value = true;
+      return;
     }
 
-    async function fetchBookDetails(item: { book: number; bookDetails?: BookDetails }) {
-        try {
-            const response = await api.get(`/library/books/${item.book}/`);
-            item.bookDetails = response.data;
-        } catch (error) {
-            console.error('Error fetching book details:', error);
-        }
+    try {
+      await api.post(`/user/booklists/${props.list.id}/bookmark/`);
+      router.push(`/users/${auth.user.username}`);
+    } catch (err) {
+      console.error('Failed to bookmark the list:', err);
+      error.value = 'Failed to bookmark the list.';
     }
-
-    watchEffect(() => {
-        if (props.list.items?.length) {
-            props.list.items.forEach(item => {
-                if (!item.bookDetails) {
-                    fetchBookDetails(item);
-                }
-            });
-        }
-    });
-
-    const coverUrls = computed(() =>
-        props.list.items
-            .map(item => item.bookDetails?.cover_url)
-            .slice(0, 6)
-    );
+  }
 </script>
 
 <template>
@@ -122,13 +142,27 @@
       </div>
     </div>
 
-    <RouterLink
-      :to="`/users/${list.author.username}/lists/${list.id}`"
-      class="h-[36px] border border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-4 py-1.5 rounded-lg text-sm transition"
-    >
-      Read More
-    </RouterLink>
+    <div class="flex flex-wrap justify-center gap-2">
+      <RouterLink
+        :to="`/users/${list.author.username}/lists/${list.id}`"
+        class="h-[36px] border border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-4 py-1.5 rounded-lg text-sm transition"
+      >
+        Read More
+      </RouterLink>
+      <button
+      @click="bookmark"
+        class="h-[36px] border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-4 py-1.5 rounded-lg text-sm transition"
+      >
+        Bookmark
+      </button>
+    </div>
 
+    <AuthModal
+      :show="showLoginPrompt"
+      @close="showLoginPrompt = false"
+      @login="router.push({ name: 'Login' });"
+      @register="router.push({ name: 'Register' })"
+    />
     <ConfirmModal
       :show="isOpen"
       title="Confirm Deletion"

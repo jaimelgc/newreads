@@ -22,12 +22,11 @@ const submitPost = async () => {
   try {
     isSubmitting.value = true;
     error.value = '';
-    console.log('bookdata', bookData.value.ol_id)
 
     await api.post('/forum/posts/', {
       title: title.value,
       content: content.value,
-      ol_id: bookData.value.ol_id || null
+      ol_id: bookData.value?.ol_id ?? null,
     });
 
     router.push({ name: 'ForumList' });

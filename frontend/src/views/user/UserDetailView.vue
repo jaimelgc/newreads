@@ -9,6 +9,7 @@
   const route = useRoute();
   const router = useRouter();
   const userName = route.params.username;
+  const isLoading = ref(true);
 
 
   const state = reactive({
@@ -47,7 +48,7 @@
       
       // USER POSTS
       const postsResponse = await api.get(`/forum/posts/`, {
-        params: { poster: userName },
+        params: { username: userName },
       });
       userPosts.value = postsResponse.data;
     } catch (error) {
@@ -59,6 +60,7 @@
 </script>
 
 <template>
+  <div v-if="state.isLoading" class="bg-background min-h-screen">Loading</div>
   <section v-if="!state.isLoading" class="bg-background">
     <div class="container m-auto py-10 px-6">
       <div class="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
@@ -108,7 +110,7 @@
               />
             </div>
             <div v-if="activeTab === 'posts'" >
-              <Posts :results="userPosts" :isLoading="false" method="Latest Posts" @select="goToPost" />
+              <Posts :results="userPosts" :isLoading="false" method="" @select="goToPost" />
             </div>
           </div>
         </main>
@@ -116,9 +118,3 @@
     </div>
   </section>
 </template>
-
-<style lang="postcss" scoped>
-.badge {
-  @apply px-2 py-1 rounded-full text-sm;
-}
-</style>
