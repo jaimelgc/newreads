@@ -9,8 +9,10 @@ from .serializers import CommentSerializer, PostSerializer
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    filter_backends = [filters.SearchFilter]
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['title']
+    ordering_fields = ['created_at']
+    ordering = ['-created_at']
 
     def get_permissions(self):
         if self.request.method in ['GET', 'HEAD', 'OPTIONS']:
@@ -25,6 +27,7 @@ class PostViewSet(viewsets.ModelViewSet):
         return queryset
 
     def perform_create(self, serializer):
+        print('POST CREATE')
         ol_id = self.request.data.get('ol_id')
         book = get_or_create_book(ol_id) if ol_id else None
         serializer.save(poster=self.request.user, book=book)

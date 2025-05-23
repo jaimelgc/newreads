@@ -1,0 +1,11 @@
+When first opening the site, if not user saved in store but not logged out, it forces login on the user
+- FIX: unexpected hook in api.ts - FURTHER READING
+
+Book search and detail works fine in local, didn't work in production
+
+Create list with default book doesn't work
+
+
+-- IF TOASTY
+
+- On adding book to list
