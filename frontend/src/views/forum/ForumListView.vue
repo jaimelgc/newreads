@@ -9,8 +9,11 @@ import { storeToRefs } from 'pinia';
 interface Post {
   id: number;
   title: string;
+  content: string;
   poster: { username: string } | null;
   created_at: string;
+  comments: []
+  book: number
 }
 
 const route = useRoute();
@@ -38,7 +41,15 @@ const fetchPosts = async () => {
 
     const response = await api.get(endpoint);
     console.log('API Response:', response.data); 
+
     posts.value = response.data;
+
+    // const bookPost = response.data.find((post: any) => post.book !== null);
+    // if (bookPost) {
+    //   const bookResponse = await api.get(`/library/books/${bookPost.value}/`);
+    // }
+    // console.log('bookResponse', bookResponse.value.id)
+
   } catch (err: any) {
     console.error('Error fetching posts:', err);
     error.value = err.message || 'Error loading posts';

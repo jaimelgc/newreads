@@ -5,8 +5,11 @@
     interface PostType {
         id: number;
         title: string;
+        content: string;
         poster: { username: string } | null;
         created_at: string;
+        comments: []
+        book: number
     }
 
     const props = withDefaults(
@@ -44,7 +47,7 @@
         No posts found.
       </div>
 
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col divide-y divide-gray-700">
         <Post
           v-for="post in paginatedResults"
           :key="post.id"

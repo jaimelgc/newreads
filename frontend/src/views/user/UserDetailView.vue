@@ -39,15 +39,16 @@
     try {
       const  response = await api.get(`/user/${userName}/`);
       state.user = response.data;
+      // USER LISTS
       const listsResponse = await api.get(`/user/booklists/`, {
         params: { username: userName },
       });
       userLists.value = listsResponse.data;
-      console.log('lists', userLists.value)
+      
+      // USER POSTS
       const postsResponse = await api.get(`/forum/posts/`, {
-        params: { username: userName },
+        params: { poster: userName },
       });
-      // const userComments = await api.get(`/forum/comments/?poster__username=${userName}`); 
       userPosts.value = postsResponse.data;
     } catch (error) {
       console.error('Error fetching user');
