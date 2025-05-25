@@ -58,7 +58,7 @@
   };
 
   const fetchBooksForAuthor = async (authorKey: string, authorName: string) => {
-    fetchBooks('/api/library/search/', {
+    fetchBooks('/library/search/', {
         key: `book-search-${authorKey}`,
         type: 'author',
         q: authorName,
@@ -67,7 +67,7 @@
   };
 
   onMounted(async () => {
-    await fetchEdition('/api/library/search/', {
+    await fetchEdition('/library/search/', {
       key: `edition-${editionId}`,
       type: 'edition',
       q: editionId
@@ -75,7 +75,7 @@
     edition.value = editionResults.value;
     const workKey = edition.value?.works?.[0]?.key;
     if (workKey) {
-      await fetchWork('/api/library/search/', {
+      await fetchWork('/library/search/', {
         key: `work-${workKey}`,
         type: 'work',
         q: workKey
