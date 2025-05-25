@@ -1,7 +1,6 @@
 from urllib.parse import quote
-
 import requests
-from redis import cache
+from django.core.cache import cache
 
 from .models import Book
 
