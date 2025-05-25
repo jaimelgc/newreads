@@ -11,7 +11,6 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 swagger_jwt_auth = openapi.Parameter(
     'Authorization',
     openapi.IN_HEADER,
-    description="JWT Authorization. Enter the token in this format: 'Bearer <your_token>'",
     type=openapi.TYPE_STRING,
 )
 
