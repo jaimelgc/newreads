@@ -3,6 +3,7 @@
   import { useRoute } from 'vue-router';
   import { useApiSearch } from '@/search';
   import Books from '@/components/library/Books.vue';
+  import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
   interface BookType {
     title: string;
@@ -99,7 +100,10 @@
 </script>
 
 <template>
-  <div v-if="isLoading" class="bg-background min-h-screen">Loading</div>
+  <div v-if="isLoading" class="min-h-screen flex flex-col justify-center items-center text-gray-500 py-6">
+    <p class="text-3xl font-semibold text-secondary-light">Loading Book</p>
+    <PulseLoader />
+  </div>
   <div v-if="edition && work" class="p-6">
     <div class="flex flex-col md:flex-row gap-6 mb-6">
       <div class="flex-shrink-0">

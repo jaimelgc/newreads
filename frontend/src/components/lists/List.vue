@@ -6,6 +6,7 @@
   import { useModal } from '@/composables/useModal';
   import ConfirmModal from '../ConfirmModal.vue';
   import AuthModal from '@/components/AuthModal.vue';
+  import { useToast } from 'vue-toastification';
 
   const router = useRouter();
 
@@ -39,6 +40,8 @@
       };
   }>();
 
+  const toast = useToast();
+
   const auth = useAuthStore();
   const showLoginPrompt = ref(false);
   const error = ref<string | null>(null);
@@ -48,6 +51,10 @@
 
   const canDelete = computed(() => {
     return auth.user?.username === props.list.author.username || auth.user?.isModerator;
+  });
+
+  const canBookmark = computed(() => {
+    return auth.user?.username !== props.list.author.username;
   });
 
   const { isOpen, open, close } = useModal();
@@ -96,9 +103,11 @@
 
     try {
       await api.post(`/user/booklists/${props.list.id}/bookmark/`);
+      toast.success('List Bookmarked');
       router.push(`/users/${auth.user.username}`);
     } catch (err) {
       error.value = 'Failed to bookmark the list.';
+      toast.error(error.value);
     }
   }
 </script>
@@ -149,6 +158,7 @@
         Read More
       </RouterLink>
       <button
+      v-if="canBookmark"
       @click="bookmark"
         class="h-[36px] border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-4 py-1.5 rounded-lg text-sm transition"
       >

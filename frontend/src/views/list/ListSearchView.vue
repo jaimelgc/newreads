@@ -13,7 +13,7 @@
     const search = () => {
         if (searchTerm.value.trim()) {
             router.replace({ query: { q: searchTerm.value } });
-            fetchData('/api/user/booklists/', {
+            fetchData('/user/booklists/', {
                 search: searchTerm.value,
                 field: "name",
             });

@@ -135,6 +135,7 @@
                 <label class="block text-gray-200 font-bold mb-2">
                     Password
                 </label>
+                
                 <div class="relative">
                     <input
                         v-model="form.password"
@@ -152,6 +153,7 @@
                         {{ showPassword ? 'Hide' : 'Show' }}
                     </button>
                 </div>
+                
                 <div v-if="props.method === 'register'" class="relative">
                     <label class="block text-gray-200 font-bold mb-2">
                         Confirm password
@@ -172,6 +174,7 @@
                         {{ showPassword ? 'Hide' : 'Show' }}
                     </button>
                 </div>
+                <p class="text-gray-200">8 chars, upper and lower case and numbers</p>
                 <button class="border border-secondary-light hover:bg-secondary-light text-secondary-light hover:text-white mt-3 font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline" type="submit">
                     {{ title }}
                 </button>

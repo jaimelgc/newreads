@@ -6,6 +6,9 @@
   import AuthModal from '@/components/AuthModal.vue';
   import { useModal } from '@/composables/useModal';
   import { useAuthStore } from '@/stores/auth';
+  import { useToast } from 'vue-toastification';
+
+  const toast = useToast();
 
   const route = useRoute();
   const router = useRouter();
@@ -113,9 +116,10 @@
 
       try {
         await api.post(`/user/booklists/${list.value!.id}/bookmark/`);
+        toast.success('List Bookmarked');
         router.push(`/users/${auth.user.username}`);
       } catch (err) {
-        console.log('Failed to bookmark the list.', err);
+        toast.error('Failed to bookmark the list.');
       }
     }
 

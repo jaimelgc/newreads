@@ -3,6 +3,7 @@
     import { useRoute, useRouter } from 'vue-router';
     import Books from '@/components/library/Books.vue';
     import { useApiSearch } from '@/search';
+    import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
     const route = useRoute();
     const router = useRouter();
@@ -62,8 +63,9 @@
     </div>
 
     <div v-else>
-      <div v-if="isLoading" class="min-h-screen flex items-center justify-center">
-        <div class="text-xl text-gray-200">Loading...</div>
+      <div v-if="isLoading" class="min-h-screen flex flex-col justify-center items-center text-gray-500 py-6">
+        <p class="text-3xl font-semibold text-secondary-light">Loading Results</p>
+        <PulseLoader />
       </div>
 
       <div v-else-if="error">{{ error }}</div>

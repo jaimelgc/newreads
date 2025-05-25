@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import Book from '@/components/library/Book.vue';
     import { ref, computed, defineProps, withDefaults } from 'vue';
+    import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
    
     interface BookType {
       title: string;
@@ -48,6 +49,9 @@
 <template>
     <section class="bg-backgorund px-4 py-10">
     <div class="container-xl lg:container m-auto">
+      <div v-if="props.isLoading" class="text-center text-gray-500 py-6">
+        <PulseLoader />
+      </div>
       <h2 v-if="props.method==='search'" class="text-3xl font-bold text-secondary-default mb-6 text-center">Results</h2>
 
       <div v-if="!props.isLoading && props.results.length === 0" class="text-center text-gray-500">
@@ -72,6 +76,4 @@
     </section>
 </template>
 
-      <!-- <div v-if="props.isLoading" class="text-center text-gray-500 py-6">
-        <PulseLoader />
-      </div> -->
+      
