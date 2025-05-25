@@ -16,7 +16,7 @@
         fetchData('/api/library/search/', {
         key: `book-search-${searchTerm.value}`,
         type: 'search',
-        url: searchTerm.value,
+        q: searchTerm.value,
         });
     }
     };

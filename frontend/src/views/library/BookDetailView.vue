@@ -70,7 +70,7 @@
     await fetchEdition('/api/library/search/', {
       key: `edition-${editionId}`,
       type: 'edition',
-      url: editionId
+      q: editionId
     });
     edition.value = editionResults.value;
     const workKey = edition.value?.works?.[0]?.key;
@@ -78,7 +78,7 @@
       await fetchWork('/api/library/search/', {
         key: `work-${workKey}`,
         type: 'work',
-        url: workKey
+        q: workKey
       });
       work.value = workResults.value;
       const fullAuthors = await Promise.all(
