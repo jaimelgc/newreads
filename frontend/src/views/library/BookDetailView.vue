@@ -60,7 +60,8 @@
   const fetchBooksForAuthor = async (authorKey: string, authorName: string) => {
     fetchBooks('/api/library/search/', {
         key: `book-search-${authorKey}`,
-        url: `https://openlibrary.org/search.json?q=${encodeURIComponent(authorName)}`,
+        type: 'author',
+        q: authorName,
         });
     console.log(booksResults);
   };
@@ -68,14 +69,16 @@
   onMounted(async () => {
     await fetchEdition('/api/library/search/', {
       key: `edition-${editionId}`,
-      url: `https://openlibrary.org/books/${editionId}.json`
+      type: 'edition',
+      url: editionId
     });
     edition.value = editionResults.value;
     const workKey = edition.value?.works?.[0]?.key;
     if (workKey) {
       await fetchWork('/api/library/search/', {
         key: `work-${workKey}`,
-        url: `https://openlibrary.org${workKey}.json`
+        type: 'work',
+        url: workKey
       });
       work.value = workResults.value;
       const fullAuthors = await Promise.all(

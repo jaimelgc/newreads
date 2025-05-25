@@ -1,4 +1,7 @@
+from urllib.parse import quote
+
 import requests
+from redis import cache
 
 from .models import Book
 
@@ -18,8 +21,22 @@ from .models import Book
 ol_url = "https://openlibrary.org"
 
 
+def build_openlibrary_url(search_type, query, page=1):
+    base = "https://openlibrary.org"
+    if search_type == "search":
+        return f"{base}/search.json?q={quote(query)}&page={page}"
+    elif search_type == "author":
+        return f"{base}/search.json?q={quote(query)}&page={page}"
+    elif search_type == "edition":
+        return f"{base}/books/{quote(query)}.json"
+    elif search_type == "work":
+        return f"{base}{quote(query)}.json"
+    else:
+        raise ValueError("Unsupported search type")
+
+
 def get_catch_data(key, url, timeout=60 * 60 * 24):
-    cached_data = False
+    cached_data = cache.get(key)
 
     if cached_data:
         print("✔️ Loaded from cache")
@@ -29,8 +46,8 @@ def get_catch_data(key, url, timeout=60 * 60 * 24):
 
     if response.status_code == 200:
         data = response.json()
-        # cache.set(key, data, timeout)
-        # print("📡 Fetched from Open Library and cached")
+        cache.set(key, data, timeout)
+        print("📡 Fetched from Open Library and cached")
         return data
 
     print("❌ Not found or error")

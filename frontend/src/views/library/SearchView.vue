@@ -15,7 +15,8 @@
         router.replace({ query: { q: searchTerm.value } });
         fetchData('/api/library/search/', {
         key: `book-search-${searchTerm.value}`,
-        url: `https://openlibrary.org/search.json?q=${encodeURIComponent(searchTerm.value)}`,
+        type: 'search',
+        url: searchTerm.value,
         });
     }
     };
