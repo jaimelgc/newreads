@@ -15,7 +15,7 @@ export function useApiSearch<T = any>() {
     error.value = null
 
     try {
-      const response = await axios.get(endpoint, { params })
+      const response = await api.get(endpoint, { params })
       results.value = response.data.docs ?? response.data
     } catch (err: any) {
       error.value = err.response?.data?.error || 'Something went wrong'
@@ -40,7 +40,7 @@ export function useLocalApiSearch<T = any>() {
     error.value = null
 
     try {
-      const response = await axios.get(endpoint, { params })
+      const response = await api.get(endpoint, { params })
       results.value = response.data.docs ?? response.data
     } catch (err: any) {
       error.value = err.response?.data?.error || 'Something went wrong'
