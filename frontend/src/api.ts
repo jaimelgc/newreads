@@ -31,7 +31,7 @@ api.interceptors.response.use(
 
       try {
         const refreshResponse = await axios.post(
-          `${import.meta.env.VITE_API_URL}api/token/refresh/`,
+          `${import.meta.env.VITE_API_URL}/api/token/refresh/`,
           {
             refresh: localStorage.getItem(REFRESH_TOKEN),
           }
