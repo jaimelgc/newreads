@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ListForm from '@/components/user/ListForm.vue';
+import ListForm from '@/components/lists/ListForm.vue';
 import { useRoute, useRouter } from 'vue-router';
 import { onMounted, ref } from 'vue';
 import { useAuthStore } from '@/stores/auth';

@@ -2,7 +2,7 @@
   import { ref, onMounted, onActivated } from 'vue';
   import { useRouter } from 'vue-router';
   import Book from '@/components/library/Book.vue';
-  import List from '@/components/user/List.vue';
+  import List from '@/components/lists/List.vue';
   import Post from '@/components/forum/Post.vue';
   import { useSingleFetch } from '@/search';
   import { useAuthStore } from '@/stores/auth';

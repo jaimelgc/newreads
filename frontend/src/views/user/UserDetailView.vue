@@ -2,7 +2,7 @@
   import { useRoute, useRouter } from 'vue-router';
   import { ref, reactive, computed, onMounted } from 'vue';
   import api from '@/api';
-  import Lists from '@/components/user/Lists.vue';
+  import Lists from '@/components/lists/Lists.vue';
   import { useAuthStore } from '@/stores/auth';
   import Posts from '@/components/forum/Posts.vue';
 

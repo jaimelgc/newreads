@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import ListForm from '@/components/user/ListForm.vue';
+import ListForm from '@/components/lists/ListForm.vue';
 import api from '@/api';
 
 const route = useRoute();

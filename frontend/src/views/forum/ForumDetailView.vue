@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, onMounted, computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import api from '@/api';
+import Modal from '@/components/Modal.vue';
+import { useModal } from '@/composables/useModal';
+import { useAuthStore } from '@/stores/auth';
 
 interface Comment {
   id: number;
@@ -11,15 +14,6 @@ interface Comment {
   quoted_post?: Comment | null;
 }
 
-interface Book {
-  id: number;
-  ol_id: string;
-  title: string;
-  author_name: string | null;
-  publish_date: string | null;
-  cover_url: string | null;
-}
-
 interface Post {
   id: number;
   title: string;
@@ -27,27 +21,23 @@ interface Post {
   poster: { username: string } | null;
   created_at: string;
   comments: Comment[];
-  book: number | null;
 }
 
+const auth = useAuthStore();
+const { user, isLoggedIn } = auth;
+
+const deletePostModal = useModal();
+const deleteCommentModal = useModal<number>();
+
 const route = useRoute();
+const router = useRouter();
 const post = ref<Post | null>(null);
-const postBook = ref<Book | null>(null);
 const newComment = ref('');
 const quotedCommentId = ref<number | null>(null);
 
 const fetchPost = async () => {
   const res = await api.get(`/forum/posts/${route.params.id}/`);
   post.value = res.data;
-
-  if (post.value?.book) {
-    try {
-      const bookRes = await api.get(`/library/books/${post.value.book}/`);
-      postBook.value = bookRes.data;
-    } catch (err) {
-      console.error('Failed to fetch book:', err);
-    }
-  }
 };
 
 const submitComment = async () => {
@@ -65,6 +55,39 @@ const submitComment = async () => {
   }
 };
 
+const deletePost = async () => {
+  try {
+    await api.delete(`/forum/posts/${post.value?.id}/`);
+    router.push('/forum');
+  } catch (error) {
+    console.error('Error deleting post:', error);
+  } finally {
+    deletePostModal.close();
+  }
+};
+
+const deleteComment = async () => {
+  const commentId = deleteCommentModal.payload.value;
+  if (!commentId) return;
+
+  try {
+    await api.delete(`/forum/comments/${commentId}/`);
+    post.value!.comments = post.value!.comments.filter(comment => comment.id !== commentId);
+  } catch (error) {
+    console.error('Error deleting comment:', error);
+  } finally {
+    deleteCommentModal.close();
+  }
+};
+
+const canDeletePost = computed(() => {
+  return post.value?.poster?.username === auth.user?.username;
+});
+
+const canDeleteComment = (comment: Comment) => {
+  return comment.poster?.username === auth.user?.username;
+};
+
 onMounted(fetchPost);
 </script>
 
@@ -76,21 +99,13 @@ onMounted(fetchPost);
         <strong>{{ post.poster?.username || 'Unknown' }}</strong> - {{ new Date(post.created_at).toLocaleString() }}
       </p>
       <p class="mt-4 text-white whitespace-pre-line">{{ post.content }}</p>
-    </div>
-
-    <div v-if="postBook" class="flex gap-6 p-6 bg-gray-850 border-b border-gray-700">
-      <RouterLink :to="`/books/${postBook.cover_url}`">
-        <img
-          v-if="postBook.cover_url"
-          :src="postBook.cover_url"
-          alt="Book Cover"
-          class="w-28 h-auto rounded-lg shadow-md"
-        />
-      </RouterLink>
-      <div>
-        <p class="text-white text-md font-semibold">{{ postBook.title }}</p>
-        <p class="text-white text-md font-semibold">{{ postBook.author_name || 'Unknown' }}</p>
-        <p class="text-white text-md font-semibold">{{ postBook.publish_date || 'N/A' }}</p>
+      <div v-if="canDeletePost" class="mt-4">
+        <button
+          @click="deletePostModal.open()"
+          class="px-4 py-2 border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded "
+        >
+          Delete Post
+        </button>
       </div>
     </div>
 
@@ -106,12 +121,21 @@ onMounted(fetchPost);
             <p class="text-sm text-gray-400 mt-2">
               {{ new Date(comment.created_at).toLocaleString() }}
             </p>
-            <button
-              @click="quotedCommentId = comment.id"
-              class="mt-2 text-blue-400 hover:underline"
-            >
-              Reply
-            </button>
+            <div class="mt-2 flex gap-4">
+              <button
+                @click="quotedCommentId = comment.id"
+                class="text-blue-400 hover:underline"
+              >
+                Reply
+              </button>
+              <button
+                v-if="canDeleteComment(comment)"
+                @click="deleteCommentModal.open(comment.id)"
+                class="text-red-400 hover:underline"
+              >
+                Delete
+              </button>
+            </div>
 
             <div
               v-if="comment.quoted_post"
@@ -127,7 +151,7 @@ onMounted(fetchPost);
       </ul>
     </div>
 
-    <div class="bg-gray-850 p-4 border-t border-gray-700 sticky bottom-0 z-10">
+    <div class="bg-gray-900 p-4 border-t border-gray-700 sticky bottom-0 z-10">
       <h4 class="text-lg font-semibold mb-2">Leave a Comment</h4>
       <div v-if="quotedCommentId" class="mb-2 text-sm text-gray-400">
         Replying to
@@ -157,10 +181,20 @@ onMounted(fetchPost);
       </div>
     </div>
   </div>
-</template>
 
-<style scoped>
-.bg-gray-850 {
-  background-color: #1e1e1e;
-}
-</style>
+  <Modal
+    :show="deletePostModal.isOpen.value"
+    @close="deletePostModal.close"
+    @confirm="deletePost"
+  >
+    <p>Are you sure you want to delete this post?</p>
+  </Modal>
+
+  <Modal
+    :show="deleteCommentModal.isOpen.value"
+    @close="deleteCommentModal.close"
+    @confirm="deleteComment"
+  >
+    <p>Are you sure you want to delete this comment?</p>
+  </Modal>
+</template>

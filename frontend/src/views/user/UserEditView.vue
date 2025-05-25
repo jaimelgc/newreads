@@ -26,7 +26,7 @@ const state = reactive({
 
 onMounted(async () => {
   try {
-    const response = await api.get(`/user/${userName}/`);
+    const response = await api.get(`/profile/`);
     Object.assign(state.user, response.data);
     state.preview = state.user.profile_picture;
   } catch (e) {
@@ -55,7 +55,7 @@ const updateUser = async () => {
   }
 
   try {
-    await api.patch(`/user/${userName}/`, formData, {
+    await api.patch('/profile/', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
     state.success = 'Profile updated successfully!';

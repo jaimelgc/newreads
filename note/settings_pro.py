@@ -161,12 +161,15 @@ AUTH_USER_MODEL = 'userprofile.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-#         'LOCATION': 'redis://127.0.0.1:6379/1',
-#     }
-# }
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": config("REDIS_URL"),
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    }
+}
 
 
 # CORS_ALLOW_ALL_ORIGINS = True

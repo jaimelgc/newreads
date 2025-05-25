@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { ref, watch } from 'vue';
     import { useRoute, useRouter } from 'vue-router';
-    import Lists from '@/components/user/Lists.vue'
+    import Lists from '@/components/lists/Lists.vue'
     import { useApiSearch } from '@/search';
 
     const route = useRoute();

@@ -1,9 +1,8 @@
 from django.contrib.auth import get_user_model
-from rest_framework import filters, generics, permissions, viewsets
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework import filters, generics, permissions, status, viewsets
 from rest_framework.decorators import action
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-from rest_framework import status
 
 from .models import BookList, BookListItem
 from .serializers import (
@@ -78,7 +77,10 @@ class BookListViewSet(viewsets.ModelViewSet):
         try:
             original = self.get_object()
             if original.user == request.user:
-                return Response({'error': 'You cannot bookmark your own list.'}, status=status.HTTP_400_BAD_REQUEST)
+                return Response(
+                    {'error': 'You cannot bookmark your own list.'},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
 
             new_list = BookList.objects.create(
                 user=request.user,
@@ -86,13 +88,10 @@ class BookListViewSet(viewsets.ModelViewSet):
                 description=original.description,
                 is_public=original.is_public,
                 is_bookmarked=True,
-                original_author=original.user.username
+                original_author=original.user.username,
             )
             for item in original.items.all():
-                BookListItem.objects.create(
-                    book_list=new_list,
-                    book=item.book
-                )
+                BookListItem.objects.create(book_list=new_list, book=item.book)
             serializer = self.get_serializer(new_list)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except Exception as e:

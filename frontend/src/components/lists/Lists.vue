@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref, computed, defineProps, withDefaults } from 'vue';
-    import List from '@/components/user/List.vue'
+    import List from '@/components/lists/List.vue'
 
     interface UserType {
         id: number;

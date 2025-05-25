@@ -37,7 +37,6 @@
     return 'https://via.placeholder.com/150';
   });
 
-  // AUTH MODAL
   const showModal = ref(false);
   const showLoginPrompt = ref(false);
   const userLists = ref<{ id: number; name: string }[]>([]);

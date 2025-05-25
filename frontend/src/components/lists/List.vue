@@ -98,7 +98,6 @@
       await api.post(`/user/booklists/${props.list.id}/bookmark/`);
       router.push(`/users/${auth.user.username}`);
     } catch (err) {
-      console.error('Failed to bookmark the list:', err);
       error.value = 'Failed to bookmark the list.';
     }
   }
@@ -113,7 +112,7 @@
       title="Delete list"
       aria-label="Delete list"
     >
-      &times;
+      x
     </button>
 
     <h3 class="text-xl font-semibold mb-1 text-white">{{ list.name }}</h3>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
   import { RouterView } from 'vue-router'
-  import NavBar from '@/components/NavBar.vue';
+  import NavBar from '@/components/misc/NavBar.vue';
   import { onMounted } from 'vue'
   import { useAuthStore } from '@/stores/auth'
-import BottomVar from './components/BottomVar.vue';
+import BottomVar from './components/misc/BottomVar.vue';
 
 
   onMounted(() => {

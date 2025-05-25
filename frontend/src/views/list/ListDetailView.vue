@@ -1,105 +1,135 @@
 <script setup lang="ts">
-import { onMounted, ref, computed } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import api from '@/api';
-import Modal from '@/components/Modal.vue';
-import { useModal } from '@/composables/useModal';
-import { useAuthStore } from '@/stores/auth';
+  import { onMounted, ref, computed } from 'vue';
+  import { useRoute, useRouter } from 'vue-router';
+  import api from '@/api';
+  import Modal from '@/components/Modal.vue';
+  import AuthModal from '@/components/AuthModal.vue';
+  import { useModal } from '@/composables/useModal';
+  import { useAuthStore } from '@/stores/auth';
 
-const route = useRoute();
-const router = useRouter();
-const listId = route.params.listId;
-const username = route.params.username;
+  const route = useRoute();
+  const router = useRouter();
+  const listId = route.params.listId;
+  const username = route.params.username;
 
-const auth = useAuthStore();
-const { user } = auth;
+  const auth = useAuthStore();
+  const { user, isLoggedIn } = auth;
 
-const list = ref<{
-  id: number;
-  name: string;
-  description: string;
-  author: {
+  const list = ref<{
     id: number;
-    username: string;
-    profile_picture: string;
-  };
-  created_at: string;
-  items: {
-    id: number;
-    book: number;
-    added_at: string;
-    bookDetails?: {
+    name: string;
+    description: string;
+    author: {
       id: number;
-      ol_id: string;
-      title: string;
-      author_name?: string;
-      cover_url?: string;
+      username: string;
+      profile_picture: string;
     };
-  }[];
-} | null>(null);
+    created_at: string;
+    items: {
+      id: number;
+      book: number;
+      added_at: string;
+      bookDetails?: {
+        id: number;
+        ol_id: string;
+        title: string;
+        author_name?: string;
+        cover_url?: string;
+      };
+    }[];
+  } | null>(null);
 
-const isLoading = ref(true);
+  const isLoading = ref(true);
+  const showLoginPrompt = ref(false);
+  const error = ref<string | null>(null);
 
-// Use composables for both modals
-const deleteListModal = useModal();
-const deleteItemModal = useModal<number>();
+  const deleteListModal = useModal();
+  const deleteItemModal = useModal<number>();
 
-const canDelete = computed(() => {
-  return user?.username === list.value?.author.username || user?.isModerator;
-});
+  const canDelete = computed(() => {
+    return user?.username === list.value?.author.username || user?.isModerator;
+  });
 
-const fetchBookDetails = async () => {
-  if (!list.value) return;
-  const items = list.value.items;
+  const canBookmark = computed(() => {
+    return user?.username !== list.value?.author.username;
+  });
 
-  await Promise.all(
-    items.map(async (item) => {
-      try {
-        const response = await api.get(`/library/books/${item.book}/`);
-        item.bookDetails = response.data;
-      } catch (error) {
-        console.error(`Failed to fetch book with id ${item.book}:`, error);
+  const visibleCount = ref(10);
+
+  const visibleItems = computed(() => {
+    return list.value?.items.slice(0, visibleCount.value) ?? [];
+  });
+
+  const showMore = () => {
+    visibleCount.value += 10;
+  };
+
+  const fetchBookDetails = async () => {
+    if (!list.value) return;
+    const items = list.value.items;
+
+    await Promise.all(
+      items.map(async (item) => {
+        try {
+          const response = await api.get(`/library/books/${item.book}/`);
+          item.bookDetails = response.data;
+        } catch (error) {
+          console.error(`Failed to fetch book with id ${item.book}:`, error);
+        }
+      })
+    );
+  };
+
+  const deleteList = async () => {
+    try {
+      await api.delete(`/user/booklists/${listId}/`);
+      router.push(`/users/${username}`);
+    } catch (error) {
+      console.error('Error deleting list:', error);
+    } finally {
+      deleteListModal.close();
+    }
+  };
+
+  const deleteItem = async () => {
+    const itemId = deleteItemModal.payload.value;
+    if (!itemId) return;
+
+    try {
+      await api.delete(`/user/blitems/${itemId}/`);
+      list.value!.items = list.value!.items.filter(item => item.id !== itemId);
+    } catch (error) {
+      console.error('Error deleting item:', error);
+    } finally {
+      deleteItemModal.close();
+    }
+  };
+
+  async function bookmark() {
+      if (!auth.user?.id) {
+        showLoginPrompt.value = true;
+        return;
       }
-    })
-  );
-};
 
-const deleteList = async () => {
-  try {
-    await api.delete(`/user/booklists/${listId}/`);
-    router.push(`/users/${username}`);
-  } catch (error) {
-    console.error('Error deleting list:', error);
-  } finally {
-    deleteListModal.close();
-  }
-};
+      try {
+        await api.post(`/user/booklists/${list.value!.id}/bookmark/`);
+        router.push(`/users/${auth.user.username}`);
+      } catch (err) {
+        console.log('Failed to bookmark the list.', err);
+      }
+    }
 
-const deleteItem = async () => {
-  const itemId = deleteItemModal.payload.value;
-  if (!itemId) return;
-
-  try {
-    await api.delete(`/user/blitems/${itemId}/`);
-    list.value!.items = list.value!.items.filter(item => item.id !== itemId);
-  } catch (error) {
-    console.error('Error deleting item:', error);
-  } finally {
-    deleteItemModal.close();
-  }
-};
-
-onMounted(async () => {
-  try {
-    const response = await api.get(`/user/booklists/${listId}/`);
-    list.value = response.data;
-    await fetchBookDetails();
-  } catch (error) {
-    console.error('Error fetching list:', error);
-  } finally {
-    isLoading.value = false;
-  }
-});
+  onMounted(async () => {
+    try {
+      const response = await api.get(`/user/booklists/${listId}/`);
+      list.value = response.data;
+      await fetchBookDetails();
+    } catch (error) {
+      console.error('Error fetching list:', error);
+    } finally {
+      isLoading.value = false;
+    }
+  });
 </script>
 
 <template>
@@ -137,18 +167,36 @@ onMounted(async () => {
           Delete List
         </button>
       </div>
+      <div v-if="canBookmark" class="flex gap-4 mb-6">
+        <button
+        @click="bookmark"
+          class="h-[36px] border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-4 py-1.5 rounded-lg text-sm transition"
+        >
+          Bookmark
+        </button>
+      </div>
 
-      <div class="bg-sideground rounded-lg border border-secondary-light p-6 w-[]">
-        <div v-if="list?.items?.length" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div v-for="item in list.items" :key="item.id" class="text-center relative">
+      <div class="bg-background border border-blue-200 rounded-lg p-6 w-[]">
+        <div v-if="list?.items?.length" class="divide-y divide-secondary-light">
+          <div
+            v-for="item in visibleItems"
+            :key="item.id"
+            class="flex items-start gap-4 py-4 relative"
+          >
             <img
-              :src="item.bookDetails?.cover_url || 'https://via.placeholder.com/150'"
-              class="w-full h-auto rounded"
+              :src="item.bookDetails?.cover_url || 'https://via.placeholder.com/100x150'"
+              class="w-36 h-auto rounded"
               alt="Book cover"
             />
-            <div class="mt-2 text-sm font-medium text-white">{{ item.bookDetails?.title }}</div>
-            <div class="text-xs text-gray-200">{{ item.bookDetails?.author_name }}</div>
+            <div>
+              <RouterLink :to="`/books/${item.bookDetails?.ol_id}`">
+                <div class="text-lg font-medium text-white hover:text-secondary-light">{{ item.bookDetails?.title }}</div>
+              </RouterLink>
+              <div class="text-sm text-gray-300">{{ item.bookDetails?.author_name }}</div>
+              <div class="text-xs text-gray-400">Added: {{ item.added_at }}</div>
+            </div>
             <button
+              v-if="canDelete"
               @click="deleteItemModal.open(item.id)"
               class="absolute top-2 right-2 text-xs border bg-white hover:bg-red-700 border-red-700 text-red-700 hover:text-white rounded-full px-2 py-1"
             >
@@ -157,7 +205,23 @@ onMounted(async () => {
           </div>
         </div>
         <p v-else class="text-bold text-2xl text-secondary-light">No books in this list yet.</p>
+        <div v-if="list && list.items.length > visibleCount" class="mt-6 text-center">
+          <button
+            @click="showMore"
+            class="px-4 py-2 text-sm border border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white rounded-lg transition"
+          >
+            Show More
+          </button>
+        </div>
+        
       </div>
+
+      <AuthModal
+        :show="showLoginPrompt"
+        @close="showLoginPrompt = false"
+        @login="router.push({ name: 'Login' });"
+        @register="router.push({ name: 'Register' })"
+      />
 
       <Modal
         :show="deleteListModal.isOpen.value"
