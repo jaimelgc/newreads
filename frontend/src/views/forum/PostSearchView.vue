@@ -3,6 +3,7 @@
     import { useRoute, useRouter } from 'vue-router';
     import Posts from '@/components/forum/Posts.vue';
     import { useApiSearch } from '@/search';
+    import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
     const route = useRoute();
     const router = useRouter();
@@ -52,7 +53,10 @@
 
     </div>
     <div v-else>
-      <div v-if="isLoading">Loading...</div>
+      <div v-if="isLoading" class="min-h-screen flex flex-col justify-center items-center text-gray-500 py-6">
+        <p class="text-3xl font-semibold text-secondary-light">Loading Posts</p>
+        <PulseLoader />
+      </div>
       <div v-else-if="error">{{ error }}</div>
       <div v-else-if="results && results.length">
         <Posts :results="results" :isLoading="isLoading" :limit="12" method='Results'/>

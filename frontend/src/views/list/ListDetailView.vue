@@ -7,6 +7,7 @@
   import { useModal } from '@/composables/useModal';
   import { useAuthStore } from '@/stores/auth';
   import { useToast } from 'vue-toastification';
+  import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
   const toast = useToast();
 
@@ -137,7 +138,10 @@
 </script>
 
 <template>
-  <div v-if="isLoading" class="bg-background min-h-screen">Loading</div>
+  <div v-if="isLoading" class="min-h-screen flex flex-col justify-center items-center text-gray-500 py-6">
+    <p class="text-3xl font-semibold text-secondary-light">Loading List</p>
+    <PulseLoader />
+  </div>
   <section v-if="!isLoading" class="py-10 px-6 bg-background min-h-screen">
     <div class="max-w-4xl mx-auto">
       <h1 class="text-3xl font-bold mb-4 text-white">{{ list?.name }}</h1>

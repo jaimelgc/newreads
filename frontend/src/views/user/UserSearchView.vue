@@ -3,6 +3,7 @@
     import { useRoute, useRouter } from 'vue-router';
     import Users from '@/components/user/Users.vue';
     import { useApiSearch } from '@/search';
+    import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 
     const route = useRoute();
     const router = useRouter();
@@ -55,9 +56,12 @@
       </div>
     </div>
     <div v-else>
-      <div v-if="isLoading">Loading...</div>
-      <div v-else-if="error">{{ error }}</div>
-      <div v-else-if="results && results.length">
+      <div v-if="isLoading" class="min-h-screen flex flex-col justify-center items-center text-gray-500 py-6">
+        <p class="text-3xl font-semibold text-secondary-light">Loading Users</p>
+        <PulseLoader />
+      </div>
+      <div v-else-if="error" class="min-h-screen text-white">{{ error }}</div>
+      <div v-else-if="results && results.length" class="min-h-screen">
         <Users :results="results" :isLoading="isLoading" :limit="12" method='Results'/>
       </div>
       <div v-else>
