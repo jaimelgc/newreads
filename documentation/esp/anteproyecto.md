@@ -78,9 +78,9 @@ Tecnologías a utilizar:
     - Vue.js con typescript como framework para el frontend
 
 - **Despliegue**:
-    - Para el backend una vps de Railway con Gninx como proxy inverso
+    - Para el backend una vps de Railway con Nginx como proxy inverso
 
-    - El front Vue será desplegado mediante vercel 
+    - El front Vue será desplegado mediante Vercel 
 
 ### Estructura original del proyecto
 
