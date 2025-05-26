@@ -74,7 +74,7 @@
           No results found.
         </div>
 
-        <div class="grid grid-cols-2 gap-6">
+        <div class="grid xl:grid-cols-2 grid-cols-1 gap-6">
           <List
             v-for="list in paginatedResults"
             :key="list.id"

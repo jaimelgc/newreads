@@ -187,7 +187,7 @@ onMounted(fetchPost);
     @close="deletePostModal.close"
     @confirm="deletePost"
   >
-    <p>Are you sure you want to delete this post?</p>
+    <p class="text-white">Are you sure you want to delete this post?</p>
   </Modal>
 
   <Modal
@@ -195,6 +195,6 @@ onMounted(fetchPost);
     @close="deleteCommentModal.close"
     @confirm="deleteComment"
   >
-    <p>Are you sure you want to delete this comment?</p>
+    <p class="text-white">Are you sure you want to delete this comment?</p>
   </Modal>
 </template>

@@ -57,7 +57,7 @@
       <div v-if="!props.isLoading && props.results.length === 0" class="text-center text-gray-500">
         No results found.
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Book
           v-for="book in paginatedResults"
           :key="book.key || book.ol_id"

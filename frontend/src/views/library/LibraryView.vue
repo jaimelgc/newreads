@@ -43,14 +43,14 @@
 
   onMounted(() => {
     fetchFeaturedBook('library/getbook/OL21419612M/');
-    fetchFeaturedPost('forum/posts/1/');
+    fetchFeaturedPost('forum/posts/8/');
     fetchFeaturedList('user/booklists/1/');
     console.log('Fetch List', featuredList)
   });
 
   onActivated(() => {
     if (!featuredBook.value) fetchFeaturedBook('library/getbook/OL21419612M/');
-    if (!featuredPost.value) fetchFeaturedPost('forum/posts/1/');
+    if (!featuredPost.value) fetchFeaturedPost('forum/posts/8/');
     if (!featuredList.value) fetchFeaturedList('user/booklists/1/');
   });
 </script>

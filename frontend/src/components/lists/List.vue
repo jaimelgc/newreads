@@ -175,6 +175,7 @@
     <ConfirmModal
       :show="isOpen"
       title="Confirm Deletion"
+      class="text-white"
       :message="`Are you sure you want to delete the list '${list.name}'? This action cannot be undone.`"
       @close="close"
       @confirm="deleteList"

@@ -232,7 +232,7 @@
         @close="deleteListModal.close"
         @confirm="deleteList"
       >
-        <p>Are you sure you want to delete this list?</p>
+        <p class="text-white">Are you sure you want to delete this list?</p>
       </Modal>
 
       <Modal
@@ -240,7 +240,7 @@
         @close="deleteItemModal.close"
         @confirm="deleteItem"
       >
-        <p>Are you sure you want to remove this book from the list?</p>
+        <p class="text-white">Are you sure you want to remove this book from the list?</p>
       </Modal>
     </div>
   </section>
