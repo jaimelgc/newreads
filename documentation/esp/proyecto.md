@@ -15,44 +15,63 @@
 ## Índice
 
 1. [**INTRODUCCIÓN.**](#id1)
-2. [**TECNOLOGÍAS UTILIZADAS.**](#id2)
-3. [**DERECHOS DE AUTOR.**](#id2)
-4. [**GRADO DE CUMPLIMIENTO.**](#id4)
-5. [**PLAN DE MARKETING.**](#id5)
-6. [**PLAN DE MANTENIMIENTO.**](#id6)
+2. [**ESTRUCTURA FINAÑ.**](#id2)
+3. [**TECNOLOGÍAS UTILIZADAS.**](#id3)
+4. [**DERECHOS DE AUTOR.**](#id4)
+5. [**GRADO DE CUMPLIMIENTO.**](#id5)
+6. [**PLAN DE MARKETING.**](#id6)
+7. [**PLAN DE MANTENIMIENTO.**](#id7)
 
-### 1. INTRODUCCIÓN. <a name="id1"></a>
+## 1. INTRODUCCIÓN. <a name="id1"></a>
 
-Este documento presenta el reporte de la primera fase de desarrollo de NewReads, aquí se verán datos como las tecnologías utilizadas durante el desarrollo, el rango de cumplimiento con los objetivos acordados y las medidas a tomar, los planes de expansión a futuro, el plan de marketing y el de mantenimiento.
+Este documento presenta el reporte de la primera fase de desarrollo de NewReads, aquí se verán datos como la estructura final, las tecnologías utilizadas durante el desarrollo, el rango de cumplimiento con los objetivos acordados y las medidas a tomar, los planes de expansión a futuro, el plan de marketing y el de mantenimiento.
 
 
-### 2. TECNOLOGÍAS UTILIZADAS. <a name="id2"></a>
+## 3. TECNOLOGÍAS UTILIZADAS. <a name="id3"></a>
 
-**Django==5.2:** Framework web depara Python usado principalmente para crear APIs y aplicaciones robustas rápidamente.
+### BACKEND
 
-**mysql-connector-python==8.3.0:** Sistema de gestión de bases de datos relacionales, se utiliza para almacenar y consultar datos.
+**Django==5.2:** Framework web depara Python que permite construir APIs y aplicaciones robustas rápidamente.
 
 **djangorestframework==3.16.0:** Extensión de Django para construir APIs RESTful de forma sencilla y estructurada.
+
+**mysql-connector-python==8.3.0:** Conector para integrar Django con MySQL, una base de datos relacional usada para almacenar información estructurada.
 
 **djangorestframework_simplejwt==5.5.0:** Librería para autenticación basada en tokens JWT, que permite login seguro y sin sesiones.
 
 **django-cors-headers==4.7.0:** Middleware para permitir solicitudes entre diferentes dominios (CORS), útil al conectar frontend y backend.
 
-**gunicorn==23.0.0:** Servidor WSGI para ejecutar aplicaciones Django en producción de forma eficiente.
+**gunicorn==23.0.0:** Servidor WSGI ligero para ejecutar aplicaciones Django en producción de forma eficiente.
 
-Frontend
+### Frontend
 
-**Vue + router:** Framework progresivo de JavaScript usado para construir interfaces de usuario interactivas.
+**Vue 3 + vue-router:** Framework progresivo de JavaScript usado para construir interfaces de usuario interactivas. Vue Router gestiona la navegación de páginas de forma dinámica sin recargar el navegador.
 
-**Axios:** Cliente HTTP que permite hacer solicitudes a APIs desde el frontend.
+**Axios:** Cliente HTTP que permite integrar aplicaciones con APIs para enviar y recibir datos.
 
 **Pinia:** Sistema de gestión de estado para Vue 3, útil para compartir datos entre componentes.
 
-### 3. DERECHOS DE AUTOR. <a name="id3"></a>
+**Herramientas de estilo:** Tailwind CSS Framework, Toastification, Vue-Spinner
 
-Hay que recordar que la aplicación hace uso de Open Library API, la cual es de código abierto, la cual usa libros ambos de dominio público y privado, por lo cual hay que tomar ciertas consideraciones como atribuir abiertamente a Open Library por el uso de sus servicios y no distribuir contenido completo de libros que no estén claramente en dominio público.
+### Despliegue
 
-### 4. GRADO DE CUMPLIMIENTO. <a name="id4"></a>
+**Railway:** Plataforma de backend como servicio (BaaS) utilizada para desplegar y escalar la API de Django junto con la base de datos MySQL.
+
+**Vercel:** Plataforma de frontend como servicio (FaaS) para desplegar aplicaciones Vue.js de forma rápida y optimizada.
+
+**Nginx:** Servidor web y proxy inverso usado para servir archivos estáticos y reenviar solicitudes al backend, mejorando rendimiento y seguridad.
+
+<div align="center">
+<img src="../img/tec1.png" />
+</div>
+
+## 4. DERECHOS DE AUTOR. <a name="id4"></a>
+
+Todas las tecnologías y plugins utilizadas en este proyecto son de codigo abierto, la mayoría con licencias MIT, excepto los servidores de producción Railway y Vercel.
+
+Hay que recordar que la aplicación hace uso de Open Library API, la cual es de código abierto, usa libros ambos de dominio público y privado, por lo cual hay que tomar ciertas consideraciones como atribuir abiertamente a Open Library por el uso de sus servicios y no distribuir contenido completo de libros que no estén claramente en dominio público.
+
+## 5. GRADO DE CUMPLIMIENTO. <a name="id5"></a>
 
 Se ha implementado todo lo acordado entre el equipo y el supuesto cliente a excepción de que en el frontend no se ha usado la tecnología acordada debido a la falta de tiempo pero ello no ha impedido que el producto final se vea apropiadamente.
 
@@ -63,28 +82,42 @@ El producto final ha resultado limitado desde el punto de vista de estilo y func
 Entre las funcionalidades acordadas que han sido implementadas destacan:
 
 - Pagina Inicial con ejemplos de las funcionalidades
-- Login
-- Zona de usuario con sus listas y posts
-- Zona de busqueda de librería, posts, listas y usuarios
+- Login y registro con uso de token
+- Zona de usuario con su información, listas y posts
+- Zona de busqueda de libros, posts, listas y usuarios
+- Sistema de guardado de listas ajenas
 - Sistema de Foro
 - Sistema de creación y administración de listas
-- Sistema de moderación básico
-- Zona de Admin
+- Zona de Administrador
 - API
 
 Funcionalidades más urgentes a añadir
 
 - Sistema de moderación complejo con feed y bloqueo de cuenta
-- Sistema de guardado de listas ajenas
 - Implementación de mejoras en la edición de usuario
 - Estilos y efectos para elever el frontend
 
-### 5. PLAN DE MARKETING. <a name="id4"></a>
+## 6. PLAN DE MARKETING Y FUTURO. <a name="id6"></a>
 
-Creemos que la evolución natural de una página como esta es por la vía social, esto implica convertirla en una red social para lectores, añadiendo funcionalidades como seguimiento, feed personalizada, grupos, clubs de lectura con libros designados por el administrador, etc.
+Creemos que la evolución natural de una página como esta yace en el componente social y de compartición, esto implica convertirla en una red social para lectores, añadiendo funcionalidades como seguimiento, feed personalizada, grupos, clubs de lectura con libros designados por el administrador, etc.
 
-Las principales formas de monetización viables para la app son
+Siguiendo este camino, las principales formas de monetización viables para la app serían:
 
 - **Publicidad:** Un sistema de publicidad poco invasivo localizado principalmente en los laterales de la página, bajo la barra de navegación o en los resultados de búsqueda.
 
 - **Afiliación con librerías virtuales:** Contratar afiliaciones con librerías como Amazon, Book Depository, etc. Añadiendo un sistema de links a las páginas de estos a cambio de una comisión por compra a través de estos.
+
+## 7. COSTE DE MANTENIMIENTO. <a name="id7"></a>
+
+- **Railway para despliegue DRF + MySQL + Redis:** Para este componente se ha deicdido utlilizar el plan Starter de pago para garantizar ejecución continua y rendimiento adecuado con posibilidad de escalar. Inicialmente este servicio costará 5 euros mensuales, pero podría escalar hasta 15 dependiendo de las necesidades de la aplcación
+
+- **Vercel para desplegue de frontend Vue 3:** Para esta aplicación se ha decidido continuar con el plan gratuito de Vercel hasta que surja la necesidad de ampliar a la versión de pago de 20€ mensuales. Ya que el plan gratuito es suficiente para el tráfico que verá la aplicación en su estado actual.
+
+- **Dominio personalizado:** Se plantea registrar un dominio propio con un proveedor externo como Google Domains o GoDaddy, los cuales rondan un coste anual de 10 a 20 euros anuales.
+
+| Servicio             | Plan usado       | Coste mínimo (EUR/mes)   | Coste máximo (EUR/mes)   |
+|----------------------|------------------|--------------------------|--------------------------|
+| Railway (backend)    | Starter (pago)   | 5.00€                    | 15.00€                   |
+| Vercel (frontend)    | Gratuito         | 0.00€                    | 20.00€                   |
+| Dominio personalizado| Registro externo | 1.00€                    | 2.00€                    |
+| **Total estimado**   | —                | **6.00€**                | **27.00€**               |

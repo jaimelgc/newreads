@@ -82,7 +82,7 @@ Tecnologías a utilizar:
 
     - El front Vue será desplegado mediante vercel 
 
-### Estructura del proyecto
+### Estructura original del proyecto
 
 <div align="center">
 <img src="../img/mr.png" />
