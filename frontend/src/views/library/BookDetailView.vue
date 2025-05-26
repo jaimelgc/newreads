@@ -64,7 +64,6 @@
         type: 'author',
         q: authorName,
         });
-    console.log(booksResults);
   };
 
   onMounted(async () => {

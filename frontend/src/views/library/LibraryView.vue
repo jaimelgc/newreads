@@ -17,8 +17,6 @@
   };
 
   const auth = useAuthStore()
-  console.log('auth token', auth.token)
-  console.log('auth user', auth.user)
 
   const {
     res: featuredBook,
@@ -45,7 +43,6 @@
     fetchFeaturedBook('library/getbook/OL21419612M/');
     fetchFeaturedPost('forum/posts/8/');
     fetchFeaturedList('user/booklists/1/');
-    console.log('Fetch List', featuredList)
   });
 
   onActivated(() => {

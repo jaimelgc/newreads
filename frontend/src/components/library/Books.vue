@@ -28,8 +28,6 @@
             showButton: false,
         }
     );
-    console.log("props", props)
-    console.log("props.results:", props.results)
 
     const filteredResults = computed(() =>
       props.results.filter(book =>

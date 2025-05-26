@@ -37,18 +37,9 @@ const fetchPosts = async () => {
       ? `/forum/posts/?search=${searchTerm.value}&field=title`
       : `/forum/posts/?ordering=-created_at`;
 
-    console.log('Fetching posts from:', endpoint);
-
     const response = await api.get(endpoint);
-    console.log('API Response:', response.data); 
 
     posts.value = response.data;
-
-    // const bookPost = response.data.find((post: any) => post.book !== null);
-    // if (bookPost) {
-    //   const bookResponse = await api.get(`/library/books/${bookPost.value}/`);
-    // }
-    // console.log('bookResponse', bookResponse.value.id)
 
   } catch (err: any) {
     console.error('Error fetching posts:', err);

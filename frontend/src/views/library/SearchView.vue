@@ -28,7 +28,6 @@
         if (newQuery) {
         searchTerm.value = newQuery as string;
         search();
-        console.log('results', results)
         }
     },
     { immediate: true }

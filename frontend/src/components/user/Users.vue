@@ -21,7 +21,6 @@
             limit: 12,
         }
     );
-    console.log("props", props)
 
     const visibleCount = ref(props.limit);
     const paginatedResults = computed(() =>

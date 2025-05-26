@@ -12,8 +12,6 @@ import BottomVar from './components/misc/BottomVar.vue';
     if (auth.token) {
       auth.user
     }
-    console.log('auth token', auth.token)
-    console.log('auth user', auth.user)
   })
 </script>
 

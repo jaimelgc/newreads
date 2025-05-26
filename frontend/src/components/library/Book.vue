@@ -6,10 +6,12 @@
   import { storeToRefs } from 'pinia';
   import { useAuthStore } from '@/stores/auth';
   import api from '@/api';
+  import { useToast } from 'vue-toastification';
 
   const auth = useAuthStore();
   const { isLoggedIn, user } = storeToRefs(auth);
   const router = useRouter();
+  const toast = useToast();
 
   // BOOK CARD
   const props = defineProps<{
@@ -53,20 +55,18 @@
 
   async function addBookToList() {
     if (!selectedListId.value || !selectedEditionId.value) {
-      console.error('no pasa por el business')
       return
     };
 
     try {
       const bookResponse = await api.get(`/library/getbook/${selectedEditionId.value}/`);
       const bookId = bookResponse.data.id;
-      console.log("response", bookResponse.data)
 
       await api.post('/user/blitems/', {
         book_list: selectedListId.value,
         book: bookId,
       });
-
+      toast.success('List Bookmarked');
       showModal.value = false;
       selectedListId.value = null;
     } catch (error) {
