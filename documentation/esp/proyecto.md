@@ -15,7 +15,7 @@
 ## Índice
 
 1. [**INTRODUCCIÓN.**](#id1)
-2. [**ESTRUCTURA FINAÑ.**](#id2)
+2. [**ESTRUCTURA FINAL.**](#id2)
 3. [**TECNOLOGÍAS UTILIZADAS.**](#id3)
 4. [**DERECHOS DE AUTOR.**](#id4)
 5. [**GRADO DE CUMPLIMIENTO.**](#id5)
@@ -26,6 +26,10 @@
 
 Este documento presenta el reporte de la primera fase de desarrollo de NewReads, aquí se verán datos como la estructura final, las tecnologías utilizadas durante el desarrollo, el rango de cumplimiento con los objetivos acordados y las medidas a tomar, los planes de expansión a futuro, el plan de marketing y el de mantenimiento.
 
+## 2. ESTRUCTURA FINAL
+<div align="center">
+<img src="../img/mr-v2.png" />
+</div>
 
 ## 3. TECNOLOGÍAS UTILIZADAS. <a name="id3"></a>
 
