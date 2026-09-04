@@ -1,0 +1,41 @@
+NewReads - Production deployment commands
+============================================
+
+Production settings (backend/newreads/settings/production.py) require every
+value below to be set as real environment variables on the host - there are
+no insecure defaults, so the process will refuse to start if one is missing.
+Procfile already sets DJANGO_ENV=production for the web process.
+
+1) Required backend environment variables (set on the host, e.g. Railway
+   "Variables" tab - do NOT put production secrets in a committed .env file)
+
+   DJANGO_ENV=production          (Procfile sets this already)
+   SECRET_KEY=<long random secret>
+   DEBUG=False
+   CSRF=https://your-frontend-domain            (comma-separated if multiple)
+   ALLOWED_HOSTS=your-backend-domain             (comma-separated if multiple)
+   CORS_ALLOWED_ORIGINS=https://your-frontend-domain  (comma-separated if multiple)
+   DATABASE_URL=mysql://user:password@host:port/dbname
+   REDIS_URL=redis://:password@host:port/0
+
+2) Backend build + release (what Railway/nixpacks runs, or run manually)
+
+   pip install -r requirements.txt
+   python manage.py migrate
+   python manage.py collectstatic --noinput
+
+3) Backend start command (already set in Procfile)
+
+   DJANGO_ENV=production gunicorn newreads.wsgi
+
+4) Frontend build - run from frontend/
+
+   npm install
+   npm run build
+
+   Uses frontend/.env.production (VITE_API_URL=https://newreads-production.up.railway.app)
+   automatically, since `vite build` defaults to production mode. Deploy the
+   generated frontend/dist/ folder to your static host.
+
+   If the backend domain changes, update VITE_API_URL in
+   frontend/.env.production (must include the https:// scheme) before building.

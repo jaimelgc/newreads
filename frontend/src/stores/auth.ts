@@ -59,8 +59,8 @@ export const useAuthStore = defineStore('auth', {
       if (!this.token || !this.user?.username) return
 
       try {
-        const backendUrl = import.meta.env.VITE_BACKEND_URL
-        const res = await fetch(`${backendUrl}/api/user/${this.user.username}/`, {
+        const backendUrl = import.meta.env.VITE_API_URL
+        const res = await fetch(`${backendUrl}/user/${this.user.username}/`, {
           headers: {
             Authorization: `Bearer ${this.token}`,
           },

@@ -1,1 +1,1 @@
-web: gunicorn newreads.wsgi
+web: DJANGO_ENV=production gunicorn newreads.wsgi
